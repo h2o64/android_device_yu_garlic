@@ -80,6 +80,7 @@ ro.qualcomm.svi=1
 config.svi.xml=1
 config.svi.path=/system/etc/svi_configuration.xml
 ro.qcom.svi.sensortype=2
+video.disable.ubwc=1
 
 #Enable B service adj transition by default
 ro.sys.fw.bservice_enable=true
