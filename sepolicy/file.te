@@ -1,1 +1,4 @@
 type fingerprint_socket, file_type;
+
+# dynamic nv files
+type dynamic_nv_data_file, file_type, data_file_type;
