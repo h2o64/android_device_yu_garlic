@@ -500,12 +500,6 @@ on property:persist.debug.trace=1
 on property:init.svc.wpa_supplicant=stopped
     stop dhcpcd
 
-on property:bluetooth.sap.status=running
-    start bt-sap
-
-on property:bluetooth.sap.status=stopped
-    stop bt-sap
-
 on property:bluetooth.dun.status=running
     start bt-dun
 
@@ -556,11 +550,6 @@ service config_bt_addr /system/bin/btnvtool -O
     class core
     user bluetooth
     group bluetooth radio
-    oneshot
-
-service config_bluetooth /system/bin/sh /system/etc/init.qcom.bt.sh "onboot"
-    class core
-    user root
     oneshot
 
 service hciattach /system/bin/sh /system/etc/init.qcom.bt.sh
