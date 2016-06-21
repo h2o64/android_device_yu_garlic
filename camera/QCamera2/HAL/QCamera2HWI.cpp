@@ -1675,7 +1675,6 @@ QCamera2HardwareInterface::QCamera2HardwareInterface(uint32_t cameraId)
       mJpegClientHandle(0),
       mJpegHandleOwner(false),
       mMetadataMem(NULL),
-      mVideoMem(NULL),
       mCACDoneReceived(false),
       m_bNeedRestart(false),
       mBootToMonoTimestampOffset(0)
@@ -2848,7 +2847,6 @@ QCameraMemory *QCamera2HardwareInterface::allocateStreamBuf(
             }
             videoMemory->setVideoInfo(usage, fmt);
             mem = videoMemory;
-            mVideoMem = videoMemory;
         }
         break;
     case CAM_STREAM_TYPE_CALLBACK:
@@ -3179,7 +3177,6 @@ QCameraMemory *QCamera2HardwareInterface::allocateStreamUserBuf(
         }
         video_mem->setVideoInfo(usage, fmt);
         mem = static_cast<QCameraMemory *>(video_mem);
-        mVideoMem = video_mem;
     }
     break;
 
@@ -3618,7 +3615,6 @@ int QCamera2HardwareInterface::startRecording()
     int32_t rc = NO_ERROR;
 
     LOGI("E");
-    mVideoMem = NULL;
     //link meta stream with video channel if low power mode.
     if (isLowPowerMode()) {
         // Find and try to link a metadata stream from preview channel
@@ -3717,7 +3713,6 @@ int QCamera2HardwareInterface::stopRecording()
 
     // Disable power hint for video encoding
     m_perfLock.powerHint(POWER_HINT_VIDEO_ENCODE, false);
-    mVideoMem = NULL;
     LOGI("X rc = %d", rc);
     return rc;
 }
