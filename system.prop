@@ -121,6 +121,7 @@ mm.enable.qcom_parser=983039
 vidc.enc.disable_bframes=1
 vidc.dec.downscalar_width=1920
 vidc.dec.downscalar_height=1088
+vidc.disable.split.mode=1
 
 # Perf
 ro.vendor.gt_library=libqti-gt.so
