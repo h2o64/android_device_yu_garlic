@@ -312,7 +312,6 @@ lib/libqti_performance.so
 lib/libregionalization.so
 lib/libVDSuperPhotoAPI.so
 lib/libvpplibrary.so
-lib/modules/wlan.ko
 vendor/bin/mdtpd
 vendor/bin/mm-pp-dpps
 vendor/bin/perfd
