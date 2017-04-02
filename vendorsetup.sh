@@ -1,1 +1,2 @@
 add_lunch_combo omni_garlic-userdebug
+add_lunch_combo omni_garlic-eng

@@ -1,0 +1,8 @@
+#ADB
+persist.service.adb.enable=1                                                    
+persist.service.debuggable=1
+persist.sys.usb.config=mtp,adb
+ro.secure=0
+ro.adb.insecure=1
+ro.debuggable=1
+ro.adb.debuggable=1

@@ -33,7 +33,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/fstab.qcom:root/fstab.qcom
 
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/kernel.gz:kernel
+    $(LOCAL_PATH)/kernel:kernel
 
 # Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := garlic
