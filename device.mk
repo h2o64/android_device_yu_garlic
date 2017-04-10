@@ -158,6 +158,11 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/sec_config:system/etc/sec_config
 
+# Lights
+PRODUCT_PACKAGES += \
+    lights.msm8937
+
+
 # OMX
 PRODUCT_PACKAGES += \
     libc2dcolorconvert \
