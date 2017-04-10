@@ -23,6 +23,12 @@ use.voice.path.for.pcm.voip=true
 voice.conc.fallbackpath=deep-buffer
 voice.playback.conc.disabled=true
 voice.voip.conc.disabled=true
+persist.speaker.prot.enable=false
+audio.pp.asphere.enabled=false
+audio.safx.pbe.enabled=true
+tunnel.audio.encode = false
+audio.parser.ip.buffer.size=262144
+ro.qc.sdk.audio.ssr=false
 
 # Bluetooth
 bluetooth.hfp.client=1
