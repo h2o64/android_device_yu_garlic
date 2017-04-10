@@ -168,6 +168,46 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     power.msm8937
 
+# Ramdisk
+PRODUCT_PACKAGES += \
+    fstab.qcom \
+    init.qcom.rc \
+    init.qcom.sh \
+    init.qcom.usb.rc \
+    init.qcom.usb.sh \
+    init.target.rc \
+    ueventd.qcom.rc \
+    init.carrier.rc \
+    init.msm.usb.configfs.rc \
+    init.qcom.factory.rc \
+    init.tinno.rc
+
+PRODUCT_PACKAGES += \
+    init.qcom.bt.sh \
+    init.qcom.fm.sh \
+    init.qcom.post_boot.sh \
+    init.class_main.sh \
+    init.mdm.sh \
+    init.qcom.class_core.sh \
+    init.qcom.early_boot.sh \
+    init.qcom.sensors.sh \
+    init.qcom.syspart_fixup.sh \
+    init.tinno.checkproperty.sh \
+    init.tinno.usb.sh \
+    hcidump.sh \
+    hsic.control.bt.sh \
+    init.ath3k.bt.sh \
+    init.crda.sh \
+    init.qcom.audio.sh \
+    init.qcom.coex.sh \
+    init.qcom.debug.sh \
+    init.qcom.efs.sync.sh \
+    init.qcom.sdio.sh \
+    init.qcom.uicc.sh \
+    init.qcom.wifi.sh \
+    init.qti.ims.sh \
+    qca6234-service.sh
+
 # RIL
 PRODUCT_PACKAGES += \
     librmnetctl \
