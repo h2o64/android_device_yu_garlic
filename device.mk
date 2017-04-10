@@ -125,7 +125,17 @@ PRODUCT_PACKAGES += \
     ethertypes \
     libebtc
 
+# FM
+PRODUCT_PACKAGES += \
+    FM2 \
+    libfmjni \
+    libqcomfm_jni \
+    qcom.fmradio
+
 # GPS
+PRODUCT_PACKAGES += \
+    libcurl
+
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/gps/etc/flp.conf:system/etc/flp.conf \
     $(LOCAL_PATH)/gps/etc/gps.conf:system/etc/gps.conf \
@@ -179,6 +189,10 @@ PRODUCT_PACKAGES += \
 # Power
 PRODUCT_PACKAGES += \
     power.msm8937
+
+# QMI
+PRODUCT_PACKAGES += \
+    libjson
 
 # Ramdisk
 PRODUCT_PACKAGES += \
