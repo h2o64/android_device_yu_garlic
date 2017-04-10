@@ -58,4 +58,6 @@ $(LOCAL_BUILT_MODULE):
 	$(hide) ln -sf $(ACTUAL_MODULE_FILE) $(WCNSS_MODULE_SYMLINK)
 	$(hide) touch $@
 
+include device/yu/garlic/tftp.mk
+
 endif
