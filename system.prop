@@ -9,20 +9,24 @@ audio.dolby.ds2.enabled=true
 audio.offload.buffer.size.kb=64
 audio.offload.gapless.enabled=true
 audio.offload.min.duration.secs=30
+audio.offload.multiple.enabled=false
 audio.offload.pcm.16bit.enable=true
 audio.offload.pcm.24bit.enable=true
+audio.offload.track.enable=true
 audio.offload.video=true
 audio.playback.mch.downsample=true
 audio.safx.pbe.enabled=true
 audio_hal.period_size=192
 ro.qc.sdk.audio.fluencetype=fluence
 persist.audio.fluence.voicecall=true
+persist.audio.fluence.speaker=false
+persist.audio.fluence.voicerec=false
 use.qti.sw.alac.decoder=true
 use.qti.sw.ape.decoder=true
 use.voice.path.for.pcm.voip=true
 voice.conc.fallbackpath=deep-buffer
 voice.playback.conc.disabled=true
-voice.voip.conc.disabled=true
+voice.voip.conc.disabled=false
 persist.speaker.prot.enable=false
 audio.pp.asphere.enabled=false
 audio.safx.pbe.enabled=true
@@ -39,7 +43,6 @@ camera.display.umax=1920x1080
 camera.display.lmax=1280x720
 persist.camera.is_type=1
 persist.camera.gyro.android=1
-persist.camera.gyro.disable=0
 
 # CNE
 persist.cne.feature=1
@@ -61,6 +64,9 @@ debug.enable.sglscale=1
 ro.opengles.version=196609
 ro.qualcomm.cabl=0
 ro.sf.lcd_density=480
+ro.qualcomm.svi=1
+config.svi.xml=1
+config.svi.path=/system/etc/svi_config.xml
 
 #Enable B service adj transition by default
 ro.sys.fw.bservice_enable=true
@@ -72,6 +78,9 @@ persist.qfp=false
 
 # Fm
 ro.fm.transmitter=false
+
+# FRP
+ro.frp.pst=/dev/block/bootdevice/by-name/config
 
 # GPS
 persist.gps.qc_nlp_in_use=1
@@ -86,7 +95,7 @@ media.aac_51_output_enabled=true
 av.debug.disable.pers.cache=1
 media.hevc.cores=2
 qcom.hw.aac.encoder=true
-mm.enable.qcom_parser=261773
+mm.enable.qcom_parser=983039
 vidc.enc.disable_bframes=1
 vidc.dec.downscalar_width=1920
 vidc.dec.downscalar_height=1088
@@ -97,7 +106,10 @@ ro.vendor.at_library=libqti-at.so
 ro.vendor.extension_library=libqti-perfd-client.so
 ro.am.reschedule_service=true
 ro.sys.fw.dex2oat_thread_count=4
-
+ro.config.swap=true
+ro.config.zram=true
+ro.core_ctl_max_cpu=4
+ro.core_ctl_min_cpu=2
 
 # Netmgrd
 ro.use_data_netmgrd=true
@@ -116,33 +128,39 @@ persist.rild.nitz_short_ons_2=
 persist.rild.nitz_short_ons_3=
 
 # Radio
-rild.libpath=/vendor/lib64/libril-qc-qmi-1.so
-rild.libargs=-d /dev/smd0
-ril.subscription.types=NV,RUIM
 DEVICE_PROVISIONED=1
-ro.telephony.default_network=22,22
-persist.radio.multisim.config=dsds
-persist.radio.sib16_support=1
-persist.radio.custom_ecc=1
-persist.radio.calls.on.ims=0
-persist.radio.jbims=0
-persist.radio.csvt.enabled=false
-persist.radio.rat_on=combine
-persist.radio.mt_sms_ack=20
-persist.radio.apm_sim_not_pwdn=1
-persist.dbg.volte_avail_ovr=1
-persist.dbg.vt_avail_ovr=1
+persist.data.iwlan.enable=true
 persist.dbg.ims_volte_enable=1
 persist.dbg.volte_avail_ovr=1
 persist.dbg.vt_avail_ovr=1
-persist.radio.videopause.mode=1
-persist.data.iwlan.enable=true
 persist.dbg.wfc_avail_ovr=0
-persist.radio.sw_mbn_update=0
-persist.radio.hw_mbn_update=0
+persist.radio.apm_mdm_not_pwdn=1
+persist.radio.apm_sim_not_pwdn=1
+persist.radio.atel.carrier=405854
+persist.radio.calls.on.ims=true
+persist.radio.csvt.enabled=false
+persist.radio.custom_ecc=0
+persist.radio.jbims=1
+persist.radio.mt_sms_ack=20
+persist.radio.multisim.config=dsds
+persist.radio.NO_STAPA=1
+persist.radio.plmn_disable_data=false
+persist.radio.rat_on=combine
+persist.radio.redir_party_num=0
+persist.radio.ROTATION_ENABLE=1
+persist.radio.sib16_support=1
+persist.radio.start_ota_daemon=1
+persist.radio.vowifi_enable=1
+persist.radio.vrte_logic=1
+persist.radio.VT_ENABLE=1
+persist.radio.VT_HYBRID_ENABLE=1
+ril.subscription.types=NV,RUIM
+rild.libargs=-d /dev/smd0
+rild.libpath=/vendor/lib64/libril-qc-qmi-1.so
+ro.telephony.call_ring.multiple=false
+ro.telephony.default_network=22,22
 service.qti.ims.enabled=1
 telephony.lteOnCdmaDevice=1
-ro.telephony.call_ring.multiple=false
 
 # Time Services
 persist.timed.enable=true
