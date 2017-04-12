@@ -133,7 +133,7 @@ usb_config=`getprop persist.sys.usb.config`
 #      usb_config="diag,serial_smd,rmnet_qti_bam,adb"
 #      setprop persist.sys.usb.config diag,serial_smd,rmnet_qti_bam,adb
 #      /system/bin/log -t usb "in ffbm-01 mode, change to default usb setting"
-#    fi    
+#    fi
 #  ;;
 #esac
 
@@ -144,7 +144,7 @@ case $adbroot in
     if [ "$usb_config" != "diag,serial_smd,rmnet_qti_bam,adb" ]; then
       usb_config=""
       /system/bin/log -t usb "open adb"
-    fi    
+    fi
   ;;
 esac
 
@@ -334,8 +334,9 @@ bootmode=`getprop ro.bootmode`
 case $bootmode in
   "ffbm-01")
     if [ "$usb_config" != "diag,serial_smd,rmnet_bam,adb" ]; then
-      usb_config=""        
+      usb_config=""
       /system/bin/log -t usb "in ffbm-01 mode, change to default usb setting"
-    fi    
+    fi
   ;;
 esac
+

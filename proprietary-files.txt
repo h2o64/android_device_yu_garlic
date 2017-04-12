@@ -37,6 +37,7 @@ bin/cnss_diag
 bin/dpmd
 bin/fm_qsoc_patches
 bin/fstman
+bin/gx_fpd
 bin/hci_qcomm_init
 bin/hvdcp_opti
 bin/iop
@@ -321,6 +322,7 @@ lib/libregionalization.so
 lib/libtinyxml2.so
 lib/libVDSuperPhotoAPI.so
 lib/libvpplibrary.so
+lib/modules/pronto/pronto_wlan.ko
 usr/keylayout/ft5x06_ts.kl
 usr/keylayout/gpio-keys.kl
 usr/keylayout/qpnp_pon.kl
