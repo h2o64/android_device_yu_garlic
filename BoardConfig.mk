@@ -170,6 +170,12 @@ USE_SENSOR_MULTI_HAL := true
 include device/qcom/sepolicy/sepolicy.mk
 BOARD_SEPOLICY_DIRS += $(LOCAL_PATH)/sepolicy
 
+
+# TWRP Support - Optional
+ifeq ($(WITH_TWRP),true)
+-include $(LOCAL_PATH)/twrp.mk
+endif
+
 # Wi-Fi
 BOARD_HAS_QCOM_WLAN := true
 BOARD_HOSTAPD_DRIVER := NL80211
