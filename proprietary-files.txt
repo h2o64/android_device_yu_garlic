@@ -301,7 +301,6 @@ lib64/libvpplibrary.so
 lib64/libwifi-hal-qcom.so
 lib/egl/egl.cfg
 lib/egl/libGLES_android.so
-lib/hw/camera.msm8937.so
 lib/libapkscanner.so
 lib/libarcsoft_beautyshot.so
 lib/libarcsoft_night_shot.so
@@ -317,8 +316,6 @@ lib/libimsmedia_jni.so
 lib/libminui.so
 lib/libmm-omxcore.so
 lib/libmm-qcamera.so
-lib/libmmcamera_interface.so
-lib/libmmjpeg_interface.so
 lib/libmpbase.so
 lib/libomadrmutils_jni.so
 lib/libOmxSwVdec.so
@@ -331,7 +328,6 @@ lib/libplugin_panorama.so
 lib/libplugin_superphoto.so
 lib/libplugin_wideself.so
 lib/libqcmediaplayer.so
-lib/libqomx_core.so
 lib/libqti_performance.so
 lib/libregionalization.so
 lib/libtinyxml2.so
