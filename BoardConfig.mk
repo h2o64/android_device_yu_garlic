@@ -49,6 +49,8 @@ BOARD_MKBOOTIMG_ARGS += --tags_offset 0x00000100
 BOARD_MKBOOTIMG_ARGS += --second_offset 0x80f00000
 BOARD_CUSTOM_BOOTIMG_MK := $(LOCAL_PATH)/mkbootimg.mk
 TARGET_PREBUILT_KERNEL := $(LOCAL_PATH)/kernel
+TARGET_KERNEL_CONFIG := lineage_garlic_defconfig
+TARGET_KERNEL_SOURCE := kernel/yu/msm8937
 
 # ANT
 BOARD_ANT_WIRELESS_DEVICE := "vfs-prerelease"
