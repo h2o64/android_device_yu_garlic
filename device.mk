@@ -139,8 +139,10 @@ PRODUCT_PACKAGES += \
 
 # GPS
 PRODUCT_PACKAGES += \
-		gps.msm8937 \
-		libcurl
+		gps.msm8937
+
+PRODUCT_BOOT_JARS += \
+    com.qti.location.sdk
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/gps/etc/flp.conf:system/etc/flp.conf \
