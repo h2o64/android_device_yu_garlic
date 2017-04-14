@@ -24,7 +24,7 @@
 -lib/libloc_ds_api.so
 -priv-app/CNEService/CNEService.apk
 -priv-app/com.qualcomm.location/com.qualcomm.location.apk
--priv-app/dpmserviceapp/dpmserviceapp.apk
+#-priv-app/dpmserviceapp/dpmserviceapp.apk
 -priv-app/ims/ims.apk
 -priv-app/qcrilmsgtunnel/qcrilmsgtunnel.apk
 -priv-app/QtiTetherService/QtiTetherService.apk
