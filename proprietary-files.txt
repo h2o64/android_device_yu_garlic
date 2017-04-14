@@ -30,6 +30,7 @@
 -priv-app/QtiTetherService/QtiTetherService.apk
 -vendor/app/colorservice/colorservice.apk
 -vendor/app/imssettings/imssettings.apk
+lib/modules/wlan.ko
 -vendor/framework/qti-vzw-ims-internal.jar
 -vendor/lib64/libtime_genoff.so
 -vendor/lib/libtime_genoff.so
@@ -345,7 +346,6 @@ lib/libregionalization.so
 lib/libtinyxml2.so
 lib/libVDSuperPhotoAPI.so
 lib/libvpplibrary.so
-lib/modules/pronto/pronto_wlan.ko
 usr/keylayout/ft5x06_ts.kl
 usr/keylayout/gpio-keys.kl
 usr/keylayout/qpnp_pon.kl
