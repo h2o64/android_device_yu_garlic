@@ -20,7 +20,9 @@
 -framework/QtiTelephonyServicelibrary.jar
 -framework/tcmclient.jar
 -lib64/libloc_api_v02.so
+-lib64/libloc_ds_api.so
 -lib/libloc_api_v02.so
+-lib/libloc_ds_api.so
 -priv-app/CNEService/CNEService.apk
 -priv-app/com.qualcomm.location/com.qualcomm.location.apk
 -priv-app/ims/ims.apk
@@ -281,7 +283,6 @@ lib64/libgettotalsizecnfg.so
 lib64/libimscamera_jni.so
 lib64/libimsmedia_jni.so
 lib64/libipanat.so
-lib64/libloc_ds_api.so
 lib64/libminui.so
 lib64/libmm-omxcore.so
 lib64/libnetfilter_conntrack.so
@@ -313,7 +314,6 @@ lib/libextmedia_jni.so
 lib/libgettotalsizecnfg.so
 lib/libimscamera_jni.so
 lib/libimsmedia_jni.so
-lib/libloc_ds_api.so
 lib/libminui.so
 lib/libmm-omxcore.so
 lib/libmm-qcamera.so
