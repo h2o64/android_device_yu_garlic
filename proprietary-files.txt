@@ -269,6 +269,7 @@ etc/xtwifi.conf
 lib64/egl/libGLES_android.so
 lib64/hw/fingerprint.elan.default.so
 lib64/hw/fingerprint.goodix.default.so
+lib64/hw/sensors.msm8937.so
 lib64/libapkscanner.so
 lib64/libaudio-resampler.so
 lib64/libdashplayer.so
@@ -301,6 +302,7 @@ lib64/libvpplibrary.so
 lib64/libwifi-hal-qcom.so
 lib/egl/egl.cfg
 lib/egl/libGLES_android.so
+lib/hw/sensors.msm8937.so
 lib/libapkscanner.so
 lib/libarcsoft_beautyshot.so
 lib/libarcsoft_night_shot.so
