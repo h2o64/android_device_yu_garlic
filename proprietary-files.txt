@@ -18,6 +18,10 @@
 -framework/qti-telephony-common.jar
 -framework/QtiTelephonyServicelibrary.jar
 -framework/tcmclient.jar
+-lib64/libloc_api_v02.so
+-lib64/libloc_ds_api.so
+-lib/libloc_api_v02.so
+-lib/libloc_ds_api.so
 -priv-app/CNEService/CNEService.apk
 -priv-app/com.qualcomm.location/com.qualcomm.location.apk
 -priv-app/dpmserviceapp/dpmserviceapp.apk
@@ -265,6 +269,7 @@ etc/xtwifi.conf
 lib64/egl/libGLES_android.so
 lib64/hw/fingerprint.elan.default.so
 lib64/hw/fingerprint.goodix.default.so
+lib64/hw/gps.default.so
 lib64/libapkscanner.so
 lib64/libaudio-resampler.so
 lib64/libdashplayer.so
@@ -276,11 +281,12 @@ lib64/libfpalgorithm.so
 lib64/libfphal.so
 lib64/libfpservice.so
 lib64/libgettotalsizecnfg.so
+lib64/libgps.utils.so
 lib64/libimscamera_jni.so
 lib64/libimsmedia_jni.so
 lib64/libipanat.so
-lib64/libloc_api_v02.so
-lib64/libloc_ds_api.so
+lib64/libloc_core.so
+lib64/libloc_eng.so
 lib64/libminui.so
 lib64/libmm-omxcore.so
 lib64/libnetfilter_conntrack.so
@@ -300,6 +306,7 @@ lib64/libwifi-hal-qcom.so
 lib/egl/egl.cfg
 lib/egl/libGLES_android.so
 lib/hw/camera.msm8937.so
+lib/hw/gps.default.so
 lib/libapkscanner.so
 lib/libarcsoft_beautyshot.so
 lib/libarcsoft_night_shot.so
@@ -310,10 +317,11 @@ lib/libdashplayer.so
 lib/libebtc.so
 lib/libextmedia_jni.so
 lib/libgettotalsizecnfg.so
+lib/libgps.utils.so
 lib/libimscamera_jni.so
 lib/libimsmedia_jni.so
-lib/libloc_api_v02.so
-lib/libloc_ds_api.so
+lib/libloc_core.so
+lib/libloc_eng.so
 lib/libminui.so
 lib/libmm-omxcore.so
 lib/libmm-qcamera.so
