@@ -208,7 +208,8 @@ PRODUCT_PACKAGES += \
     init.qcom.usb.sh \
     init.recovery.qcom.rc \
     init.qcom.bt.sh \
-		ueventd.qcom.rc
+		ueventd.qcom.rc \
+		fstab.qcom
 
 # RIL
 PRODUCT_PACKAGES += \
