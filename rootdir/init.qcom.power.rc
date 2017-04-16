@@ -70,7 +70,7 @@ on enable-low-power
     write /sys/devices/system/cpu/cpu4/cpufreq/interactive/min_sample_time 40000
     write /sys/devices/system/cpu/cpu4/cpufreq/scaling_min_freq 768000
 
-		# Disable L2 gdhs lpm
+    # Disable L2 gdhs lpm
     write /sys/module/lpm_levels/system/pwr/pwr-l2-gdhs/idle_enabled "N"
     write /sys/module/lpm_levels/system/perf/perf-l2-gdhs/idle_enabled "N"
 

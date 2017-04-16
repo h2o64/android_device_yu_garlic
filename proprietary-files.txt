@@ -41,6 +41,7 @@ bin/cnss-daemon
 bin/cnss_diag
 bin/diag_mdlog
 bin/dpmd
+bin/fingerprintd
 bin/fm_qsoc_patches
 bin/fstman
 bin/ftmdaemon
