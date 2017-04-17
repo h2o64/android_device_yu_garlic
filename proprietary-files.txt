@@ -276,7 +276,7 @@ lib64/libqti_performance.so
 lib64/libregionalization.so
 lib64/libvpplibrary.so
 lib/egl/egl.cfg
-lib/hw/camera.msm8937.so
+lib/hw/camera.msm8937.so:lib/hw/camera.vendor.msm8937.so
 lib/hw/gps.default.so
 lib/hw/sensors.msm8937.so
 lib/libapkscanner.so
