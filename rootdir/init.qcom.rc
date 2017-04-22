@@ -240,6 +240,9 @@ on post-fs-data
     mkdir /data/misc/sensors
     chmod 0775 /data/misc/sensors
 
+		# Goodix FPC
+    mkdir /data/goodix 0700 system system
+
 on early-boot
     # set RLIMIT_MEMLOCK to 64MB
     setrlimit 8 67108864 67108864
@@ -835,9 +838,17 @@ service poweroffhandler /system/bin/poweroffhandler
     oneshot
 
 service gx_fpd /system/bin/gx_fpd
-     class core
-     user root
-     group system system
+    class late_start
+    user system
+    group system
+    disabled
+    writepid /dev/cpuset/system-background/tasks
+
+on property:persist.sys.fp.goodix=0
+    stop gx_fpd
+
+on property:persist.sys.fp.goodix=1
+    start gx_fpd
 
 service fingerprintd /system/bin/fingerprintd
     class late_start
