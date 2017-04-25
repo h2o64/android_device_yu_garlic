@@ -57,7 +57,6 @@ bin/ipacm-diag
 bin/irsc_util
 bin/loc_launcher
 bin/lowi-server
-bin/mm-qcamera-app
 bin/mm-qcamera-daemon
 bin/msm_irqbalance
 bin/netmgrd
@@ -276,7 +275,6 @@ lib64/libqti_performance.so
 lib64/libregionalization.so
 lib64/libvpplibrary.so
 lib/egl/egl.cfg
-lib/hw/camera.msm8937.so:lib/hw/camera.vendor.msm8937.so
 lib/hw/gps.default.so
 lib/hw/sensors.msm8937.so
 lib/libapkscanner.so
@@ -292,9 +290,6 @@ lib/libimscamera_jni.so
 lib/libimsmedia_jni.so
 lib/libloc_core.so
 lib/libloc_eng.so
-lib/libmm-qcamera.so
-lib/libmmcamera_interface.so
-lib/libmmjpeg_interface.so
 lib/libmpbase.so
 lib/libomadrmutils_jni.so
 lib/libOmxSwVdec.so
@@ -307,7 +302,6 @@ lib/libplugin_panorama.so
 lib/libplugin_superphoto.so
 lib/libplugin_wideself.so
 lib/libqcmediaplayer.so
-lib/libqomx_core.so
 lib/libqti_performance.so
 lib/libregionalization.so
 lib/libVDSuperPhotoAPI.so
