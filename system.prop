@@ -54,6 +54,7 @@ camera.display.umax=1920x1080
 camera.display.lmax=1280x720
 persist.camera.is_type=1
 persist.camera.gyro.android=1
+persist.camera.HAL3.enabled=0
 
 # CNE
 persist.cne.feature=1
