@@ -26,6 +26,8 @@
 #include <hardware/fingerprint.h>
 #include <utils/threads.h>
 
+#define DRV_INFO "/sys/devices/platform/fp_drv/fp_drv_info"
+
 typedef struct {
     fingerprint_device_t base;
     union {
@@ -41,6 +43,29 @@ static union {
     const hw_module_t *hw_module;
 } vendor;
 
+static int read_file2(const char *fname, char *data, int max_size)
+{
+    int fd, rc;
+
+    if (max_size < 1)
+        return 0;
+
+    fd = open(fname, O_RDONLY);
+    if (fd < 0) {
+        ERROR("failed to open '%s'\n", fname);
+        return 0;
+    }
+
+    rc = read(fd, data, max_size - 1);
+    if ((rc > 0) && (rc < max_size))
+        data[rc] = '\0';
+    else
+        data[0] = '\0';
+    close(fd);
+
+    return 1;
+}
+
 static bool ensure_vendor_module_is_loaded(void)
 {
     android::Mutex::Autolock lock(vendor_mutex);
@@ -48,17 +73,19 @@ static bool ensure_vendor_module_is_loaded(void)
     if (!vendor.module) {
 
     int rv;
-    char vend [PROPERTY_VALUE_MAX];
-    property_get("ro.boot.fpsensor", vend, NULL);
+    char buf[64];
+		char vend[64] = read_file2(DRV_INFO, buf, sizeof(buf))
 
-
-    if (!strcmp(vend, "fpc")) {
+    if (strcmp(vend, "elan_fp")) {
             property_set("persist.sys.fp.goodix", "0");
-        rv = hw_get_module_by_class("fingerprint", "fpc", &vendor.hw_module);
-    } else {
+        		rv = hw_get_module_by_class("fingerprint", "elan", &vendor.hw_module);
+    } else if (strcmp(vend, "goodix_fp")) {
             property_set("persist.sys.fp.goodix", "1");
             rv = hw_get_module_by_class("fingerprint", "goodix", &vendor.hw_module);
-    }
+    } else if (strcmp(vend, "silead_fp_dev")) {
+            ALOGE("Silead fpsvcd fingerprint sensor is unsupported");
+            vendor.module = NULL;
+		} else {
         if (rv) {
             ALOGE("failed to open vendor module, error %d", rv);
             vendor.module = NULL;
