@@ -53,7 +53,6 @@ bin/imscmservice
 bin/imsdatadaemon
 bin/imsqmidaemon
 bin/iop
-bin/ipacm-diag
 bin/irsc_util
 bin/loc_launcher
 bin/lowi-server
@@ -221,7 +220,6 @@ etc/firmware/qtc800s.bin
 etc/firmware/qtc800s.cfg
 etc/golden.cfg
 etc/gps.cfg
-etc/IPACM_cfg.xml
 etc/permissions/btmultisim.xml
 etc/permissions/cneapiclient.xml
 etc/permissions/com.qti.dpmframework.xml
@@ -247,8 +245,6 @@ etc/thermal-engine.conf
 etc/xtra_root_cert.pem
 lib64/hw/fingerprint.elan.default.so
 lib64/hw/fingerprint.goodix.default.so
-lib64/hw/gps.default.so
-lib64/hw/sensors.msm8937.so
 lib64/libapkscanner.so
 lib64/libdashplayer.so
 lib64/libextmedia_jni.so
@@ -258,12 +254,8 @@ lib64/libfpalgorithm.so
 lib64/libfphal.so
 lib64/libfpservice.so
 lib64/libgettotalsizecnfg.so
-lib64/libgps.utils.so
 lib64/libimscamera_jni.so
 lib64/libimsmedia_jni.so
-lib64/libipanat.so
-lib64/libloc_core.so
-lib64/libloc_eng.so
 lib64/libomadrmutils_jni.so
 lib64/libOmxSwVdec.so
 lib64/libOmxSwVencMpeg4.so
@@ -275,8 +267,6 @@ lib64/libqti_performance.so
 lib64/libregionalization.so
 lib64/libvpplibrary.so
 lib/egl/egl.cfg
-lib/hw/gps.default.so
-lib/hw/sensors.msm8937.so
 lib/libapkscanner.so
 lib/libarcsoft_beautyshot.so
 lib/libarcsoft_night_shot.so
@@ -285,11 +275,8 @@ lib/libarcsoft_wideselfie.so
 lib/libdashplayer.so
 lib/libextmedia_jni.so
 lib/libgettotalsizecnfg.so
-lib/libgps.utils.so
 lib/libimscamera_jni.so
 lib/libimsmedia_jni.so
-lib/libloc_core.so
-lib/libloc_eng.so
 lib/libmpbase.so
 lib/libomadrmutils_jni.so
 lib/libOmxSwVdec.so
