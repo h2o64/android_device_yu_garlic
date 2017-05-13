@@ -87,6 +87,11 @@ public:
             cam_dimension_t &dim);
     int32_t getStreamFormat(cam_stream_type_t streamType,
             cam_format_t &format);
+
+    int32_t getStreamSubFormat(
+      cam_stream_type_t streamType, cam_sub_format_type_t &sub_format);
+
+
     int32_t getStreamDimension(cam_stream_type_t streamType,
             cam_dimension_t &dim);
 
@@ -155,7 +160,10 @@ public:
     int32_t stopAEBracket();
     int32_t updateRAW(cam_dimension_t max_dim);
     bool isDISEnabled();
-    cam_is_type_t getISType();
+    bool isAVTimerEnabled();
+    int32_t setISType();
+    cam_is_type_t getVideoISType();
+    cam_is_type_t getPreviewISType();
     uint8_t getMobicatMask();
 
     cam_focus_mode_type getFocusMode() const;
@@ -227,6 +235,7 @@ public:
     int32_t updateOisValue(bool oisValue);
     int32_t setIntEvent(cam_int_evt_params_t params);
     bool getofflineRAW();
+    bool getQuadraCfa();
     int32_t updatePpFeatureMask(cam_stream_type_t stream_type);
     int32_t getStreamPpMask(cam_stream_type_t stream_type, cam_feature_mask_t &pp_mask);
     int32_t getSharpness();
@@ -235,7 +244,7 @@ public:
     int32_t configureAEBracketing(cam_capture_frame_config_t &frame_config);
     int32_t configureHDRBracketing(cam_capture_frame_config_t &frame_config);
     int32_t configFrameCapture(bool commitSettings);
-    int32_t resetFrameCapture(bool commitSettings);
+    int32_t resetFrameCapture(bool commitSettings, bool lowLightEnabled);
     cam_still_more_t getStillMoreSettings();
     void setStillMoreSettings(cam_still_more_t stillmore_config);
     cam_still_more_t getStillMoreCapability();
@@ -249,6 +258,7 @@ public:
     bool isPostProcScaling();
     bool isLLNoiseEnabled();
     void setCurPPCount(int8_t count);
+    int32_t setQuadraCfaMode(uint32_t value, bool initCommit);
     int32_t setToneMapMode(uint32_t value, bool initCommit);
     void setTintless(bool enable);
     uint8_t getLongshotStages();
@@ -274,6 +284,8 @@ public:
             cam_sync_related_sensors_event_info_t* info);
     const cam_sync_related_sensors_event_info_t*
             getRelatedCamSyncInfo(void);
+    int32_t setFrameSyncEnabled(bool enable);
+    bool isFrameSyncEnabled(void);
     int32_t getRelatedCamCalibration(
             cam_related_system_calibration_data_t* calib);
     int32_t bundleRelatedCameras(bool sync, uint32_t sessionid);
@@ -293,8 +305,10 @@ public:
     int32_t getAnalysisInfo(
         bool fdVideoEnabled,
         bool hal3,
-        uint32_t featureMask,
+        cam_feature_mask_t featureMask,
         cam_analysis_info_t *pAnalysisInfo);
+    int32_t updateDtVc(int32_t *dt, int32_t *vc);
+
 private:
     QCameraParameters *mImpl;
     mutable Mutex mLock;

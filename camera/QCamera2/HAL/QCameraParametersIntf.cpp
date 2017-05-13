@@ -144,6 +144,15 @@ int32_t QCameraParametersIntf::getStreamRotation(cam_stream_type_t streamType,
 
 }
 
+int32_t QCameraParametersIntf::getStreamSubFormat(cam_stream_type_t streamType,
+                                            cam_sub_format_type_t &sub_format)
+{
+    Mutex::Autolock lock(mLock);
+    CHECK_PARAM_INTF(mImpl);
+    return mImpl->getStreamSubFormat(streamType, sub_format);
+}
+
+
 int32_t QCameraParametersIntf::getStreamFormat(cam_stream_type_t streamType,
                                             cam_format_t &format)
 {
@@ -581,11 +590,34 @@ bool QCameraParametersIntf::isDISEnabled()
     return mImpl->isDISEnabled();
 }
 
-cam_is_type_t QCameraParametersIntf::getISType()
+bool QCameraParametersIntf::isAVTimerEnabled()
 {
     Mutex::Autolock lock(mLock);
     CHECK_PARAM_INTF(mImpl);
-    return mImpl->getISType();
+    return mImpl->isAVTimerEnabled();
+}
+
+
+int32_t QCameraParametersIntf::setISType()
+{
+    Mutex::Autolock lock(mLock);
+    CHECK_PARAM_INTF(mImpl);
+    return mImpl->setISType();
+}
+
+
+cam_is_type_t QCameraParametersIntf::getVideoISType()
+{
+    Mutex::Autolock lock(mLock);
+    CHECK_PARAM_INTF(mImpl);
+    return mImpl->getVideoISType();
+}
+
+cam_is_type_t QCameraParametersIntf::getPreviewISType()
+{
+    Mutex::Autolock lock(mLock);
+    CHECK_PARAM_INTF(mImpl);
+    return mImpl->getPreviewISType();
 }
 
 uint8_t QCameraParametersIntf::getMobicatMask()
@@ -1018,6 +1050,13 @@ bool QCameraParametersIntf::getofflineRAW()
     return mImpl->getofflineRAW();
 }
 
+bool QCameraParametersIntf::getQuadraCfa()
+{
+    Mutex::Autolock lock(mLock);
+    CHECK_PARAM_INTF(mImpl);
+    return mImpl->getQuadraCfa();
+}
+
 int32_t QCameraParametersIntf::updatePpFeatureMask(cam_stream_type_t stream_type)
 {
     Mutex::Autolock lock(mLock);
@@ -1075,11 +1114,11 @@ int32_t QCameraParametersIntf::configFrameCapture(bool commitSettings)
     return mImpl->configFrameCapture(commitSettings);
 }
 
-int32_t QCameraParametersIntf::resetFrameCapture(bool commitSettings)
+int32_t QCameraParametersIntf::resetFrameCapture(bool commitSettings, bool lowLightEnabled)
 {
     Mutex::Autolock lock(mLock);
     CHECK_PARAM_INTF(mImpl);
-    return mImpl->resetFrameCapture(commitSettings);
+    return mImpl->resetFrameCapture(commitSettings,lowLightEnabled);
 }
 
 cam_still_more_t QCameraParametersIntf::getStillMoreSettings()
@@ -1170,6 +1209,13 @@ void QCameraParametersIntf::setCurPPCount(int8_t count)
     Mutex::Autolock lock(mLock);
     CHECK_PARAM_INTF(mImpl);
     mImpl->setCurPPCount(count);
+}
+
+int32_t QCameraParametersIntf::setQuadraCfaMode(uint32_t value, bool initCommit)
+{
+    Mutex::Autolock lock(mLock);
+    CHECK_PARAM_INTF(mImpl);
+    return mImpl->setQuadraCfaMode(value, initCommit);
 }
 
 int32_t QCameraParametersIntf::setToneMapMode(uint32_t value, bool initCommit)
@@ -1293,6 +1339,21 @@ const cam_sync_related_sensors_event_info_t*
     return mImpl->getRelatedCamSyncInfo();
 }
 
+int32_t QCameraParametersIntf::setFrameSyncEnabled(
+	bool enable)
+{
+    Mutex::Autolock lock(mLock);
+    CHECK_PARAM_INTF(mImpl);
+    return mImpl->setFrameSyncEnabled(enable);
+}
+
+bool QCameraParametersIntf::isFrameSyncEnabled(void)
+{
+    Mutex::Autolock lock(mLock);
+    CHECK_PARAM_INTF(mImpl);
+    return mImpl->isFrameSyncEnabled();
+}
+
 int32_t QCameraParametersIntf::getRelatedCamCalibration(
 	cam_related_system_calibration_data_t* calib)
 {
@@ -1374,12 +1435,18 @@ int32_t QCameraParametersIntf::setInstantAEC(uint8_t enable, bool initCommit)
 int32_t QCameraParametersIntf::getAnalysisInfo(
         bool fdVideoEnabled,
         bool hal3,
-        uint32_t featureMask,
+        cam_feature_mask_t featureMask,
         cam_analysis_info_t *pAnalysisInfo)
 {
     Mutex::Autolock lock(mLock);
     CHECK_PARAM_INTF(mImpl);
     return mImpl->getAnalysisInfo(fdVideoEnabled, hal3, featureMask, pAnalysisInfo);
+}
+int32_t QCameraParametersIntf::updateDtVc(int32_t *dt, int32_t *vc)
+{
+    Mutex::Autolock lock(mLock);
+    CHECK_PARAM_INTF(mImpl);
+    return mImpl->updateDtVc(dt, vc);
 }
 
 }; // namespace qcamera
