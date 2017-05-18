@@ -1074,7 +1074,6 @@ vendor/lib/qcdrm/playready/lib/mediadrm/libprmediadrmplugin_customer.so
 
 # Wi-Fi
 bin/cnss-daemon
-bin/cnss_diag
 bin/fstman
 
 # TODO :
