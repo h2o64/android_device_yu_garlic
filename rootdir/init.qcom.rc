@@ -423,11 +423,6 @@ service iop /system/bin/iop
     disabled
     socket iop seqpacket 0666 root system
 
-service qcomsysd /system/bin/qcom-system-daemon
-    class main
-    user root
-    group root qcom_diag
-
 service ssr_setup /system/bin/ssr_setup
     oneshot
     disabled
