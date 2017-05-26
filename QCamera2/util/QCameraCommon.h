@@ -1,4 +1,4 @@
-/* Copyright (c) 2012, 2016, The Linux Foundation. All rights reserved.
+/* Copyright (c) 2016, The Linux Foundation. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are
@@ -27,58 +27,35 @@
  *
  */
 
-/* This file is a slave copy from /vendor/qcom/propreitary/mm-cammera/common,
- * Please do not modify it directly here. */
+#ifndef __QCAMERA_COMMON_H__
+#define __QCAMERA_COMMON_H__
 
-#ifndef __CAMLIST_H
-#define __CAMLIST_H
+// Camera dependencies
+#include "cam_types.h"
+#include "cam_intf.h"
 
-// System dependency
-#include <stdlib.h>
+namespace qcamera {
 
-#define member_of(ptr, type, member) ({ \
-  const typeof(((type *)0)->member) *__mptr = (ptr); \
-  (type *)((char *)__mptr - offsetof(type,member));})
+#define ALIGN(a, b) (((a) + (b)) & ~(b))
+#define MAX(a, b) ((a) > (b) ? (a) : (b))
 
-struct cam_list {
-  struct cam_list *next, *prev;
+class QCameraCommon {
+public:
+    QCameraCommon();
+    ~QCameraCommon();
+
+    int32_t init(cam_capability_t *cap);
+
+    int32_t getAnalysisInfo(
+        bool fdVideoEnabled, bool hal3, cam_feature_mask_t featureMask,
+        cam_analysis_info_t *pAnalysisInfo);
+    static uint32_t calculateLCM(int32_t num1, int32_t num2);
+
+private:
+    cam_capability_t *m_pCapability;
+
 };
 
-static inline void cam_list_init(struct cam_list *ptr)
-{
-  ptr->next = ptr;
-  ptr->prev = ptr;
-}
+}; // namespace qcamera
+#endif /* __QCAMERA_COMMON_H__ */
 
-static inline void cam_list_add_tail_node(struct cam_list *item,
-  struct cam_list *head)
-{
-  struct cam_list *prev = head->prev;
-
-  head->prev = item;
-  item->next = head;
-  item->prev = prev;
-  prev->next = item;
-}
-
-static inline void cam_list_insert_before_node(struct cam_list *item,
-  struct cam_list *node)
-{
-  item->next = node;
-  item->prev = node->prev;
-  item->prev->next = item;
-  node->prev = item;
-}
-
-static inline void cam_list_del_node(struct cam_list *ptr)
-{
-  struct cam_list *prev = ptr->prev;
-  struct cam_list *next = ptr->next;
-
-  next->prev = ptr->prev;
-  prev->next = ptr->next;
-  ptr->next = ptr;
-  ptr->prev = ptr;
-}
-
-#endif /* __CAMLIST_H */

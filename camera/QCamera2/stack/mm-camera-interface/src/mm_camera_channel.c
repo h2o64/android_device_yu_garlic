@@ -2210,16 +2210,19 @@ int32_t mm_channel_map_stream_buf(mm_channel_t *my_obj,
 {
     int32_t rc = -1;
     mm_stream_t* s_obj = mm_channel_util_get_stream_by_handler(my_obj,
-            payload->stream_id);
+                                                               payload->stream_id);
     if (NULL != s_obj) {
         if (s_obj->ch_obj != my_obj) {
             /* No op. on linked streams */
             return 0;
         }
+
         rc = mm_stream_map_buf(s_obj,
-                payload->type, payload->frame_idx,
-                payload->plane_idx, payload->fd,
-                payload->size, payload->buffer);
+                               payload->type,
+                               payload->frame_idx,
+                               payload->plane_idx,
+                               payload->fd,
+                               payload->size);
     }
 
     return rc;
@@ -2378,8 +2381,6 @@ int8_t mm_channel_validate_super_buf(mm_channel_t* ch_obj,
     struct cam_list *head = NULL;
     struct cam_list *pos = NULL;
     mm_channel_queue_node_t* super_buf = NULL;
-
-    (void)ch_obj;
 
     /* comp */
     pthread_mutex_lock(&queue->que.lock);

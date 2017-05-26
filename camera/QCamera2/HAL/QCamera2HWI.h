@@ -168,9 +168,7 @@ public:
     static void releaseNotifications(void *data, void *user_data);
     static bool matchSnapshotNotifications(void *data, void *user_data);
     static bool matchPreviewNotifications(void *data, void *user_data);
-    static bool matchTimestampNotifications(void *data, void *user_data);
     virtual int32_t flushPreviewNotifications();
-    virtual int32_t flushVideoNotifications();
 private:
 
     camera_notify_callback         mNotifyCb;
@@ -257,8 +255,6 @@ public:
             void);
     int32_t setRelatedCamSyncInfo(
             cam_sync_related_sensors_event_info_t* info);
-    bool isFrameSyncEnabled(void);
-    int32_t setFrameSyncEnabled(bool enable);
     int32_t setMpoComposition(bool enable);
     bool getMpoComposition(void);
     bool getRecordingHintValue(void);
@@ -631,7 +627,6 @@ private:
     pthread_t mLiveSnapshotThread;
     pthread_t mIntPicThread;
     bool mFlashNeeded;
-    bool mFlashConfigured;
     uint32_t mDeviceRotation;
     uint32_t mCaptureRotation;
     uint32_t mJpegExifRotation;
@@ -650,7 +645,6 @@ private:
     int mPLastFrameCount;
     nsecs_t mPLastFpsTime;
     double mPFps;
-    bool mLowLightConfigured;
     uint8_t mInstantAecFrameCount;
 
     //eztune variables for communication with eztune server at backend
@@ -792,7 +786,6 @@ private:
     uint32_t mFrameSkipEnd;
     //The offset between BOOTTIME and MONOTONIC timestamps
     nsecs_t mBootToMonoTimestampOffset;
-    bool bDepthAFCallbacks;
 };
 
 }; // namespace qcamera

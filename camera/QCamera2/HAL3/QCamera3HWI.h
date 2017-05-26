@@ -37,7 +37,7 @@
 #include <utils/List.h>
 
 // Camera dependencies
-#include "hardware/camera3.h"
+#include "camera3.h"
 #include "QCamera3Channel.h"
 #include "QCamera3CropRegionMapper.h"
 #include "QCamera3HALHeader.h"
@@ -122,8 +122,6 @@ class QCamera3HardwareInterface {
 public:
     /* static variable and functions accessed by camera service */
     static camera3_device_ops_t mCameraOps;
-    //Id of each session in bundle/link
-    static uint32_t sessionId[MM_CAMERA_MAX_NUM_SENSORS];
     static int initialize(const struct camera3_device *,
                 const camera3_callback_ops_t *callback_ops);
     static int configure_streams(const struct camera3_device *,
@@ -191,8 +189,7 @@ public:
     camera_metadata_t* translateFromHalMetadata(metadata_buffer_t *metadata,
                             nsecs_t timestamp, int32_t request_id,
                             const CameraMetadata& jpegMetadata, uint8_t pipeline_depth,
-                            uint8_t capture_intent, bool pprocDone, uint8_t fwk_cacMode,
-                            bool firstMetadataInBatch);
+                            uint8_t capture_intent, bool pprocDone, uint8_t fwk_cacMode);
     camera_metadata_t* saveRequestSettings(const CameraMetadata& jpegMetadata,
                             camera3_capture_request_t *request);
     int initParameters();
@@ -221,12 +218,6 @@ public:
     const char *getEepromVersionInfo();
     const uint32_t *getLdafCalib();
     void get3AVersion(cam_q3a_version_t &swVersion);
-
-    // Get dual camera related info
-    bool isDeviceLinked() {return mIsDeviceLinked;}
-    bool isMainCamera() {return mIsMainCamera;}
-    uint32_t getSensorMountAngle();
-    const cam_related_system_calibration_data_t *getRelatedCalibrationData();
 
     template <typename fwkType, typename halType> struct QCameraMap {
         fwkType fwk_name;
@@ -289,8 +280,7 @@ private:
     int32_t handlePendingReprocResults(uint32_t frame_number);
     int64_t getMinFrameDuration(const camera3_capture_request_t *request);
     void handleMetadataWithLock(mm_camera_super_buf_t *metadata_buf,
-            bool free_and_bufdone_meta_buf,
-            bool firstMetadataInBatch);
+            bool free_and_bufdone_meta_buf);
     void handleBatchMetadata(mm_camera_super_buf_t *metadata_buf,
             bool free_and_bufdone_meta_buf);
     void handleBufferWithLock(camera3_stream_buffer_t *buffer,
@@ -326,8 +316,6 @@ private:
     int32_t startAllChannels();
     int32_t stopAllChannels();
     int32_t notifyErrorForPendingRequests();
-    void notifyError(uint32_t frameNumber,
-            camera3_error_msg_code_t errorCode);
     int32_t getReprocessibleOutputStreamId(uint32_t &id);
     int32_t handleCameraDeviceError();
 
@@ -377,7 +365,6 @@ private:
     bool m_bIs4KVideo;
     bool m_bEisSupportedSize;
     bool m_bEisEnable;
-    bool m_bEisSupported;
     typedef struct {
         cam_dimension_t dim;
         int format;
@@ -390,7 +377,6 @@ private:
     int8_t  mSupportedFaceDetectMode;
     uint8_t m_bTnrPreview;
     uint8_t m_bTnrVideo;
-    uint8_t m_debug_avtimer;
 
     /* Data structure to store pending request */
     typedef struct {
@@ -477,8 +463,6 @@ private:
     uint32_t mFirstFrameNumberInBatch;
     camera3_stream_t mDummyBatchStream;
     bool mNeedSensorRestart;
-    uint32_t mMinInFlightRequests;
-    uint32_t mMaxInFlightRequests;
 
     /* sensor output size with current stream configuration */
     QCamera3CropRegionMapper mCropRegionMapper;
@@ -488,7 +472,6 @@ private:
     uint32_t mLdafCalib[2];
     bool mPowerHintEnabled;
     int32_t mLastCustIntentFrmNum;
-    CameraMetadata  mCachedMetadata;
 
     static const QCameraMap<camera_metadata_enum_android_control_effect_mode_t,
             cam_effect_mode_type> EFFECT_MODES_MAP[];
@@ -528,14 +511,6 @@ private:
     uint32_t mSurfaceStridePadding;
 
     State mState;
-    //Dual camera related params
-    bool mIsDeviceLinked;
-    bool mIsMainCamera;
-    uint8_t mLinkedCameraId;
-    QCamera3HeapMemory *m_pRelCamSyncHeap;
-    cam_sync_related_sensors_event_info_t *m_pRelCamSyncBuf;
-    cam_sync_related_sensors_event_info_t m_relCamSyncInfo;
-
 };
 
 }; // namespace qcamera

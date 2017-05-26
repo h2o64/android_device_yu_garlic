@@ -633,13 +633,6 @@ int32_t QCameraPostProcessor::getJpegEncodingConfig(mm_jpeg_encode_params_t& enc
             (img_fmt_thumb != CAM_FORMAT_YUV_420_NV12_UBWC) &&
             (m_parent->mParameters.useJpegExifRotation() ||
             m_parent->mParameters.getJpegRotation() == 0);
-
-        if (encode_parm.thumb_from_postview &&
-          m_parent->mParameters.useJpegExifRotation()){
-          encode_parm.thumb_rotation =
-            m_parent->mParameters.getJpegExifRotation();
-        }
-
         LOGI("Src THUMB buf_cnt = %d, res = %dX%d len = %d rot = %d "
             "src_dim = %dX%d, dst_dim = %dX%d",
             encode_parm.num_tmb_bufs,
@@ -649,6 +642,10 @@ int32_t QCameraPostProcessor::getJpegEncodingConfig(mm_jpeg_encode_params_t& enc
             encode_parm.thumb_dim.src_dim.height,
             encode_parm.thumb_dim.dst_dim.width,
             encode_parm.thumb_dim.dst_dim.height);
+    }
+
+    if (m_parent->mParameters.useJpegExifRotation()){
+        encode_parm.thumb_rotation = m_parent->mParameters.getJpegExifRotation();
     }
 
     encode_parm.num_dst_bufs = 1;
@@ -1955,7 +1952,8 @@ int32_t QCameraPostProcessor::queryStreams(QCameraStream **main,
                     pStream->isOrignalTypeOf(CAM_STREAM_TYPE_SNAPSHOT) ||
                     pStream->isTypeOf(CAM_STREAM_TYPE_VIDEO) ||
                     pStream->isOrignalTypeOf(CAM_STREAM_TYPE_VIDEO) ||
-                    pStream->isOrignalTypeOf(CAM_STREAM_TYPE_RAW)) {
+                    (m_parent->mParameters.getofflineRAW() &&
+                            pStream->isOrignalTypeOf(CAM_STREAM_TYPE_RAW))) {
                 *main= pStream;
                 *main_image = frame->bufs[i];
             } else if (thumb_stream_needed &&
@@ -2461,12 +2459,6 @@ int32_t QCameraPostProcessor::encodeData(qcamera_jpeg_data_t *jpeg_job_data,
                     jpg_job.encode_job.cam_exif_params.debug_params->asd_debug_params_valid;
             jpg_job.encode_job.p_metadata->is_statsdebug_stats_params_valid =
                     jpg_job.encode_job.cam_exif_params.debug_params->stats_debug_params_valid;
-            jpg_job.encode_job.p_metadata->is_statsdebug_bestats_params_valid =
-                    jpg_job.encode_job.cam_exif_params.debug_params->bestats_debug_params_valid;
-            jpg_job.encode_job.p_metadata->is_statsdebug_bhist_params_valid =
-                    jpg_job.encode_job.cam_exif_params.debug_params->bhist_debug_params_valid;
-            jpg_job.encode_job.p_metadata->is_statsdebug_3a_tuning_params_valid =
-                    jpg_job.encode_job.cam_exif_params.debug_params->q3a_tuning_debug_params_valid;
 
             if (jpg_job.encode_job.cam_exif_params.debug_params->ae_debug_params_valid) {
                 jpg_job.encode_job.p_metadata->statsdebug_ae_data =
@@ -2487,18 +2479,6 @@ int32_t QCameraPostProcessor::encodeData(qcamera_jpeg_data_t *jpeg_job_data,
             if (jpg_job.encode_job.cam_exif_params.debug_params->stats_debug_params_valid) {
                 jpg_job.encode_job.p_metadata->statsdebug_stats_buffer_data =
                         jpg_job.encode_job.cam_exif_params.debug_params->stats_debug_params;
-            }
-            if (jpg_job.encode_job.cam_exif_params.debug_params->bestats_debug_params_valid) {
-                jpg_job.encode_job.p_metadata->statsdebug_bestats_buffer_data =
-                        jpg_job.encode_job.cam_exif_params.debug_params->bestats_debug_params;
-            }
-            if (jpg_job.encode_job.cam_exif_params.debug_params->bhist_debug_params_valid) {
-                jpg_job.encode_job.p_metadata->statsdebug_bhist_data =
-                        jpg_job.encode_job.cam_exif_params.debug_params->bhist_debug_params;
-            }
-            if (jpg_job.encode_job.cam_exif_params.debug_params->q3a_tuning_debug_params_valid) {
-                jpg_job.encode_job.p_metadata->statsdebug_3a_tuning_data =
-                        jpg_job.encode_job.cam_exif_params.debug_params->q3a_tuning_debug_params;
             }
         }
 
