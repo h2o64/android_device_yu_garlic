@@ -74,9 +74,8 @@ TARGET_USERIMAGES_USE_EXT4 := true
 
 # Crypto
 TARGET_HW_DISK_ENCRYPTION := true
-TARGET_CRYPTFS_HW_PATH := $(DEVICE_PATH)/cryptfs_hw
 
-#Recovery
+# Recovery
 TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/twrp.fstab
 TW_THEME := portrait_hdpi
 TW_INCLUDE_CRYPTO := true
