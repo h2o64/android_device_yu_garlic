@@ -699,7 +699,7 @@ etc/firmware/a530v3_seq.fw2
 
 # IMS
 -framework/imscmlibrary.jar
--priv-app/ims/ims.apk
+-priv-app/ims/ims.apk|66fa3ab695d7be55a334cbee6e9c94d60089ac2a
 -vendor/app/imssettings/imssettings.apk
 -vendor/framework/qti-vzw-ims-internal.jar
 bin/ims_rtp_daemon
