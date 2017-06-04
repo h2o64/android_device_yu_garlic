@@ -512,10 +512,16 @@ vendor/lib64/hw/gatekeeper.msm8937.so
 # GPS - from marmite
 -framework/com.qti.location.sdk.jar|1dfd9cd968b3016c1b7bbb1ceb16835407302ed7
 -framework/com.qualcomm.location.vzw_library.jar|1dfd9cd968b3016c1b7bbb1ceb16835407302ed7
+-lib64/libgnsspps.so|9c82e138039482159c2608bcb8c07d17b61ea505
 -lib64/libloc_api_v02.so|cf19e8858b07dcec1e423c8e9cff919892635368
 -lib64/libloc_ds_api.so|d7a9d9e595ac78a42edc87f3592a31a42e45ef16
+-lib64/libloc_pla.so|edaaf92a49aebedd75e51e0eb98b3e8c75075039
+-lib64/libloc_stub.so|f3951a1d4f01b16f4105e02c03c0e0ea50ceba30
+-lib/libgnsspps.so|090e800fd4fad6c87f632d3defca6fa8a8adae69
 -lib/libloc_api_v02.so|9cd9fda890ed495dec546b845012810662d28a73
 -lib/libloc_ds_api.so|ca6174a6e08994204b0042cedb94b5fbc06851f6
+-lib/libloc_pla.so|9dfc284e19071fbceb5f4afceb2d13e69bc1f526
+-lib/libloc_stub.so|e84a747c64db762a79756c627157e3c33abf013e
 -priv-app/com.qualcomm.location/com.qualcomm.location.apk|5386ba9ffced6561ee6592382a459453f4e6c8f0
 bin/loc_launcher|bf752f942d8706f75037202d94780386a7452480
 bin/lowi-server|0f08b0bca70a7ffadb8bbbc5256477f930a5b029
@@ -527,12 +533,6 @@ etc/permissions/com.qualcomm.location.xml|8896841bc23fa47bb26fb3dacfa82747f69663
 etc/permissions/izat.xt.srv.xml|a0f460056f27b5495a4d6e959eecf0e429c42a57
 etc/xtra_root_cert.pem|f55a31ec4d9cf8ce2724acadecf00c779f8767db
 framework/izat.xt.srv.jar|da31c6183f8d29251ce5656ddab6d4b386934382
-lib64/libgnsspps.so|9c82e138039482159c2608bcb8c07d17b61ea505
-lib64/libloc_pla.so|edaaf92a49aebedd75e51e0eb98b3e8c75075039
-lib64/libloc_stub.so|f3951a1d4f01b16f4105e02c03c0e0ea50ceba30
-lib/libgnsspps.so|090e800fd4fad6c87f632d3defca6fa8a8adae69
-lib/libloc_pla.so|9dfc284e19071fbceb5f4afceb2d13e69bc1f526
-lib/libloc_stub.so|e84a747c64db762a79756c627157e3c33abf013e
 vendor/bin/slim_daemon|5ad917fdab982c628ae2bfe4a7d25c36d49d4231
 vendor/lib64/hw/flp.default.so|c4d10c6ec917602fdec2b72c75f1ba0dd2bb9ffb
 vendor/lib64/libalarmservice_jni.so|354fe96bcd202920115c75b210a22d6cbe0f044b
