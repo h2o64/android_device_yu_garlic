@@ -28,6 +28,6 @@ PRODUCT_GMS_CLIENTID_BASE := android-micromax
 ## Use the latest approved GMS identifiers unless running a signed build
 ifneq ($(SIGN_BUILD),true)
 PRODUCT_BUILD_PROP_OVERRIDES += \
-    BUILD_FINGERPRINT=YU/YU5040/YU5040:6.0.1/MMB29M/1483083874:user/release-keys \
-    PRIVATE_BUILD_DESC="p7201-user 6.0.1 MMB29M 1483083874 release-keys"
+    BUILD_FINGERPRINT=YU/YUREKABLACK/YUREKABLACK:7.1.2/N2G47H/YUOSNR1.0:user/release-keys \
+    PRIVATE_BUILD_DESC="YUREKABLACK-user 7.1.2 N2G47H YUOSNR1 release-keys"
 endif
