@@ -496,6 +496,7 @@ vendor/lib64/hw/gatekeeper.msm8937.so
 # GPS
 -framework/com.qti.location.sdk.jar
 -framework/com.qualcomm.location.vzw_library.jar
+-framework/izat.xt.srv.jar
 -lib64/libloc_api_v02.so
 -lib64/libloc_ds_api.so
 -lib/libloc_api_v02.so
@@ -508,7 +509,10 @@ bin/xtwifi-inet-agent
 etc/permissions/com.qti.location.sdk.xml
 etc/permissions/com.qualcomm.location.vzw_library.xml
 etc/permissions/com.qualcomm.location.xml
+etc/permissions/izat.xt.srv.xml
 etc/xtra_root_cert.pem
+lib64/libgnsspps.so
+lib/libgnsspps.so
 vendor/bin/slim_daemon
 vendor/lib64/hw/flp.default.so
 vendor/lib64/libalarmservice_jni.so
@@ -516,6 +520,9 @@ vendor/lib64/libasn1cper.so
 vendor/lib64/libasn1crt.so
 vendor/lib64/libasn1crtx.so
 vendor/lib64/libdataitems.so
+vendor/lib64/libDRPlugin.so
+vendor/lib64/libdrplugin_client.so
+vendor/lib64/libevent_observer.so
 vendor/lib64/libflp.so
 vendor/lib64/libgeofence.so
 vendor/lib64/libizat_client_api.so
@@ -543,6 +550,9 @@ vendor/lib/libasn1cper.so
 vendor/lib/libasn1crt.so
 vendor/lib/libasn1crtx.so
 vendor/lib/libdataitems.so
+vendor/lib/libDRPlugin.so
+vendor/lib/libdrplugin_client.so
+vendor/lib/libevent_observer.so
 vendor/lib/libflp.so
 vendor/lib/libgeofence.so
 vendor/lib/libizat_client_api.so
@@ -564,6 +574,7 @@ vendor/lib/libxtadapter.so
 vendor/lib/libxtwifi_ulp_adaptor.so
 
 # Graphics
+vendor/lib64/hw/vulkan.msm8937.so
 vendor/lib64/egl/eglsubAndroid.so
 vendor/lib64/egl/eglSubDriverAndroid.so
 vendor/lib64/egl/libEGL_adreno.so
@@ -608,6 +619,7 @@ vendor/lib64/libsdm-color.so
 vendor/lib64/libsdm-diag.so
 vendor/lib64/libsdm-disp-apis.so
 vendor/lib64/libsdmextension.so
+vendor/lib/hw/vulkan.msm8937.so
 vendor/lib/egl/eglsubAndroid.so
 vendor/lib/egl/eglSubDriverAndroid.so
 vendor/lib/egl/libEGL_adreno.so
