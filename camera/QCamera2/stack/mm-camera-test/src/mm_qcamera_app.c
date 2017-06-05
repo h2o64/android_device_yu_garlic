@@ -411,7 +411,6 @@ int mm_app_stream_initbuf(cam_frame_len_offset_t *frame_offset_info,
                               -1,
                               pBufs[i].fd,
                               (uint32_t)pBufs[i].frame_len,
-                              NULL,
                               CAM_MAPPING_BUF_TYPE_STREAM_BUF, ops_tbl->userdata);
         if (rc != MM_CAMERA_OK) {
             LOGE("mapping buf[%d] err = %d",  i, rc);
@@ -531,8 +530,7 @@ int mm_app_open(mm_camera_app_t *cam_app,
     rc = test_obj->cam->ops->map_buf(test_obj->cam->camera_handle,
                                      CAM_MAPPING_BUF_TYPE_CAPABILITY,
                                      test_obj->cap_buf.mem_info.fd,
-                                     test_obj->cap_buf.mem_info.size,
-                                     NULL);
+                                     test_obj->cap_buf.mem_info.size);
     if (rc != MM_CAMERA_OK) {
         LOGE("map for capability error\n");
         goto error_after_cap_buf_alloc;
@@ -555,8 +553,7 @@ int mm_app_open(mm_camera_app_t *cam_app,
     rc = test_obj->cam->ops->map_buf(test_obj->cam->camera_handle,
                                      CAM_MAPPING_BUF_TYPE_PARM_BUF,
                                      test_obj->parm_buf.mem_info.fd,
-                                     test_obj->parm_buf.mem_info.size,
-                                     NULL);
+                                     test_obj->parm_buf.mem_info.size);
     if (rc != MM_CAMERA_OK) {
         LOGE("map getparm_buf error\n");
         goto error_after_getparm_buf_alloc;
@@ -769,7 +766,7 @@ mm_camera_stream_t * mm_app_add_stream(mm_camera_test_obj_t *test_obj,
                                             0,
                                             -1,
                                             stream->s_info_buf.mem_info.fd,
-                                            (uint32_t)stream->s_info_buf.mem_info.size, NULL);
+                                            (uint32_t)stream->s_info_buf.mem_info.size);
     if (rc != MM_CAMERA_OK) {
         LOGE("map setparm_buf error\n");
         mm_app_deallocate_ion_memory(&stream->s_info_buf);

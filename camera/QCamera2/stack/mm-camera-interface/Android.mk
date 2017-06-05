@@ -19,11 +19,6 @@ MM_CAM_FILES := \
         src/mm_camera_thread.c \
         src/mm_camera_sock.c
 
-ifeq ($(CAMERA_DAEMON_NOT_PRESENT), true)
-else
-LOCAL_CFLAGS += -DDAEMON_PRESENT
-endif
-
 # System header file path prefix
 LOCAL_CFLAGS += -DSYSTEM_HEADER_PREFIX=sys
 
@@ -48,6 +43,7 @@ LOCAL_C_INCLUDES := \
     $(LOCAL_PATH)/inc \
     $(LOCAL_PATH)/../common \
     hardware/libhardware/include/hardware \
+    $(call project-path-for,qcom-media)/mm-core/inc \
     system/media/camera/include \
 
 LOCAL_CFLAGS += -DCAMERA_ION_HEAP_ID=ION_IOMMU_HEAP_ID

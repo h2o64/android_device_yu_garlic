@@ -5954,8 +5954,7 @@ int QCamera3HardwareInterface::initCapabilities(uint32_t cameraId)
     rc = cameraHandle->ops->map_buf(cameraHandle->camera_handle,
                                 CAM_MAPPING_BUF_TYPE_CAPABILITY,
                                 capabilityHeap->getFd(0),
-                                sizeof(cam_capability_t),
-                                capabilityHeap->getPtr(0));
+                                sizeof(cam_capability_t));
     if(rc < 0) {
         LOGE("failed to map capability buffer");
         goto map_failed;
@@ -6049,8 +6048,7 @@ int QCamera3HardwareInterface::initParameters()
     rc = mCameraHandle->ops->map_buf(mCameraHandle->camera_handle,
             CAM_MAPPING_BUF_TYPE_PARM_BUF,
             mParamHeap->getFd(0),
-            sizeof(metadata_buffer_t),
-            (metadata_buffer_t *) DATA_PTR(mParamHeap,0));
+            sizeof(metadata_buffer_t));
     if(rc < 0) {
         LOGE("failed to map SETPARM buffer");
         rc = FAILED_TRANSACTION;
