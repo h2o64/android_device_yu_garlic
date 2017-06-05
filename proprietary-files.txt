@@ -29,6 +29,8 @@ etc/aanc_tuning_mixer.txt
 etc/appops_policy.xml
 etc/audio_platform_info_extcodec.xml
 etc/audio_policy.conf
+etc/drc/drc_cfg_5.1.txt
+etc/drc/drc_cfg_AZ.txt
 vendor/etc/audio_output_policy.conf
 vendor/lib64/libacdb-fts.so
 vendor/lib64/libacdbloader.so
@@ -39,6 +41,7 @@ vendor/lib64/libaudcal.so
 vendor/lib64/libaudioalsa.so
 vendor/lib64/libaudiodevarb.so
 vendor/lib64/libhwdaphal.so
+vendor/lib64/libmdsprpc.so
 vendor/lib64/libswvdec.so
 vendor/lib64/soundfx/libqcbassboost.so
 vendor/lib64/soundfx/libqcreverb.so
@@ -48,12 +51,15 @@ vendor/lib/libacdbloader.so
 vendor/lib/libacdbmapper.so
 vendor/lib/libacdbrtac.so
 vendor/lib/libadiertac.so
+vendor/lib/libadm.so
 vendor/lib/libaudcal.so
 vendor/lib/libaudioalsa.so
 vendor/lib/libaudiodevarb.so
 vendor/lib/libdrc.so
 vendor/lib/libhwdaphal.so
+vendor/lib/libmdsprpc.so
 vendor/lib/libqct_resampler.so
+vendor/lib/libsurround_3mic_proc.so
 vendor/lib/libswvdec.so
 vendor/lib/soundfx/libqcbassboost.so
 vendor/lib/soundfx/libqcreverb.so
@@ -173,6 +179,9 @@ vendor/lib64/libmmsw_detail_enhancement.so|9d6fec3ac15a118e294b1d5a79be927fd9f8d
 vendor/lib64/libmmsw_math.so|8bf4f05db6a561969af152f8b48be1549a753983
 vendor/lib64/libmmsw_opencl.so|25c5eb6195ca1704acb255419f0e52a90f9c9c5d
 vendor/lib64/libmmsw_platform.so|ba1551f1c1e4e227a5103fcfca36e34d20329a93
+vendor/lib64/libmmwfdinterface.so|211b287dbdd026680ab7cb2e4ea7f6881108e194
+vendor/lib64/libmmwfdsinkinterface.so|06bcd75e5c600bae0d11d1cf2308bcaea4dbdea6
+vendor/lib64/libmmwfdsrcinterface.so|0960c9dcb0867a6109fb0376e28ba78d0cfdf68f
 vendor/lib/libchromaflash.so|cf85560822e04014b8950a1abae9c2843069101d
 vendor/lib/libflash_pmic.so|ef516741afab6b10934f08f135b718ddfe0c7e57
 vendor/lib/libjpegdhw.so|e771fe598714e04280f156d92028c8240f59f046
@@ -230,6 +239,7 @@ vendor/lib/libmmcamera_tuning.so|03c8752cddf076f31248e6c9efd9fa61c986f3c8
 vendor/lib/libmmcamera_tuning_lookup.so|f7ea2df32e5c2ef3252f4f48251fd40913e35541
 vendor/lib/libmmcamera_ubifocus_lib.so|f592910e92e9455699373f780916e2ad2d3888e3
 vendor/lib/libmmjpeg.so|3ede7860d6c9a3f48f9d9e72410e5a34f6add450
+vendor/lib/libmmqjpeg_codec.so|ae5c25a5a40d78751512cfddf0fb4ea7227cb3ee
 vendor/lib/libmmqjpegdma.so|52b3ea7d84b9ac4305eb2566887859704285998a
 vendor/lib/libmmsw_detail_enhancement.so|1c00ef6223e0cc14f7d4b26e5fc8c804f30257b9
 vendor/lib/libmmsw_math.so|8873dfeb4c352497dd1db5898a01ad77c7e4369a
@@ -238,6 +248,7 @@ vendor/lib/libmmsw_platform.so|c839cbac1829aefb3e631d51a0200cbe38af1a93
 vendor/lib/libmmwfdinterface.so|b04dc1d25404894dd0af7c275ac79effeb3bc19f
 vendor/lib/libmmwfdsinkinterface.so|c3ef5086e4d3f76ac096d4f4d646aeca2386e1d8
 vendor/lib/libmmwfdsrcinterface.so|4f0f02ff3cc759e5c083ef8e7e1e2d36982db744
+vendor/lib/libois_lc898122.so|7818abf584d4c1a4849fa12377fb8565c74d8755
 vendor/lib/liboptizoom.so|6099740203feed2b85128829119ffa31086b3c68
 vendor/lib/libqomx_jpegdec.so|3bf26595b6851e3371ee88673d876ccd139a635f
 vendor/lib/libqomx_jpegenc.so|35f34b9908baf80afa105ed46745f653951e98cf
@@ -436,6 +447,7 @@ bin/qseecomd
 vendor/bin/mdtpd
 vendor/bin/qseeproxydaemon
 vendor/lib64/lib-sec-disp.so
+vendor/lib64/libavenhancements.so
 vendor/lib64/libdrmfs.so
 vendor/lib64/libdrmtime.so
 vendor/lib64/libGPreqcancel.so
@@ -447,6 +459,8 @@ vendor/lib64/libmdtpdemojni.so
 vendor/lib64/libqisl.so
 vendor/lib64/libQSEEComAPI.so
 vendor/lib64/librpmb.so
+vendor/lib64/libSecureExtAuthJNI.so
+vendor/lib64/libSecureSampleAuthJNI.so
 vendor/lib64/libsecureui.so
 vendor/lib64/libsecureui_svcsock.so
 vendor/lib64/libSecureUILib.so
@@ -455,14 +469,19 @@ vendor/lib64/libssd.so
 vendor/lib64/libStDrvInt.so
 vendor/lib64/libtzdrmgenprov.so
 vendor/lib/lib-sec-disp.so
+vendor/lib/libavenhancements.so
 vendor/lib/libcppf.so
 vendor/lib/libdrmfs.so
 vendor/lib/libdrmtime.so
+vendor/lib/libGPreqcancel.so
+vendor/lib/libGPreqcancel_svc.so
+vendor/lib/libGPTEE.so
 vendor/lib/libmdtp.so
 vendor/lib/libmdtp_crypto.so
 vendor/lib/libmdtpdemojni.so
 vendor/lib/libqisl.so
 vendor/lib/libQSEEComAPI.so
+vendor/lib/librpmb.so
 vendor/lib/libSecureExtAuthJNI.so
 vendor/lib/libSecureSampleAuthJNI.so
 vendor/lib/libsecureui.so
@@ -470,6 +489,7 @@ vendor/lib/libsecureui_svcsock.so
 vendor/lib/libSecureUILib.so
 vendor/lib/libsecureuisvc_jni.so
 vendor/lib/libssd.so
+vendor/lib/libStDrvInt.so
 vendor/lib/libtzdrmgenprov.so
 
 # FIDO
@@ -524,6 +544,7 @@ vendor/lib64/libDRPlugin.so
 vendor/lib64/libdrplugin_client.so
 vendor/lib64/libevent_observer.so
 vendor/lib64/libflp.so
+vendor/lib64/libgdtap.so
 vendor/lib64/libgeofence.so
 vendor/lib64/libizat_client_api.so
 vendor/lib64/libizat_core.so
@@ -554,6 +575,7 @@ vendor/lib/libDRPlugin.so
 vendor/lib/libdrplugin_client.so
 vendor/lib/libevent_observer.so
 vendor/lib/libflp.so
+vendor/lib/libgdtap.so
 vendor/lib/libgeofence.so
 vendor/lib/libizat_client_api.so
 vendor/lib/libizat_core.so
@@ -652,6 +674,7 @@ vendor/lib/libmm-color-convertor.so
 vendor/lib/libmm-disp-apis.so
 vendor/lib/libmm-hdcpmgr.so
 vendor/lib/libmm-qdcm.so
+vendor/lib/libmmQSM.so
 vendor/lib/libOpenCL.so
 vendor/lib/librs_adreno.so
 vendor/lib/librs_adreno_sha1.so
@@ -771,6 +794,7 @@ lib64/libvpplibrary.so
 lib/libOmxSwVdec.so
 lib/libOmxSwVencMpeg4.so
 lib/libOmxVpp.so
+lib/libvpplibrary.so
 vendor/lib64/libAlacSwDec.so
 vendor/lib64/libApeSwDec.so
 vendor/lib64/libFlacSwDec.so
@@ -807,6 +831,10 @@ vendor/lib/libOmxQcelp13Dec.so
 vendor/lib/libOmxVideoDSMode.so
 vendor/lib/libOmxWmaDec.so
 vendor/lib/libvqzip.so
+
+# Misc firmware
+etc/firmware/leia_pfp_470.fw
+etc/firmware/leia_pm4_470.fw
 
 # MMI
 vendor/lib64/libmmi.so
@@ -906,6 +934,7 @@ vendor/lib64/libdisp-aba.so
 vendor/lib/libdisp-aba.so
 
 # QMI
+bin/ATFWD-daemon
 bin/irsc_util
 etc/permissions/qti_permissions.xml
 vendor/lib64/lib_rsu.so
@@ -1128,79 +1157,47 @@ bin/fstman
 
 # TODO :
 bin/ATFWD-daemon
-bin/diag_mdlog
 bin/ftmdaemon
-bin/port-bridge
-bin/ptt_socket_app
 bin/ssr_setup
 bin/subsystem_ramdump
-etc/drc/drc_cfg_5.1.txt
-etc/drc/drc_cfg_AZ.txt
-etc/firmware/leia_pfp_470.fw
-etc/firmware/leia_pm4_470.fw
 lib64/libdashplayer.so
 lib64/libextmedia_jni.so
 lib64/libpdmapper.so
 lib64/libqcmediaplayer.so
 lib64/libregionalization.so
-lib/egl/egl.cfg
 lib/libdashplayer.so
 lib/libextmedia_jni.so
 lib/libpdmapper.so
 lib/libqcmediaplayer.so
-lib/libregionalization.so
-lib/libvpplibrary.so
 vendor/lib64/libaudioparsers.so
-vendor/lib64/libavenhancements.so
 vendor/lib64/libChamomilePA.so
 vendor/lib64/libCommandSvc.so
 vendor/lib64/libExtendedExtractor.so
 vendor/lib64/libFileMux.so
-vendor/lib64/libgdtap.so
-vendor/lib64/libmdsprpc.so
 vendor/lib64/libmmhttpstack.so
 vendor/lib64/libmmparser.so
 vendor/lib64/libmmparser_lite.so
 vendor/lib64/libmmrtpdecoder.so
 vendor/lib64/libmmrtpencoder.so
-vendor/lib64/libmmwfdinterface.so
-vendor/lib64/libmmwfdsinkinterface.so
-vendor/lib64/libmmwfdsrcinterface.so
 vendor/lib64/libpvr.so
 vendor/lib64/librmp.so
 vendor/lib64/libSampleAuthJNI.so
 vendor/lib64/libSampleExtAuthJNI.so
-vendor/lib64/libSecureExtAuthJNI.so
-vendor/lib64/libSecureSampleAuthJNI.so
 vendor/lib64/libSubSystemShutdown.so
-vendor/lib/libadm.so
 vendor/lib/libaudioparsers.so
-vendor/lib/libavenhancements.so
 vendor/lib/libChamomilePA.so
 vendor/lib/libExtendedExtractor.so
 vendor/lib/libFileMux.so
-vendor/lib/libgdtap.so
-vendor/lib/libGPreqcancel.so
-vendor/lib/libGPreqcancel_svc.so
-vendor/lib/libGPTEE.so
-vendor/lib/libmdsprpc.so
 vendor/lib/libmmhttpstack.so
 vendor/lib/libmmparser.so
 vendor/lib/libmmparser_lite.so
-vendor/lib/libmmqjpeg_codec.so
-vendor/lib/libmmQSM.so
 vendor/lib/libmmrtpdecoder.so
 vendor/lib/libmmrtpencoder.so
 vendor/lib/libnative_audio_latency_jni.so
-vendor/lib/libois_lc898122.so
 vendor/lib/libpvr.so
 vendor/lib/librmp.so
-vendor/lib/librpmb.so
 vendor/lib/libSampleAuthJNI.so
 vendor/lib/libSampleExtAuthJNI.so
 vendor/lib/libsregex.so
-vendor/lib/libStDrvInt.so
 vendor/lib/libSubSystemShutdown.so
-vendor/lib/libsurround_3mic_proc.so
 vendor/lib/libtar.so
-
