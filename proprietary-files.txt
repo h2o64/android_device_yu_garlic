@@ -168,20 +168,6 @@ lib/libplugin_nightshot.so|cfe4098b73b89e7f89dd62accb3af4dfdbb570b4
 lib/libplugin_panorama.so|9c24e1d10b467d5d870d2ca7685d8701ae4a1b6d
 lib/libplugin_superphoto.so|5911aadaa42542b4dd560eeb7f242ec120606453
 lib/libplugin_wideself.so|7aa15035588e00f0f040bbaac04540dfddc09ff0
-vendor/lib64/libmmcamera2_frame_algorithm.so|10aa7f08e8faf1d25db1621fd089241ca9cd7126
-vendor/lib64/libmmcamera2_is.so|f697cae068af80caea566c6da3cf086edfd7ae14
-vendor/lib64/libmmcamera2_q3a_core.so|6d21b5174cfbfd6cbd77627e137d2520aaab984a
-vendor/lib64/libmmcamera2_stats_algorithm.so|e212d964ca73bfa97b84e870f8d2e9d24673b364
-vendor/lib64/libmmcamera_dbg.so|9b16be92a6d01b8d46cfd9f8357084675178d89a
-vendor/lib64/libmmcamera_tintless_algo.so|23e42cd5d44d1a38831c57870e8e54a624255623
-vendor/lib64/libmmcamera_tintless_bg_pca_algo.so|eef1351fd7ce65edc1a660583429802be1713a8c
-vendor/lib64/libmmsw_detail_enhancement.so|9d6fec3ac15a118e294b1d5a79be927fd9f8d646
-vendor/lib64/libmmsw_math.so|8bf4f05db6a561969af152f8b48be1549a753983
-vendor/lib64/libmmsw_opencl.so|25c5eb6195ca1704acb255419f0e52a90f9c9c5d
-vendor/lib64/libmmsw_platform.so|ba1551f1c1e4e227a5103fcfca36e34d20329a93
-vendor/lib64/libmmwfdinterface.so|211b287dbdd026680ab7cb2e4ea7f6881108e194
-vendor/lib64/libmmwfdsinkinterface.so|06bcd75e5c600bae0d11d1cf2308bcaea4dbdea6
-vendor/lib64/libmmwfdsrcinterface.so|0960c9dcb0867a6109fb0376e28ba78d0cfdf68f
 vendor/lib/libchromaflash.so|cf85560822e04014b8950a1abae9c2843069101d
 vendor/lib/libflash_pmic.so|ef516741afab6b10934f08f135b718ddfe0c7e57
 vendor/lib/libjpegdhw.so|e771fe598714e04280f156d92028c8240f59f046
@@ -444,7 +430,6 @@ vendor/lib/libdpmtcm.so
 
 # DRM
 bin/qseecomd
-vendor/bin/mdtpd
 vendor/bin/qseeproxydaemon
 vendor/lib64/lib-sec-disp.so
 vendor/lib64/libavenhancements.so
@@ -468,29 +453,7 @@ vendor/lib64/libsecureuisvc_jni.so
 vendor/lib64/libssd.so
 vendor/lib64/libStDrvInt.so
 vendor/lib64/libtzdrmgenprov.so
-vendor/lib/lib-sec-disp.so
-vendor/lib/libavenhancements.so
-vendor/lib/libcppf.so
-vendor/lib/libdrmfs.so
-vendor/lib/libdrmtime.so
-vendor/lib/libGPreqcancel.so
-vendor/lib/libGPreqcancel_svc.so
-vendor/lib/libGPTEE.so
-vendor/lib/libmdtp.so
-vendor/lib/libmdtp_crypto.so
-vendor/lib/libmdtpdemojni.so
-vendor/lib/libqisl.so
 vendor/lib/libQSEEComAPI.so
-vendor/lib/librpmb.so
-vendor/lib/libSecureExtAuthJNI.so
-vendor/lib/libSecureSampleAuthJNI.so
-vendor/lib/libsecureui.so
-vendor/lib/libsecureui_svcsock.so
-vendor/lib/libSecureUILib.so
-vendor/lib/libsecureuisvc_jni.so
-vendor/lib/libssd.so
-vendor/lib/libStDrvInt.so
-vendor/lib/libtzdrmgenprov.so
 
 # FIDO
 vendor/lib64/libFidoCrypto.so
@@ -519,8 +482,6 @@ vendor/lib64/hw/gatekeeper.msm8937.so
 -framework/izat.xt.srv.jar
 -lib64/libloc_api_v02.so
 -lib64/libloc_ds_api.so
--lib/libloc_api_v02.so
--lib/libloc_ds_api.so
 -priv-app/com.qualcomm.location/com.qualcomm.location.apk
 bin/loc_launcher
 bin/lowi-server
@@ -532,7 +493,6 @@ etc/permissions/com.qualcomm.location.xml
 etc/permissions/izat.xt.srv.xml
 etc/xtra_root_cert.pem
 lib64/libgnsspps.so
-lib/libgnsspps.so
 vendor/bin/slim_daemon
 vendor/lib64/hw/flp.default.so
 vendor/lib64/libalarmservice_jni.so
@@ -564,36 +524,6 @@ vendor/lib64/libulp2.so
 vendor/lib64/libxt_native.so
 vendor/lib64/libxtadapter.so
 vendor/lib64/libxtwifi_ulp_adaptor.so
-vendor/lib/hw/activity_recognition.msm8937.so
-vendor/lib/hw/flp.default.so
-vendor/lib/libalarmservice_jni.so
-vendor/lib/libasn1cper.so
-vendor/lib/libasn1crt.so
-vendor/lib/libasn1crtx.so
-vendor/lib/libdataitems.so
-vendor/lib/libDRPlugin.so
-vendor/lib/libdrplugin_client.so
-vendor/lib/libevent_observer.so
-vendor/lib/libflp.so
-vendor/lib/libgdtap.so
-vendor/lib/libgeofence.so
-vendor/lib/libizat_client_api.so
-vendor/lib/libizat_core.so
-vendor/lib/liblbs_core.so
-vendor/lib/liblistenjni.so
-vendor/lib/liblistensoundmodel2.so
-vendor/lib/libloc_ext.so
-vendor/lib/liblocationservice.so
-vendor/lib/liblocationservice_glue.so
-vendor/lib/liblowi_client.so
-vendor/lib/liblowi_wifihal.so
-vendor/lib/liblowi_wifihal_nl.so
-vendor/lib/libslimclient.so
-vendor/lib/libsubsystem_control.so
-vendor/lib/libulp2.so
-vendor/lib/libxt_native.so
-vendor/lib/libxtadapter.so
-vendor/lib/libxtwifi_ulp_adaptor.so
 
 # Graphics
 vendor/lib64/hw/vulkan.msm8937.so
@@ -752,29 +682,6 @@ vendor/lib64/libimscamera_jni.so
 vendor/lib64/libimsmedia_jni.so
 vendor/lib64/librcc.so
 vendor/lib64/libvoice-svc.so
-vendor/lib/lib-dplmedia.so
-vendor/lib/lib-ims-rcscmjni.so
-vendor/lib/lib-imscamera.so
-vendor/lib/lib-imsdpl.so
-vendor/lib/lib-imsqimf.so
-vendor/lib/lib-imsrcs.so
-vendor/lib/lib-imsrcscm.so
-vendor/lib/lib-imsrcscmclient.so
-vendor/lib/lib-imsrcscmservice.so
-vendor/lib/lib-imss.so
-vendor/lib/lib-imsSDP.so
-vendor/lib/lib-imsvt.so
-vendor/lib/lib-imsxml.so
-vendor/lib/lib-rcsimssjni.so
-vendor/lib/lib-rcsjni.so
-vendor/lib/lib-rtpcommon.so
-vendor/lib/lib-rtpcore.so
-vendor/lib/lib-rtpdaemoninterface.so
-vendor/lib/lib-rtpsl.so
-vendor/lib/libimscamera_jni.so
-vendor/lib/libimsmedia_jni.so
-vendor/lib/librcc.so
-vendor/lib/libvoice-svc.so
 
 # Keystore
 vendor/lib/hw/keystore.msm8937.so
@@ -931,7 +838,6 @@ vendor/lib/libperipheral_client.so
 etc/permissions/com.qti.snapdragon.sdk.display.xml
 vendor/bin/mm-pp-dpps
 vendor/lib64/libdisp-aba.so
-vendor/lib/libdisp-aba.so
 
 # QMI
 bin/ATFWD-daemon
@@ -1009,18 +915,7 @@ vendor/lib64/libril-qcril-hook-oem.so
 vendor/lib64/librilqmiservices.so
 vendor/lib64/libsettings.so
 vendor/lib64/libsystem_health_mon.so
-vendor/lib/libconfigdb.so
-vendor/lib/libdatactrl.so
-vendor/lib/liblqe.so
 vendor/lib/libmdmdetect.so
-vendor/lib/libnetmgr.so
-vendor/lib/libril-qc-ltedirectdisc.so
-vendor/lib/libril-qc-qmi-1.so
-vendor/lib/libril-qc-radioconfig.so
-vendor/lib/libril-qcril-hook-oem.so
-vendor/lib/librilqmiservices.so
-vendor/lib/libsettings.so
-vendor/lib/libsystem_health_mon.so
 vendor/qcril.db
 
 # Sensors
