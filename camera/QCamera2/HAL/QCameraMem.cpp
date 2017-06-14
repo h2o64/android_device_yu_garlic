@@ -44,7 +44,6 @@
 #include "QCameraTrace.h"
 
 // Media dependencies
-#include "OMX_QCOMExtns.h"
 #ifdef USE_MEDIA_EXTENSIONS
 #include <media/hardware/HardwareAPI.h>
 typedef struct VideoNativeHandleMetadata media_metadata_buffer;
@@ -1289,7 +1288,7 @@ QCameraVideoMemory::QCameraVideoMemory(camera_request_memory memory,
     mMetaBufCount = 0;
     mBufType = bufType;
     //Set Default color conversion format
-    mUsage = private_handle_t::PRIV_FLAGS_ITU_R_709;
+    mUsage = private_handle_t::PRIV_FLAGS_ITU_R_601_FR;
 
     //Set Default frame format
     mFormat = OMX_COLOR_FormatYUV420SemiPlanar;
@@ -1603,10 +1602,43 @@ native_handle_t *QCameraVideoMemory::getNativeHandle(uint32_t index, bool metada
 /*===========================================================================
  * FUNCTION   : closeNativeHandle
  *
- * DESCRIPTION: close video native handle and update cached ptrs
+ * DESCRIPTION: static function to close video native handle.
  *
  * PARAMETERS :
  *   @data  : ptr to video frame to be returned
+ *
+ * RETURN     : int32_t type of status
+ *              NO_ERROR  -- success
+ *              none-zero failure code
+ *==========================================================================*/
+int QCameraVideoMemory::closeNativeHandle(const void *data)
+{
+    int32_t rc = NO_ERROR;
+
+#ifdef USE_MEDIA_EXTENSIONS
+    const media_metadata_buffer *packet =
+            (const media_metadata_buffer *)data;
+    if ((packet != NULL) && (packet->eType ==
+            kMetadataBufferTypeNativeHandleSource)
+            && (packet->pHandle)) {
+        native_handle_close(packet->pHandle);
+        native_handle_delete(packet->pHandle);
+    } else {
+        LOGE("Invalid Data. Could not release");
+        return BAD_VALUE;
+    }
+#endif
+   return rc;
+}
+
+/*===========================================================================
+ * FUNCTION   : closeNativeHandle
+ *
+ * DESCRIPTION: close video native handle and update cached ptrs
+ *
+ * PARAMETERS :
+ *   @data     : ptr to video frame to be returned
+ *   @metadata : Flag to update metadata mode
  *
  * RETURN     : int32_t type of status
  *              NO_ERROR  -- success
@@ -1623,6 +1655,8 @@ int QCameraVideoMemory::closeNativeHandle(const void *data, bool metadata)
         if ((packet != NULL) && (packet->eType ==
                 kMetadataBufferTypeNativeHandleSource)
                 && (packet->pHandle)) {
+            native_handle_close(packet->pHandle);
+            native_handle_delete(packet->pHandle);
             for (int i = 0; i < mMetaBufCount; i++) {
                 if(mMetadata[i]->data == data) {
                     media_metadata_buffer *mem =
@@ -1636,8 +1670,7 @@ int QCameraVideoMemory::closeNativeHandle(const void *data, bool metadata)
             return BAD_VALUE;
         }
     } else {
-        LOGE("Not of type video meta buffer. Failed");
-        return BAD_VALUE;
+        LOGW("Warning: Not of type video meta buffer");
     }
 #endif
     return rc;
@@ -1772,6 +1805,7 @@ QCameraGrallocMemory::QCameraGrallocMemory(camera_request_memory memory)
         mLocalFlag[i] = BUFFER_NOT_OWNED;
         mPrivateHandle[i] = NULL;
         mBufferStatus[i] = STATUS_IDLE;
+        mCameraMemory[i] = NULL;
     }
 }
 
@@ -1842,7 +1876,7 @@ void QCameraGrallocMemory::setMaxFPS(int maxFPS)
 
     /* the new fps will be updated in metadata of the next frame enqueued to display*/
     mMaxFPS = maxFPS;
-    LOGH("Setting max fps %d to display", mMaxFPS);
+    LOGH("Setting max fps %d to display", maxFPS);
 }
 
 /*===========================================================================
@@ -2107,17 +2141,9 @@ int QCameraGrallocMemory::allocate(uint8_t count, size_t /*size*/,
          goto end;
     }
 
-    err = mWindow->set_buffers_geometry(mWindow, mStride, mScanline, mFormat);
+    err = mWindow->set_buffers_geometry(mWindow, mWidth, mHeight, mFormat);
     if (err != 0) {
          LOGE("set_buffers_geometry failed: %s (%d)",
-                strerror(-err), -err);
-         ret = UNKNOWN_ERROR;
-         goto end;
-    }
-
-    err = mWindow->set_crop(mWindow, 0, 0, mWidth, mHeight);
-    if (err != 0) {
-         LOGE("set_crop failed: %s (%d)",
                 strerror(-err), -err);
          ret = UNKNOWN_ERROR;
          goto end;

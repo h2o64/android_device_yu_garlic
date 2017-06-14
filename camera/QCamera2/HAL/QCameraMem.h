@@ -35,6 +35,9 @@
 #include <utils/Mutex.h>
 #include <utils/List.h>
 
+//Media depedancies
+#include "OMX_QCOMExtns.h"
+
 // Display dependencies
 #include "qdMetaData.h"
 
@@ -51,8 +54,14 @@ class QCameraMemoryPool;
 
 //OFFSET, SIZE, USAGE, TIMESTAMP, FORMAT
 #define VIDEO_METADATA_NUM_INTS          5
+
 //Buffer identity
+//Note that this macro might have already been
+//defined in OMX_QCOMExtns.h, in which case
+//the local value below will not be used.
+#ifndef VIDEO_METADATA_NUM_COMMON_INTS
 #define VIDEO_METADATA_NUM_COMMON_INTS   1
+#endif
 
 enum QCameraMemType {
     QCAMERA_MEM_TYPE_DEFAULT      = 0,
@@ -238,8 +247,9 @@ public:
     int getUsage(){return mUsage;};
     int getFormat(){return mFormat;};
     int convCamtoOMXFormat(cam_format_t format);
-    int closeNativeHandle(const void *data, bool metadata = true);
+    int closeNativeHandle(const void *data, bool metadata);
     native_handle_t *getNativeHandle(uint32_t index, bool metadata = true);
+    static int closeNativeHandle(const void *data);
 private:
     camera_memory_t *mMetadata[MM_CAMERA_MAX_NUM_FRAMES];
     uint8_t mMetaBufCount;
@@ -288,7 +298,8 @@ private:
     bool mBufferStatus[MM_CAMERA_MAX_NUM_FRAMES];
     struct private_handle_t *mPrivateHandle[MM_CAMERA_MAX_NUM_FRAMES];
     preview_stream_ops_t *mWindow;
-    int mWidth, mHeight, mFormat, mStride, mScanline, mUsage, mMaxFPS;
+    int mWidth, mHeight, mFormat, mStride, mScanline, mUsage;
+    typeof (MetaData_t::refreshrate) mMaxFPS;
     camera_request_memory mGetMemory;
     camera_memory_t *mCameraMemory[MM_CAMERA_MAX_NUM_FRAMES];
     int mMinUndequeuedBuffers;

@@ -39,7 +39,7 @@
 // Camera dependencies
 #include "cam_intf.h"
 #include "cam_types.h"
-#include "camera3.h"
+#include "hardware/camera3.h"
 #include "QCamera3HALHeader.h"
 #include "QCamera3Mem.h"
 #include "QCamera3PostProc.h"
@@ -158,9 +158,9 @@ protected:
      * for this flag is true and is selectively set to false for the usecases
      * such as HFR to avoid any performance hit due to mapping/unmapping */
     bool    mPerFrameMapUnmapEnable;
-    uint32_t frm_num;
-    uint32_t dumpFrmCnt;
-    uint32_t skip_mode;
+    uint32_t mFrmNum;
+    uint32_t mDumpFrmCnt;
+    uint32_t mSkipMode;
     uint32_t mDumpSkipCnt;
 };
 
@@ -450,6 +450,7 @@ private:
     bool needsFramePostprocessing(metadata_buffer_t* meta);
     int32_t handleOfflinePpCallback(uint32_t resultFrameNumber,
             Vector<mm_camera_super_buf_t *>& pendingCbs);
+    mm_camera_super_buf_t* getNextPendingCbBuffer();
 };
 
 /* QCamera3PicChannel is for JPEG stream, which contains a YUV stream generated
@@ -531,7 +532,7 @@ public:
     virtual int32_t stop();
     int32_t doReprocessOffline(qcamera_fwk_input_pp_data_t *frame,
             bool isPriorityFrame = false);
-    int32_t doReprocess(int buf_fd, size_t buf_length, int32_t &ret_val,
+    int32_t doReprocess(int buf_fd,void *buffer, size_t buf_length, int32_t &ret_val,
                         mm_camera_super_buf_t *meta_buf);
     int32_t overrideMetadata(qcamera_hal3_pp_buffer_t *pp_buffer,
             mm_camera_buf_def_t *meta_buffer,
@@ -598,6 +599,7 @@ public:
                     cam_dimension_t *dim,
                     cam_format_t streamFormat,
                     uint8_t hw_analysis_supported,
+                    cam_color_filter_arrangement_t color_arrangement,
                     void *userData,
                     uint32_t numBuffers = MIN_STREAMING_BUFFER_NUM
                     );
