@@ -152,11 +152,13 @@ vendor/lib/libxml.so
 
 # Camera
 bin/mm-qcamera-daemon
-etc/camera/csidtg_camera.xml
-etc/camera/csidtg_chromatix.xml
-etc/camera/camera_config.xml
-etc/camera/p7201_s5k4h8_chromatix.xml
-etc/camera/imx258_sunny_p7201_chromatix.xml
+etc/camera/csidtg_camera.xml|4f119e9f8e72095b6346c016a6cc77709e16a95d
+etc/camera/csidtg_chromatix.xml|20cf500ba196e312cfb59f764573125cb9e983ef
+etc/camera/imx258_guangbao_p7201_chromatix.xml|2129a06b40f18b0a26478a0bf6c526495c11d985
+etc/camera/imx258_sunny_p7201_chromatix.xml|948063ec53ef0f56fbc88669653c632def735a61
+etc/camera/msm8937_camera_p7201.xml|78fba0fec1285f4e8212e246f869e27e64faaa01
+etc/camera/ov8856_chromatix.xml|589e2311001406bde3ffaaf3ee0e7866c6482397
+etc/camera/p7201_s5k4h8_chromatix.xml|5ed65395535f07c860d6e1c07afe05ca765da172
 vendor/lib/libchromaflash.so
 vendor/lib/libflash_pmic.so
 vendor/lib/libjpegdhw.so
@@ -187,6 +189,7 @@ vendor/lib/libmmcamera_dw9761b_2d_eeprom.so
 vendor/lib/libmmcamera_eebinparse.so
 vendor/lib/libmmcamera_eeprom_util.so
 vendor/lib/libmmcamera_eztune_module.so
+vendor/lib/libmmcamera_faceproc2.so
 vendor/lib/libmmcamera_faceproc.so
 vendor/lib/libmmcamera_hdr_gb_lib.so
 vendor/lib/libmmcamera_imglib.so
@@ -196,9 +199,12 @@ vendor/lib/libmmcamera_optizoom_lib.so
 vendor/lib/libmmcamera_ov8856.so
 vendor/lib/libmmcamera_p7201_sunny_imx258_otp_eeprom.so
 vendor/lib/libmmcamera_p7201_sunwin_ov8856_otp_eeprom.so
+vendor/lib/libmmcamera_paaf_lib.so
 vendor/lib/libmmcamera_pdaf.so
 vendor/lib/libmmcamera_pdafcamif.so
 vendor/lib/libmmcamera_ppbase_module.so
+vendor/lib/libmmcamera_ppeiscore.so
+vendor/lib/libmmcamera_quadracfa.so
 vendor/lib/libmmcamera_s5k4h8_p7201.so
 vendor/lib/libmmcamera_s5k4h8_p7201_eeprom.so
 vendor/lib/libmmcamera_stillmore_lib.so
