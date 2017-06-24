@@ -57,8 +57,8 @@ static bool ensure_vendor_module_is_loaded(void)
     android::Mutex::Autolock lock(vendor_mutex);
 
     if (!vendor.module) {
+        property_set("sys.fingerprintd", "1");
         if (strcmp(vend, "elan_fp")) {
-            property_set("persist.sys.fp.goodix", "0");
             rv = hw_get_module_by_class("fingerprint", "elan", &vendor.hw_module);
         } else if (strcmp(vend, "goodix_fp")) {
             property_set("persist.sys.fp.goodix", "1");
