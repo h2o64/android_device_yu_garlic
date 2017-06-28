@@ -845,10 +845,15 @@ service fingerprintd /system/bin/fingerprintd
 
 service gx_fpd /system/bin/gx_fpd
     class late_start
-    user root
-    group root system
+    user system
+    group system
     disabled
-    on property:persist.sys.fp.goodix=1
+    writepid /dev/cpuset/system-background/tasks
+
+on property:persist.sys.fp.goodix=0
+    stop gx_fpd
+
+on property:persist.sys.fp.goodix=1
     start gx_fpd
 
 # Start camera server as daemon
