@@ -60,14 +60,20 @@ static bool ensure_vendor_module_is_loaded(void)
         property_set("sys.fingerprintd", "1");
         if (strcmp(vend, "elan_fp")) {
             rv = hw_get_module_by_class("fingerprint", "elan", &vendor.hw_module);
+        } else if (strcmp(vend, "goodix_fp")) {
+            property_set("persist.sys.fp.goodix", "1");
+            rv = hw_get_module_by_class("fingerprint", "goodix", &vendor.hw_module);
+        } else if (strcmp(vend, "silead_fp_dev")) {
+            ALOGE("Silead fpsvcd fingerprint sensor is unsupported");
+            vendor.module = NULL;
         } else {
             if (rv) {
                 ALOGE("failed to open vendor module, error %d", rv);
                 vendor.module = NULL;
             } else {
-            	property_set("persist.sys.fp.goodix", "1");
-            	rv = hw_get_module_by_class("fingerprint", "goodix", &vendor.hw_module);
-						}
+                ALOGI("loaded vendor module: %s version %x", vendor.module->common.name,
+                vendor.module->common.module_api_version);
+            }
         }
     }
 
