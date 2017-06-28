@@ -57,6 +57,7 @@ static bool ensure_vendor_module_is_loaded(void)
     android::Mutex::Autolock lock(vendor_mutex);
 
     if (!vendor.module) {
+        ALOGE("%s: [DEBUG] Fingerprint sensor is %c\n", __func__, vend);
         if (strcmp(vend, "elan_fp")) {
             property_set("persist.sys.fp.goodix", "0");
             rv = hw_get_module_by_class("fingerprint", "elan", &vendor.hw_module);
