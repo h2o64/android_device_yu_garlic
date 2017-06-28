@@ -58,13 +58,13 @@ static bool ensure_vendor_module_is_loaded(void)
 
     if (!vendor.module) {
         ALOGE("%s: [DEBUG] Fingerprint sensor is %c\n", __func__, vend);
-        if (strcmp(vend, "elan_fp")) {
+        if (!strcmp(vend, "elan_fp")) {
             property_set("persist.sys.fp.goodix", "0");
             rv = hw_get_module_by_class("fingerprint", "elan", &vendor.hw_module);
-        } else if (strcmp(vend, "goodix_fp")) {
+        } else if (!strcmp(vend, "goodix_fp")) {
             property_set("persist.sys.fp.goodix", "1");
             rv = hw_get_module_by_class("fingerprint", "goodix", &vendor.hw_module);
-        } else if (strcmp(vend, "silead_fp_dev")) {
+        } else if (!strcmp(vend, "silead_fp_dev")) {
             ALOGE("Silead fpsvcd fingerprint sensor is unsupported");
             vendor.module = NULL;
         } else {
@@ -85,6 +85,7 @@ static int set_notify(struct fingerprint_device *dev, fingerprint_notify_t notif
 {
     device_t *device = (device_t *) dev;
 
+    device->base.notify = notify;
     return device->vendor.device->set_notify(device->vendor.device, notify);
 }
 
