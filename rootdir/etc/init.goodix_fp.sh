@@ -19,8 +19,7 @@
 
 export PATH=/system/bin
 
-fp='cat /sys/devices/platform/fp_drv/fp_drv_info'
-if [ "$fp" == "goodix_fp" ];then
+if [ `/sys/devices/platform/fp_drv/fp_drv_info` == "goodix_fp" ]; then
 	start gx_fpd
 else
 	stop gx_fpd
