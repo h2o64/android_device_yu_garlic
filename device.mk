@@ -137,11 +137,6 @@ PRODUCT_PACKAGES += \
     ethertypes \
     libebtc
 
-# Fingerprint
-PRODUCT_PACKAGES += \
-    fingerprintd \
-    fingerprint.msm8937
-
 # FM
 PRODUCT_PACKAGES += \
     FM2 \

@@ -19,14 +19,9 @@ LOCAL_PATH := $(call my-dir)
 
 include $(CLEAR_VARS)
 
-LOCAL_SRC_FILES := \
-    FingerprintWrapper.cpp
-
-LOCAL_SHARED_LIBRARIES := \
-    libhardware liblog libcutils
-
-LOCAL_MODULE_RELATIVE_PATH := hw
-LOCAL_MODULE := fingerprint.$(TARGET_BOARD_PLATFORM)
 LOCAL_MODULE_TAGS := optional
-
-include $(BUILD_SHARED_LIBRARY)
+LOCAL_C_INCLUDES := system/core/init
+LOCAL_CFLAGS := -Wall -DANDROID_TARGET=\"$(TARGET_BOARD_PLATFORM)\"
+LOCAL_SRC_FILES := init_garlic.cpp
+LOCAL_MODULE := libinit_garlic
+include $(BUILD_STATIC_LIBRARY)
