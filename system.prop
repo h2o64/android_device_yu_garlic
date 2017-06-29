@@ -31,6 +31,7 @@ use.qti.sw.ape.decoder=true
 use.voice.path.for.pcm.voip=true
 voice.conc.fallbackpath=deep-buffer
 voice.playback.conc.disabled=true
+voice.record.conc.disabled=false
 voice.voip.conc.disabled=false
 persist.speaker.prot.enable=false
 audio.pp.asphere.enabled=false
@@ -114,13 +115,8 @@ media.msm8956hw=0
 mm.enable.smoothstreaming=true
 mmp.enable.3g2=true
 media.aac_51_output_enabled=true
-av.debug.disable.pers.cache=1
-media.hevc.cores=2
 qcom.hw.aac.encoder=true
 mm.enable.qcom_parser=1048575
-vidc.enc.disable_bframes=1
-vidc.dec.downscalar_width=1920
-vidc.dec.downscalar_height=1088
 vidc.disable.split.mode=1
 
 # Perf
