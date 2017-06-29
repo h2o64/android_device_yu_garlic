@@ -137,10 +137,6 @@ PRODUCT_PACKAGES += \
     ethertypes \
     libebtc
 
-# Fingerprint
-PRODUCT_PACKAGES += \
-    fingerprint.msm8937
-
 # FM
 PRODUCT_PACKAGES += \
     FM2 \
@@ -221,6 +217,7 @@ PRODUCT_PACKAGES += \
     init.qcom.usb.sh \
     init.recovery.qcom.rc \
     init.qcom.bt.sh \
+		init.goodix_fp.sh \
 		ueventd.qcom.rc \
 		fstab.qcom
 
