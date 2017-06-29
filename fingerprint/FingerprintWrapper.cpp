@@ -21,13 +21,19 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
+#include <unistd.h>
 #include <cutils/log.h>
 #include <cutils/properties.h>
 #include <hardware/hardware.h>
+#include <fcntl.h>
 #include <hardware/fingerprint.h>
 #include <utils/threads.h>
 
+#define STRCONV_(x)      #x
+#define STRCONV(x) "%" STRCONV_(x) "s"
+
 #define DRV_INFO "/sys/devices/platform/fp_drv/fp_drv_info"
+#define BUF_SIZE 64
 
 typedef struct {
     fingerprint_device_t base;
@@ -44,15 +50,40 @@ static union {
     const hw_module_t *hw_module;
 } vendor;
 
+static int read_file2(const char *fname, char *data, int max_size)
+{
+    int fd, rc;
+
+    if (max_size < 1)
+        return 0;
+
+    fd = open(fname, O_RDONLY);
+    if (fd < 0) {
+        ALOGE("%s: failed to open '%s'\n", __func__, fname);
+        return 0;
+    }
+
+    rc = read(fd, data, max_size -1);
+    if ((rc > 0) && (rc < max_size ))
+        data[rc] = '\0';
+    else
+        data[0] = '\0';
+    close(fd);
+
+    return 1;
+}
+
 static bool ensure_vendor_module_is_loaded(void)
 {
     int rv;
-    FILE *fp;
-    char *vend;
+    char buf[BUF_SIZE];
+    char vend[BUF_SIZE];
 
-    fp = fopen(DRV_INFO, "r");
-    fscanf(fp, "%c", vend);
-    fclose(fp);
+    if (read_file2(DRV_INFO, buf, sizeof(buf))) {
+        sscanf(buf, STRCONV(BUF_SIZE), vend);
+    } else {
+        ALOGE("%s: Failed to open %c\n", __func__, DRV_INFO);
+    }
 
     android::Mutex::Autolock lock(vendor_mutex);
 
