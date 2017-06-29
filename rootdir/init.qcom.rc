@@ -850,9 +850,11 @@ service gx_fpd /system/bin/gx_fpd
     disabled
     writepid /dev/cpuset/system-background/tasks
 
-service goodix_fp /system/bin/sh /system/etc/init.goodix_fp.sh
-    disabled
-    oneshot
+on property:persist.sys.fp.goodix=0
+    stop gx_fpd
+
+on property:persist.sys.fp.goodix=1
+    start gx_fpd
 
 # Start camera server as daemon
 service qcamerasvr /system/bin/mm-qcamera-daemon

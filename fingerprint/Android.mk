@@ -1,5 +1,3 @@
-#!/system/bin/sh
-#
 #
 # Copyright (C) 2017 YU Community OS Team
 #
@@ -17,10 +15,18 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-export PATH=/system/bin
+LOCAL_PATH := $(call my-dir)
 
-if [ `/sys/devices/platform/fp_drv/fp_drv_info` == "goodix_fp" ]; then
-	start gx_fpd
-else
-	stop gx_fpd
-fi
+include $(CLEAR_VARS)
+
+LOCAL_SRC_FILES := \
+    FingerprintWrapper.cpp
+
+LOCAL_SHARED_LIBRARIES := \
+    libhardware liblog libcutils
+
+LOCAL_MODULE_RELATIVE_PATH := hw
+LOCAL_MODULE := fingerprint.$(TARGET_BOARD_PLATFORM)
+LOCAL_MODULE_TAGS := optional
+
+include $(BUILD_SHARED_LIBRARY)
