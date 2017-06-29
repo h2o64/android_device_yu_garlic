@@ -1,0 +1,6 @@
+require version-baseband=MPSS.JO.1.2.C2-85606
+require version-trustzone=TZ.BF.4.0.5-00021
+require version-rpm=RPM.BF.2.2-00200
+require version-sbl=BOOT.BF.3.3-00172
+require version-adsp=ADSP.8953.2.8.2-00026
+
