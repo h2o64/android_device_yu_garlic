@@ -1,0 +1,2 @@
+# /data/misc/wifi/nvbin/ labeling
+type_transition wpa wifi_data_file:dir dynamic_nv_data_file;

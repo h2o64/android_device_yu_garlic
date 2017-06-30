@@ -1,0 +1,2 @@
+# /data/goodix labeling
+type_transition tee system_data_file:{ dir file } gx_fpd_data_file;

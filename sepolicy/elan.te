@@ -1,0 +1,2 @@
+type elanfp, domain;
+type elanfp_device, dev_type;
