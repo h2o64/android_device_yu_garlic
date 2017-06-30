@@ -27,7 +27,6 @@
 #include <unistd.h>
 
 #include "edify/expr.h"
-#include "updater/install.h"
 
 #define MAX(a, b) (((a) > (b)) ? (a) : (b))
 
@@ -363,13 +362,13 @@ Value * VerifyBasebandFn(const char *name, State *state, int argc, Expr *argv[])
 
     ret = get_baseband_version(current_baseband_version, BASEBAND_VER_BUF_LEN);
     if (ret) {
-        return ErrorAbort(state, kFreadFailure, "%s() failed to read current baseband version: %d",
+        return ErrorAbort(state, "%s() failed to read current baseband version: %d",
                 name, ret);
     }
 
     char** baseband_version = ReadVarArgs(state, argc, argv);
     if (baseband_version == NULL) {
-        return ErrorAbort(state, kArgsParsingFailure, "%s() error parsing arguments", name);
+        return ErrorAbort(state, "%s() error parsing arguments", name);
     }
 
     ret = 0;
@@ -401,13 +400,13 @@ Value * VerifyTrustZoneFn(const char *name, State *state, int argc, Expr *argv[]
 
     ret = get_tz_version(current_tz_version, TZ_VER_BUF_LEN);
     if (ret) {
-        return ErrorAbort(state, kFreadFailure, "%s() failed to read current TZ version: %d",
+        return ErrorAbort(state, "%s() failed to read current TZ version: %d",
                 name, ret);
     }
 
     char** tz_version = ReadVarArgs(state, argc, argv);
     if (tz_version == NULL) {
-        return ErrorAbort(state, kArgsParsingFailure, "%s() error parsing arguments", name);
+        return ErrorAbort(state, "%s() error parsing arguments", name);
     }
 
     ret = 0;
@@ -439,13 +438,13 @@ Value * VerifyRpmFn(const char *name, State *state, int argc, Expr *argv[]) {
 
     ret = get_rpm_version(current_rpm_version, RPM_VER_BUF_LEN);
     if (ret) {
-        return ErrorAbort(state, kFreadFailure, "%s() failed to read current RPM version: %d",
+        return ErrorAbort(state, "%s() failed to read current RPM version: %d",
                 name, ret);
     }
 
     char** rpm_version = ReadVarArgs(state, argc, argv);
     if (rpm_version == NULL) {
-        return ErrorAbort(state, kArgsParsingFailure, "%s() error parsing arguments", name);
+        return ErrorAbort(state, "%s() error parsing arguments", name);
     }
 
     ret = 0;
@@ -476,13 +475,13 @@ Value * VerifySblFn(const char *name, State *state, int argc, Expr *argv[]) {
 
     ret = get_sbl_version(current_sbl_version, SBL_VER_BUF_LEN);
     if (ret) {
-        return ErrorAbort(state, kFreadFailure, "%s() failed to read current SBL version: %d",
+        return ErrorAbort(state, "%s() failed to read current SBL version: %d",
                 name, ret);
     }
 
     char** sbl_version = ReadVarArgs(state, argc, argv);
     if (sbl_version == NULL) {
-        return ErrorAbort(state, kArgsParsingFailure, "%s() error parsing arguments", name);
+        return ErrorAbort(state, "%s() error parsing arguments", name);
     }
 
     ret = 0;
@@ -513,13 +512,13 @@ Value * VerifyAdspFn(const char *name, State *state, int argc, Expr *argv[]) {
 
     ret = get_adsp_version(current_adsp_version, ADSP_VER_BUF_LEN);
     if (ret) {
-        return ErrorAbort(state, kFreadFailure, "%s() failed to read current ADSP version: %d",
+        return ErrorAbort(state, "%s() failed to read current ADSP version: %d",
                 name, ret);
     }
 
     char** adsp_version = ReadVarArgs(state, argc, argv);
     if (adsp_version == NULL) {
-        return ErrorAbort(state, kArgsParsingFailure, "%s() error parsing arguments", name);
+        return ErrorAbort(state, "%s() error parsing arguments", name);
     }
 
     ret = 0;
