@@ -220,11 +220,6 @@ PRODUCT_PACKAGES += \
     ueventd.qcom.rc \
     fstab.qcom
 
-
-# Recovery
-PRODUCT_PACKAGES += \
-    librecovery_updater_cm
-
 # RIL
 PRODUCT_PACKAGES += \
     librmnetctl \

@@ -19,9 +19,6 @@ LOCAL_PATH := device/yu/garlic
 
 TARGET_SPECIFIC_HEADER_PATH := $(LOCAL_PATH)/include
 
-# Assertions
-TARGET_BOARD_INFO_FILE := device/yu/garlic/board-info.txt
-
 # Architecture
 TARGET_ARCH := arm64
 TARGET_ARCH_VARIANT := armv8-a
@@ -166,10 +163,6 @@ TARGET_RIL_VARIANT := caf
 
 # Recovery
 TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/rootdir/fstab.qcom
-
-# Releasetool
-TARGET_RECOVERY_UPDATER_LIBS := librecovery_updater_cm
-TARGET_RELEASETOOLS_EXTENSIONS := $(LOCAL_PATH)
 
 # Sensor
 USE_SENSOR_MULTI_HAL := true
