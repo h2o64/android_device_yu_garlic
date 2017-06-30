@@ -25,7 +25,7 @@ def FullOTA_Assertions(info):
   AddAdspAssertion(info, info.input_zip)
   return
 
-def IncrementalOTA_Assertions(info)):
+def IncrementalOTA_Assertions(info):
   AddBasebandAssertion(info, info.input_zip)
   AddTrustZoneAssertion(info, info.input_zip)
   AddRpmAssertion(info, info.input_zip)
