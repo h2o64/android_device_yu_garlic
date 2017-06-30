@@ -26,14 +26,14 @@ def FullOTA_Assertions(info):
   return
 
 def IncrementalOTA_Assertions(info):
-  AddBasebandAssertion(info, info.input_zip)
-  AddTrustZoneAssertion(info, info.input_zip)
-  AddRpmAssertion(info, info.input_zip)
-  AddSblAssertion(info, info.input_zip)
-  AddAdspAssertion(info, info.input_zip)
+  AddBasebandAssertion(info, info.target_zip)
+  AddTrustZoneAssertion(info, info.target_zip)
+  AddRpmAssertion(info, info.target_zip)
+  AddSblAssertion(info, info.target_zip)
+  AddAdspAssertion(info, info.target_zip)
   return
 
-def AddBasebandAssertion(info, info.input_zip):
+def AddBasebandAssertion(info, input_zip):
   android_info = info.input_zip.read("OTA/android-info.txt")
   m = re.search(r'require\s+version-baseband\s*=\s*(\S+)', android_info)
   if m:
@@ -43,7 +43,7 @@ def AddBasebandAssertion(info, info.input_zip):
       info.script.AppendExtra(cmd)
   return
 
-def AddTrustZoneAssertion(info, info.input_zip):
+def AddTrustZoneAssertion(info, input_zip):
   android_info = info.input_zip.read("OTA/android-info.txt")
   m = re.search(r'require\s+version-trustzone\s*=\s*(\S+)', android_info)
   if m:
@@ -53,7 +53,7 @@ def AddTrustZoneAssertion(info, info.input_zip):
       info.script.AppendExtra(cmd)
   return
 
-def AddRpmAssertion(info, info.input_zip):
+def AddRpmAssertion(info, input_zip):
   android_info = info.input_zip.read("OTA/android-info.txt")
   m = re.search(r'require\s+version-rpm\s*=\s*(\S+)', android_info)
   if m:
@@ -63,7 +63,7 @@ def AddRpmAssertion(info, info.input_zip):
       info.script.AppendExtra(cmd)
   return
 
-def AddSblAssertion(info, info.input_zip):
+def AddSblAssertion(info, input_zip):
   android_info = info.input_zip.read("OTA/android-info.txt")
   m = re.search(r'require\s+version-sbl\s*=\s*(\S+)', android_info)
   if m:
@@ -73,7 +73,7 @@ def AddSblAssertion(info, info.input_zip):
       info.script.AppendExtra(cmd)
   return
 
-def AddAdspAssertion(info, info.input_zip):
+def AddAdspAssertion(info, input_zip):
   android_info = info.input_zip.read("OTA/android-info.txt")
   m = re.search(r'require\s+version-adsp\s*=\s*(\S+)', android_info)
   if m:

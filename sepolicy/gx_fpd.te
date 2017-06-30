@@ -34,10 +34,6 @@ allow gx_fpd tee_device:chr_file rw_file_perms;
 # Allow access to ion device
 allow gx_fpd ion_device:chr_file rw_file_perms;
 
-#allow create socket
-allow gx_fpd self:socket create_socket_perms;
-allow gx_fpd self:{ netlink_socket netlink_generic_socket } create_socket_perms;
-
 #allow read/write property
 set_prop(gx_fpd, system_prop)
 
