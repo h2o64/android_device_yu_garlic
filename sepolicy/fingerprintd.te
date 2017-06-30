@@ -1,0 +1,1 @@
+allow fingerprintd init:binder { transfer call };
