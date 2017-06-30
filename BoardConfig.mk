@@ -169,6 +169,7 @@ TARGET_RIL_VARIANT := caf
 TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/rootdir/fstab.qcom
 
 # Releasetool
+TARGET_RECOVERY_UPDATER_LIBS := librecovery_updater_cm
 TARGET_RELEASETOOLS_EXTENSIONS := $(LOCAL_PATH)
 
 # Sensor
