@@ -59,7 +59,7 @@ def AddRpmAssertion(info, input_zip):
   if m:
     versions = m.group(1).split('|')
     if len(versions) and '*' not in versions:
-      cmd = 'assert(cm.cm.verify_rpm(' + ','.join(['"%s"' % rpm for rpm in versions]) + ') == "1");'
+      cmd = 'assert(cm.verify_rpm(' + ','.join(['"%s"' % rpm for rpm in versions]) + ') == "1");'
       info.script.AppendExtra(cmd)
   return
 
@@ -69,7 +69,7 @@ def AddSblAssertion(info, input_zip):
   if m:
     versions = m.group(1).split('|')
     if len(versions) and '*' not in versions:
-      cmd = 'assert(cm.cm.verify_sbl(' + ','.join(['"%s"' % sbl for sbl in versions]) + ') == "1");'
+      cmd = 'assert(cm.verify_sbl(' + ','.join(['"%s"' % sbl for sbl in versions]) + ') == "1");'
       info.script.AppendExtra(cmd)
   return
 
@@ -79,6 +79,6 @@ def AddAdspAssertion(info, input_zip):
   if m:
     versions = m.group(1).split('|')
     if len(versions) and '*' not in versions:
-      cmd = 'assert(cm.cm.verify_adsp(' + ','.join(['"%s"' % adsp for adsp in versions]) + ') == "1");'
+      cmd = 'assert(cm.verify_adsp(' + ','.join(['"%s"' % adsp for adsp in versions]) + ') == "1");'
       info.script.AppendExtra(cmd)
   return
