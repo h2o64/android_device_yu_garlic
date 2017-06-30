@@ -20,3 +20,6 @@
 # LTR553
 /dev/ltr553_ls										u:object_r:sensors_device:s0
 /dev/ltr553_ps										u:object_r:sensors_device:s0
+
+# Fingerprint
+/dev/socket/fpce(/.*)?            u:object_r:fingerprint_socket:s0
