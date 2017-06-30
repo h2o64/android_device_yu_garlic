@@ -34,6 +34,12 @@ allow gx_fpd tee_device:chr_file rw_file_perms;
 # Allow access to ion device
 allow gx_fpd ion_device:chr_file rw_file_perms;
 
+# Allow binder transfer with fingerprintd
+allow gx_fpd fingerprintd:binder transfer;
+
+# Allow socket creation
+allow gx_fpd self:netlink_socket create;
+
 #allow read/write property
 set_prop(gx_fpd, system_prop)
 
