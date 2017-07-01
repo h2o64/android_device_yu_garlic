@@ -692,7 +692,7 @@ etc/firmware/a530v3_seq.fw2
 
 # IMS
 -framework/imscmlibrary.jar
--priv-app/ims/ims.apk
+-priv-app/ims/ims.apk|cd5486ff7b1637e000f216e0c5a38493f1e28ea7
 -vendor/app/imssettings/imssettings.apk
 -vendor/framework/qti-vzw-ims-internal.jar
 bin/ims_rtp_daemon
@@ -703,8 +703,6 @@ etc/permissions/imscm.xml
 etc/permissions/qti-vzw-ims-internal.xml
 lib64/libimscamera_jni.so
 lib64/libimsmedia_jni.so
-lib/libimscamera_jni.so
-lib/libimsmedia_jni.so
 vendor/lib64/lib-dplmedia.so
 vendor/lib64/lib-ims-rcscmjni.so
 vendor/lib64/lib-imscamera.so
@@ -726,28 +724,6 @@ vendor/lib64/lib-rtpdaemoninterface.so
 vendor/lib64/lib-rtpsl.so
 vendor/lib64/librcc.so
 vendor/lib64/libvoice-svc.so
-vendor/lib/lib-dplmedia.so
-vendor/lib/lib-ims-rcscmjni.so
-vendor/lib/lib-imscamera.so
-vendor/lib/lib-imsdpl.so
-vendor/lib/lib-imsqimf.so
-vendor/lib/lib-imsrcs.so
-vendor/lib/lib-imsrcscm.so
-vendor/lib/lib-imsrcscmclient.so
-vendor/lib/lib-imsrcscmservice.so
-vendor/lib/lib-imss.so
-vendor/lib/lib-imsSDP.so
-vendor/lib/lib-imsvt.so
-vendor/lib/lib-imsxml.so
-vendor/lib/lib-rcsimssjni.so
-vendor/lib/lib-rcsjni.so
-vendor/lib/lib-rtpcommon.so
-vendor/lib/lib-rtpcore.so
-vendor/lib/lib-rtpdaemoninterface.so
-vendor/lib/lib-rtpsl.so
-vendor/lib/librcc.so
-vendor/lib/librcs_jni.so
-vendor/lib/libvoice-svc.so
 
 # Keystore
 vendor/lib/hw/keystore.msm8937.so
