@@ -436,7 +436,6 @@ vendor/lib/libFIDOKeyProvisioning.so
 vendor/lib/libFidoSuiJNI.so
 
 # Fingerprint
-bin/fingerprintd
 bin/gx_fpd
 etc/fingerprint_config.xml
 lib64/hw/fingerprint.elan.default.so
