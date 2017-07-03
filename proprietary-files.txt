@@ -602,7 +602,6 @@ vendor/lib64/libc2d30-a4xx.so
 vendor/lib64/libc2d30-a5xx.so
 vendor/lib64/libc2d30_bltlib.so
 vendor/lib64/libCB.so
-vendor/lib64/libEGL_adreno.so
 vendor/lib64/libgsl.so
 vendor/lib64/libllvm-glnext.so
 vendor/lib64/libllvm-qcom.so
@@ -647,7 +646,6 @@ vendor/lib/libc2d30-a4xx.so
 vendor/lib/libc2d30-a5xx.so
 vendor/lib/libc2d30_bltlib.so
 vendor/lib/libCB.so
-vendor/lib/libEGL_adreno.so
 vendor/lib/libgsl.so
 vendor/lib/libllvd_smore.so
 vendor/lib/libllvd_sw_tnr.so
