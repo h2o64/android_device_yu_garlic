@@ -1,6 +1,3 @@
-# Wifi
-/data/misc/wifi/nvbin(/.*)?				u:object_r:dynamic_nv_data_file:s0
-
 # Goodix
 /data/system/fingerprint(/.*)?		u:object_r:gx_fpd_data_file:s0
 /persist/data/gxfp(/.*)?					u:object_r:gx_fpd_data_file:s0
