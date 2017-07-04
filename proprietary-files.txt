@@ -156,7 +156,7 @@ etc/camera/csidtg_camera.xml|4f119e9f8e72095b6346c016a6cc77709e16a95d
 etc/camera/csidtg_chromatix.xml|20cf500ba196e312cfb59f764573125cb9e983ef
 etc/camera/imx258_guangbao_p7201_chromatix.xml|2129a06b40f18b0a26478a0bf6c526495c11d985
 etc/camera/imx258_sunny_p7201_chromatix.xml|948063ec53ef0f56fbc88669653c632def735a61
-etc/camera/msm8937_camera_p7201.xml|78fba0fec1285f4e8212e246f869e27e64faaa01
+etc/camera/msm8937_camera_p7201.xml:etc/camera/camera_config.xml|78fba0fec1285f4e8212e246f869e27e64faaa01
 etc/camera/p7201_s5k4h8_chromatix.xml|5ed65395535f07c860d6e1c07afe05ca765da172
 vendor/lib/libchromaflash.so
 vendor/lib/libflash_pmic.so
