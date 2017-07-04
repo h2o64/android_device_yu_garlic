@@ -436,9 +436,14 @@ vendor/lib/libFIDOKeyProvisioning.so
 vendor/lib/libFidoSuiJNI.so
 
 # Fingerprint
-bin/gx_fpd
+bin/gx_fpd|39e278725fdab0b393b6fc827f7f1ba6df488758
 etc/fingerprint_config.xml
 lib64/hw/fingerprint.elan.default.so
+lib64/hw/fingerprint.goodix.default.so|7e7dd0eff25e3f9b84dd2467f65c4c863fce6534
+lib64/libfp_client.so|e39436138b1cb88ad75a2306fdc92de7081d3b7a
+lib64/libfpalgorithm.so|af9a2af136728a5ce51d8280977e143a0b739e41
+lib64/libfphal.so|63c2215714e02f6f766d6fec65843c9150f5f756
+lib64/libfpservice.so|3346b92d00611f9462472f6235da8ff2077ae42b
 
 # FM
 bin/fm_qsoc_patches
