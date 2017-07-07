@@ -125,7 +125,7 @@ PRODUCT_COPY_FILES += \
 # Camera
 PRODUCT_PACKAGES += \
     camera.msm8937 \
-		Snap
+    Snap
 
 # Display
 PRODUCT_PACKAGES += \
@@ -168,7 +168,7 @@ PRODUCT_PACKAGES += \
 
 # GPS
 PRODUCT_PACKAGES += \
-		gps.msm8937
+    gps.msm8937
 
 PRODUCT_BOOT_JARS += \
     com.qti.location.sdk
@@ -243,8 +243,9 @@ PRODUCT_PACKAGES += \
     init.qcom.usb.sh \
     init.recovery.qcom.rc \
     init.qcom.bt.sh \
-		ueventd.qcom.rc \
-		fstab.qcom
+    init.qti.ims.sh \
+    ueventd.qcom.rc \
+    fstab.qcom
 
 # RIL
 PRODUCT_PACKAGES += \
