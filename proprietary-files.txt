@@ -833,9 +833,12 @@ vendor/lib/libsmemlog.so
 # Radio
 -app/datastatusnotification/datastatusnotification.apk
 -app/fastdormancy/fastdormancy.apk
+-app/QtiTelephonyService/QtiTelephonyService.apk
 -app/shutdownlistener/shutdownlistener.apk
 -framework/embmslibrary.jar
 -framework/qcrilhook.jar
+-framework/qti-telephony-common.jar|37d692fb171d0ee3269676a9e9998d2e3bfd9488
+-framework/QtiTelephonyServicelibrary.jar
 -priv-app/qcrilmsgtunnel/qcrilmsgtunnel.apk
 bin/netmgrd
 bin/radish
@@ -845,6 +848,8 @@ etc/data/dsi_config.xml
 etc/data/netmgr_config.xml
 etc/permissions/embms.xml
 etc/permissions/qcrilhook.xml
+etc/permissions/telephonyservice.xml
+vendor/bin/qti
 vendor/lib64/libconfigdb.so
 vendor/lib64/libdatactrl.so
 vendor/lib64/liblqe.so
