@@ -496,8 +496,8 @@ vendor/lib/libFidoSuiJNI.so
 # Fingerprint
 bin/gx_fpd
 etc/fingerprint_config.xml
-lib64/hw/fingerprint.elan.default.so
-lib64/hw/fingerprint.goodix.default.so
+lib64/hw/fingerprint.elan.default.so:lib64/hw/fingerprint.elan.so
+lib64/hw/fingerprint.goodix.default.so:lib64/hw/fingerprint.goodix.so
 lib64/libfp_client.so
 lib64/libfpalgorithm.so
 lib64/libfphal.so
