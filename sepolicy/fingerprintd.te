@@ -1,6 +1,6 @@
 allow fingerprintd elanfp_device:chr_file { read write ioctl open };
+allow fingerprintd fingerprint_socket:file rw_file_perms;
+allow fingerprintd gx_fpd:binder { transfer call };
 allow fingerprintd init:unix_stream_socket connectto;
 allow fingerprintd property_socket:sock_file write;
 allow fingerprintd system_prop:property_service set;
-allow fingerprintd fingerprint_socket:file rw_file_perms;
-allow fingerprintd gx_fpd:binder { transfer call };
