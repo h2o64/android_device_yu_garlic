@@ -17,7 +17,7 @@
 
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 
-#Dalvk Heap's
+# Dalvk Heap's
 $(call inherit-product, frameworks/native/build/phone-xxhdpi-4096-dalvik-heap.mk)
 $(call inherit-product, frameworks/native/build/phone-xxhdpi-4096-hwui-memory.mk)
 
@@ -126,10 +126,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     camera.msm8937 \
     Snap
-
-# Display
-PRODUCT_PACKAGES += \
-    camera.msm8937
 
 # Display
 PRODUCT_PACKAGES += \
