@@ -68,10 +68,8 @@ static void fp_prop()
         ERROR("%s: Failed to open %c\n", __func__, DRV_INFO);
 
     if (!strcmp(vend, "elan_fp")) {
-        property_set("ro.hardware.fingerprint", "elan");
         property_set("persist.sys.fp.goodix", "0");
     } else if (!strcmp(vend, "goodix_fp")) {
-        property_set("ro.hardware.fingerprint", "goodix");
         property_set("persist.sys.fp.goodix", "1");
     } else if (!strcmp(vend, "silead_fp_dev")) {
         ERROR("%s: Silead fpsvcd fingerprint sensor is unsupported", __func__);
