@@ -1,2 +1,3 @@
 type fingerprint_socket, file_type;
 type sysfs_fp, sysfs_type, fs_type;
+type netmgr_data_file, file_type;
