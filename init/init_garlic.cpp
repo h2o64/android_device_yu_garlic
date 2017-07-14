@@ -50,6 +50,7 @@ static void fp_prop()
     } else {
         ERROR("%s: Fingerprint sensor is unsupported", __func__);
     }
+    close(fd);
 }
 
 void vendor_load_properties()
