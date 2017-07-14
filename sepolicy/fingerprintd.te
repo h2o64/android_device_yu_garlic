@@ -4,3 +4,6 @@ allow fingerprintd gx_fpd:binder { transfer call };
 allow fingerprintd init:unix_stream_socket connectto;
 allow fingerprintd property_socket:sock_file write;
 allow fingerprintd system_prop:property_service set;
+
+binder_call(fingerprintd, gx_fpd);
+allow fingerprintd gx_fpd_service:service_manager find;

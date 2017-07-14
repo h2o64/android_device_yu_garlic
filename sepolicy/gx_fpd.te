@@ -39,6 +39,10 @@ allow gx_fpd fingerprintd:binder transfer;
 
 # Allow socket creation
 allow gx_fpd self:netlink_socket create;
+allow gx_fpd self:capability dac_override;
+
+# Allow read write sysfs
+allow gx_fpd sysfs_fp:file rw_file_perms;
 
 #allow read/write property
 set_prop(gx_fpd, system_prop)
