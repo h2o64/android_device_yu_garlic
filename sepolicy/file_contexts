@@ -23,3 +23,6 @@
 
 # Data files
 /data/misc/netmgr(/.*)?						u:object_r:netmgr_data_file:s0
+
+# RMT Storage
+/sys/kernel/debug/rmt_storage/rmts                              u:object_r:debugfs_rmts:s0
