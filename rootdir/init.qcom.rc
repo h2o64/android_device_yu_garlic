@@ -244,8 +244,15 @@ on post-fs-data
     mkdir /data/misc/sensors
     chmod 0775 /data/misc/sensors
 
-		# Goodix FPC
+    # Goodix FPC
     mkdir /data/goodix 0700 system system
+    chmod 2770 /data/goodix
+    mkdir /data/system/fingerprint 0770 system system
+    chmod 2770 /data/system/fingerprint
+
+    # fp_drv
+    chmod 0660 /sys/devices/platform/fp_drv/fp_drv_info
+    chown system system /sys/devices/platform/fp_drv/fp_drv_info
 
 on early-boot
     # set RLIMIT_MEMLOCK to 64MB
