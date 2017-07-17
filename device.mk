@@ -18,8 +18,8 @@
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 
 # Dalvk Heap's
-$(call inherit-product, frameworks/native/build/phone-xxhdpi-4096-dalvik-heap.mk)
-$(call inherit-product, frameworks/native/build/phone-xxhdpi-4096-hwui-memory.mk)
+$(call inherit-product, frameworks/native/build/phone-xxxhdpi-4096-dalvik-heap.mk)
+$(call inherit-product, frameworks/native/build/phone-xxxhdpi-4096-hwui-memory.mk)
 
 $(call inherit-product, vendor/yu/garlic/garlic-vendor.mk)
 
@@ -28,7 +28,7 @@ DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 
 # Screen density
 PRODUCT_AAPT_CONFIG := normal
-PRODUCT_AAPT_PREF_CONFIG := xxhdpi
+PRODUCT_AAPT_PREF_CONFIG := xxxhdpi
 
 # Boot animation
 TARGET_SCREEN_HEIGHT := 1920
