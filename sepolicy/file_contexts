@@ -1,5 +1,11 @@
 # Goodix
 /data/system/fingerprint/(/.*)?					u:object_r:gx_fpd_data_file:s0
+/data/system/fingerprint/calibration/calirawdata_rawdata.csv	u:object_r:gx_fpd_data_file:s0
+/data/system/fingerprint/calibration/calirawdata_before.csv	u:object_r:gx_fpd_data_file:s0
+/data/system/fingerprint/localCailibration.dat			u:object_r:gx_fpd_data_file:s0
+/data/system/fingerprint/featrue_0_0_1.dat			u:object_r:gx_fpd_data_file:s0
+/data/system/fingerprint/featrue_0_0_2.dat			u:object_r:gx_fpd_data_file:s0
+/data/system/fingerprint/featrue_0_0_3.dat			u:object_r:gx_fpd_data_file:s0
 /persist/data/gxfp(/.*)?					u:object_r:gx_fpd_data_file:s0
 /dev/gf66xx-spi							u:object_r:gx_fpd_device:s0
 /dev/goodix_fp(/.*)?						u:object_r:gx_fpd_device:s0
