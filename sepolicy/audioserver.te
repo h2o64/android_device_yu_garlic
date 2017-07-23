@@ -1,2 +1,0 @@
-allow audioserver diag_device:chr_file { read write };
-allow audioserver sysfs_fp:file read;
