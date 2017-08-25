@@ -94,6 +94,7 @@ LOCAL_C_INCLUDES := \
         $(LOCAL_PATH)/include \
         $(LOCAL_PATH)/stack/common \
         $(LOCAL_PATH)/stack/mm-camera-interface/inc \
+        frameworks/native/include \
         $(LOCAL_PATH)/util \
         $(LOCAL_PATH)/HAL3 \
         hardware/libhardware/include/hardware \
