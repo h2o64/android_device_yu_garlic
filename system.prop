@@ -2,6 +2,9 @@
 # system.prop for garlic
 #
 
+# Adreno
+ro.qcom.adreno.qgl.ShaderStorageImageExtendedFormats=0
+
 # Audio
 vendor.voice.playback.conc.disabled=true
 vendor.voice.record.conc.disabled=false
