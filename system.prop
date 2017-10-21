@@ -3,7 +3,7 @@
 #
 
 # Audio
-af.fast_track_multiplier=1
+af.fast_track_multiplier=2
 audio.deep_buffer.media=true
 audio.dolby.ds2.enabled=true
 audio.dolby.ds2.hardbypass=true
@@ -15,7 +15,7 @@ audio.offload.multiple.enabled=false
 audio.offload.passthrough=false
 audio.offload.pcm.16bit.enable=true
 audio.offload.pcm.24bit.enable=true
-audio.offload.track.enable=true
+audio.offload.track.enable=false
 #QC property used when calculating client heap size in audio flinger
 audio.heap.size.multiplier=7
 audio.offload.video=true
@@ -24,7 +24,7 @@ audio.safx.pbe.enabled=true
 audio_hal.period_size=192
 ro.qc.sdk.audio.fluencetype=fluence
 persist.audio.fluence.voicecall=true
-persist.audio.fluence.speaker=true
+persist.audio.fluence.speaker=false
 persist.audio.fluence.voicerec=false
 use.qti.sw.alac.decoder=true
 use.qti.sw.ape.decoder=true
@@ -58,14 +58,8 @@ ro.qualcomm.bt.hci_transport=smd
 # Camera
 camera.display.umax=1920x1080
 camera.display.lmax=1280x720
-persist.camera.is_type=1
-persist.camera.HAL3.enabled=1
-persist.camera.is_type=1
-persist.camera.gyro.android=1
 media.camera.ts.monotonic=1
-vidc.debug.perf.mode=2
-vidc.enc.dcvs.extra-buff-count=2
-vidc.enc.disable.pq=true
+persist.camera.gyro.disable=0
 
 # CNE
 persist.cne.feature=1
@@ -87,6 +81,8 @@ debug.enable.sglscale=1
 ro.opengles.version=196610
 ro.qualcomm.cabl=0
 ro.sf.lcd_density=480
+config.svi.path=/system/etc/svi_configuration.xml
+config.svi.xml=1
 ro.qualcomm.svi=1
 ro.qcom.svi.sensortype=2
 video.disable.ubwc=1
@@ -105,18 +101,13 @@ ro.fm.transmitter=false
 # FRP
 ro.frp.pst=/dev/block/bootdevice/by-name/config
 
-# GPS
-persist.gps.qc_nlp_in_use=1
-persist.loc.nlp_name=com.qualcomm.location
-ro.gps.agps_provider=1
-
 # Media
 media.msm8956hw=0
 mm.enable.smoothstreaming=true
 mmp.enable.3g2=true
 media.aac_51_output_enabled=true
 qcom.hw.aac.encoder=true
-mm.enable.qcom_parser=1048575
+mm.enable.qcom_parser=983039
 vidc.disable.split.mode=1
 
 # Perf
@@ -126,7 +117,7 @@ ro.vendor.extension_library=libqti-perfd-client.so
 ro.am.reschedule_service=true
 ro.sys.fw.dex2oat_thread_count=4
 ro.config.swap=true
-ro.config.zram=true
+ro.config.zram=false
 ro.core_ctl_max_cpu=4
 ro.core_ctl_min_cpu=2
 
@@ -156,8 +147,8 @@ persist.dbg.wfc_avail_ovr=1
 persist.radio.apm_sim_not_pwdn=1
 persist.radio.calls.on.ims=true
 persist.radio.csvt.enabled=false
-persist.radio.custom_ecc=0
-persist.radio.jbims=0
+persist.radio.custom_ecc=1
+persist.radio.jbims=1
 persist.radio.mt_sms_ack=20
 persist.radio.multisim.config=dsds
 persist.radio.rat_on=combine
@@ -173,9 +164,6 @@ telephony.lteOnCdmaDevice=1
 
 # Time Services
 persist.timed.enable=true
-
-# Tcp
-net.tcp.2g_init_rwnd=10
 
 # Trim properties
 ro.sys.fw.use_trim_settings=true
