@@ -4,15 +4,11 @@ vendor/lib64/libadsp_default_listener.so
 vendor/lib64/libadsprpc.so
 vendor/lib64/libfastcvadsp_stub.so
 vendor/lib64/libfastcvopt.so
-vendor/lib64/libfastrpc_aue_stub.so
-vendor/lib64/libfastrpc_utf_stub.so
 vendor/lib64/libsdsprpc.so
 vendor/lib/libadsp_default_listener.so
 vendor/lib/libadsprpc.so
 vendor/lib/libfastcvadsp_stub.so
 vendor/lib/libfastcvopt.so
-vendor/lib/libfastrpc_aue_stub.so
-vendor/lib/libfastrpc_utf_stub.so
 vendor/lib/libsdsprpc.so
 
 # ADSP modules
@@ -20,8 +16,6 @@ vendor/lib/rfsa/adsp/libapps_mem_heap.so
 vendor/lib/rfsa/adsp/libdspCV_skel.so
 vendor/lib/rfsa/adsp/libfastcvadsp.so
 vendor/lib/rfsa/adsp/libfastcvadsp_skel.so
-vendor/lib/rfsa/adsp/libFastRPC_AUE_Forward_skel.so
-vendor/lib/rfsa/adsp/libFastRPC_UTF_Forward_skel.so
 vendor/lib/rfsa/adsp/libobjectMattingApp_skel.so
 
 # Audio
@@ -152,11 +146,14 @@ vendor/lib/libxml.so
 
 # Camera
 bin/mm-qcamera-daemon
+etc/camera/camera_config.xml
 etc/camera/csidtg_camera.xml
 etc/camera/csidtg_chromatix.xml
+etc/camera/imx258_guangbao_p7201_chromatix.xml
 etc/camera/imx258_sunny_p7201_chromatix.xml
-etc/camera/camera_config.xml
-etc/camera/p7201_s5k4h8_chromatix.xml
+etc/camera/msm8937_camera_p7201.xml
+lib/libarcsoft_beautyshot.so
+lib/libmpbase.so
 vendor/lib/libchromaflash.so
 vendor/lib/libflash_pmic.so
 vendor/lib/libjpegdhw.so
@@ -194,22 +191,19 @@ vendor/lib/libmmcamera_faceproc2.so
 vendor/lib/libmmcamera_faceproc.so
 vendor/lib/libmmcamera_hdr_gb_lib.so
 vendor/lib/libmmcamera_imglib.so
-vendor/lib/libmmcamera_imx258.so
-vendor/lib/libmmcamera_imx258_gt24c16_eeprom.so
-vendor/lib/libmmcamera_imx258_gt24c32_eeprom.so
-vendor/lib/libmmcamera_imx258_mono.so
-vendor/lib/libmmcamera_imx258_mono_gt24c32_eeprom.so
+vendor/lib/libmmcamera_imx258_guangbao_p7201.so
 vendor/lib/libmmcamera_imx258_sunny_p7201.so
 vendor/lib/libmmcamera_llvd.so
 vendor/lib/libmmcamera_optizoom_lib.so
+vendor/lib/libmmcamera_p7201_guangbao_imx258_gt24c16_eeprom.so
 vendor/lib/libmmcamera_p7201_sunny_imx258_otp_eeprom.so
+vendor/lib/libmmcamera_p7201_sunwin_ov8856_otp_eeprom.so
 vendor/lib/libmmcamera_paaf_lib.so
 vendor/lib/libmmcamera_pdaf.so
 vendor/lib/libmmcamera_pdafcamif.so
 vendor/lib/libmmcamera_ppbase_module.so
 vendor/lib/libmmcamera_ppeiscore.so
 vendor/lib/libmmcamera_quadracfa.so
-vendor/lib/libmmcamera_s5k4h8.so
 vendor/lib/libmmcamera_s5k4h8_p7201.so
 vendor/lib/libmmcamera_s5k4h8_p7201_eeprom.so
 vendor/lib/libmmcamera_stillmore_lib.so
@@ -228,6 +222,7 @@ vendor/lib/libmmsw_detail_enhancement.so
 vendor/lib/libmmsw_math.so
 vendor/lib/libmmsw_opencl.so
 vendor/lib/libmmsw_platform.so
+vendor/lib/libois_lc898122.so
 vendor/lib/libmmwfdinterface.so
 vendor/lib/libmmwfdsinkinterface.so
 vendor/lib/libmmwfdsrcinterface.so
@@ -235,6 +230,7 @@ vendor/lib/liboptizoom.so
 vendor/lib/libqomx_jpegdec.so
 vendor/lib/libqomx_jpegenc.so
 vendor/lib/libqomx_jpegenc_pipe.so
+vendor/lib/libremosaic_daemon.so
 vendor/lib/libseemore.so
 vendor/lib/libtrueportrait.so
 -vendor/lib/libts_detected_face_hal.so
@@ -242,10 +238,11 @@ vendor/lib/libtrueportrait.so
 vendor/lib/libubifocus.so
 
 # Camera actuators
+vendor/lib/libactuator_dw9800_imx258_p7201guangbao.so
 vendor/lib/libactuator_dw9800_imx258_p7201sunny.so
 vendor/lib/libactuator_bu64244gwz.so
 
-# Camera chromatix - from M release
+# Camera chromatix
 vendor/lib/libchromatix_csidtg_common.so
 vendor/lib/libchromatix_csidtg_cpp_preview.so
 vendor/lib/libchromatix_csidtg_postproc.so
@@ -332,6 +329,7 @@ vendor/lib/libchromatix_s5k4h8_p7201_zsl_video_third_party_app.so
 etc/firmware/cpp_firmware_v1_1_1.fw
 etc/firmware/cpp_firmware_v1_1_6.fw
 etc/firmware/cpp_firmware_v1_10_0.fw
+etc/firmware/cpp_firmware_v1_12_0.fw
 etc/firmware/cpp_firmware_v1_2_0.fw
 etc/firmware/cpp_firmware_v1_4_0.fw
 etc/firmware/cpp_firmware_v1_5_0.fw
@@ -410,7 +408,6 @@ vendor/lib64/libGPreqcancel_svc.so
 vendor/lib64/libGPTEE.so
 vendor/lib64/libmdtp.so
 vendor/lib64/libmdtp_crypto.so
-vendor/lib64/libmdtpdemojni.so
 vendor/lib64/libqisl.so
 vendor/lib64/libQSEEComAPI.so
 vendor/lib64/librpmb.so
@@ -424,6 +421,7 @@ vendor/lib64/libssd.so
 vendor/lib64/libStDrvInt.so
 vendor/lib64/libtzdrmgenprov.so
 vendor/lib/libQSEEComAPI.so
+vendor/lib/libcppf.so
 
 # FIDO
 vendor/lib64/libFidoCrypto.so
@@ -436,13 +434,11 @@ vendor/lib/libFIDOKeyProvisioning.so
 vendor/lib/libFidoSuiJNI.so
 
 # Fingerprint
-bin/gx_fpd|39e278725fdab0b393b6fc827f7f1ba6df488758
+bin/gx_fpd
 lib64/hw/fingerprint.elan.default.so
-lib64/hw/fingerprint.goodix.default.so|7e7dd0eff25e3f9b84dd2467f65c4c863fce6534
-lib64/libfp_client.so|e39436138b1cb88ad75a2306fdc92de7081d3b7a
-lib64/libfpalgorithm.so|af9a2af136728a5ce51d8280977e143a0b739e41
-lib64/libfphal.so|63c2215714e02f6f766d6fec65843c9150f5f756
-lib64/libfpservice.so|3346b92d00611f9462472f6235da8ff2077ae42b
+lib64/hw/fingerprint.goodix.default.so
+lib64/libfp_client.so
+lib64/libfpservice.so
 
 # FM
 bin/fm_qsoc_patches
@@ -613,19 +609,10 @@ etc/firmware/a530v2_seq.fw2
 etc/firmware/a530v3_gpmu.fw2
 etc/firmware/a530v3_seq.fw2
 
-# HBTP
-vendor/lib64/libhbtpclient.so
-vendor/lib64/libhbtpdsp.so
-vendor/lib64/libhbtpfrmwk.so
-vendor/lib64/libhbtpjni.so
-vendor/lib/libhbtpclient.so
-vendor/lib/libhbtpdsp.so
-vendor/lib/libhbtpfrmwk.so
-vendor/lib/libhbtpjni.so
-
 # IMS
 -framework/imscmlibrary.jar
--priv-app/ims/ims.apk|66fa3ab695d7be55a334cbee6e9c94d60089ac2a
+-framework/rcsimssettings.jar
+-vendor/app/ims/ims.apk
 -vendor/app/imssettings/imssettings.apk
 -vendor/framework/qti-vzw-ims-internal.jar
 bin/ims_rtp_daemon
@@ -729,7 +716,6 @@ vendor/lib64/libmmipstreamaal.so
 vendor/lib64/libmmipstreamnetwork.so
 vendor/lib64/libmmipstreamsourcehttp.so
 vendor/lib64/libmmipstreamutils.so
-vendor/lib64/mmi_audio.so
 vendor/lib64/mmi_battery.so
 vendor/lib64/mmi_bluetooth.so
 vendor/lib64/mmi_cpu.so
@@ -746,7 +732,6 @@ vendor/lib64/mmi_sensor.so
 vendor/lib64/mmi_sim.so
 vendor/lib64/mmi_storage.so
 vendor/lib64/mmi_sysinfo.so
-vendor/lib64/mmi_telephone.so
 vendor/lib64/mmi_touch.so
 vendor/lib64/mmi_vibrator.so
 vendor/lib64/mmi_wifi.so
@@ -756,7 +741,6 @@ vendor/lib/libmmipstreamaal.so
 vendor/lib/libmmipstreamnetwork.so
 vendor/lib/libmmipstreamsourcehttp.so
 vendor/lib/libmmipstreamutils.so
-vendor/lib/mmi_audio.so
 vendor/lib/mmi_battery.so
 vendor/lib/mmi_bluetooth.so
 vendor/lib/mmi_camera.so
@@ -774,7 +758,6 @@ vendor/lib/mmi_sensor.so
 vendor/lib/mmi_sim.so
 vendor/lib/mmi_storage.so
 vendor/lib/mmi_sysinfo.so
-vendor/lib/mmi_telephone.so
 vendor/lib/mmi_touch.so
 vendor/lib/mmi_vibrator.so
 vendor/lib/mmi_wifi.so
@@ -796,9 +779,12 @@ bin/msm_irqbalance
 vendor/bin/perfd
 vendor/etc/perf-profile0.conf
 vendor/etc/perf-profile1.conf
+vendor/lib64/libqti_performance.so
 vendor/lib64/libqti-at.so
 vendor/lib64/libqti-iop-client.so
+vendor/lib64/libqti-iop.so
 vendor/lib64/libqti-perfd-client.so
+vendor/lib/libqti_performance.so
 vendor/lib/libqti-at.so
 vendor/lib/libqti-iop-client.so
 vendor/lib/libqti-iop.so
@@ -864,12 +850,14 @@ vendor/lib/libsmemlog.so
 
 # Radio
 -app/datastatusnotification/datastatusnotification.apk
+-app/embms/embms.apk
 -app/fastdormancy/fastdormancy.apk
 -app/QtiTelephonyService/QtiTelephonyService.apk
 -app/shutdownlistener/shutdownlistener.apk
 -framework/embmslibrary.jar
 -framework/qcrilhook.jar
--framework/qti-telephony-common.jar|37d692fb171d0ee3269676a9e9998d2e3bfd9488
+-framework/qcnvitems.jar
+-framework/qti-telephony-common.jar
 -framework/QtiTelephonyServicelibrary.jar
 -priv-app/qcrilmsgtunnel/qcrilmsgtunnel.apk
 bin/netmgrd
@@ -880,6 +868,7 @@ etc/data/dsi_config.xml
 etc/data/netmgr_config.xml
 etc/permissions/embms.xml
 etc/permissions/qcrilhook.xml
+etc/permissions/qcnvitems.xml
 etc/permissions/telephonyservice.xml
 vendor/bin/qti
 vendor/lib64/libconfigdb.so
@@ -906,6 +895,7 @@ vendor/lib64/libsensor1.so
 vendor/lib64/libsensor_reg.so
 vendor/lib64/sensor_calibrate.so
 vendor/lib64/sensors.ssc.so
+vendor/lib/hw/activity_recognition.msm8937.so
 vendor/lib/libsensor1.so
 vendor/lib/libsensor_reg.so
 vendor/lib/sensor_calibrate.so
@@ -1016,9 +1006,6 @@ vendor/lib/libwfduibcsrcinterface.so
 
 # Widevine
 vendor/lib64/mediadrm/libdrmclearkeyplugin.so
-vendor/lib/libwvdrm_L3.so
-vendor/lib/libwvm.so
-vendor/lib/libWVStreamControlAPI_L3.so
 vendor/lib/mediadrm/libdrmclearkeyplugin.so
 vendor/lib/mediadrm/libwvdrmengine.so
 vendor/lib/qcdrm/playready/lib/drm/libdrmprplugin_customer.so
