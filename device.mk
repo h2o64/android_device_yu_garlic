@@ -221,7 +221,8 @@ PRODUCT_PACKAGES += \
     libOmxQcelp13Enc \
     libOmxVdec \
     libOmxVenc \
-    libstagefrighthw
+    libstagefrighthw  \
+    libstagefright_soft_flacdec
 
 # Power
 PRODUCT_PACKAGES += \
@@ -238,7 +239,7 @@ PRODUCT_PACKAGES += \
     init.qcom.usb.rc \
     init.qcom.usb.sh \
     init.recovery.qcom.rc \
-		init.qcom.post_boot.sh \
+    init.qcom.post_boot.sh \
     init.qcom.bt.sh \
     init.qti.ims.sh \
     ueventd.qcom.rc \
