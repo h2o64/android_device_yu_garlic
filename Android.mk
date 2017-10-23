@@ -20,7 +20,6 @@ LOCAL_PATH := $(call my-dir)
 
 ifneq ($(filter garlic,$(TARGET_DEVICE)),)
 include $(call all-makefiles-under,$(LOCAL_PATH))
-include device/yu/garlic/tftp.mk
 
 include $(CLEAR_VARS)
 IMS_LIBS := libimscamera_jni.so libimsmedia_jni.so

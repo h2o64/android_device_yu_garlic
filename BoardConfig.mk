@@ -45,7 +45,7 @@ BOARD_KERNEL_PAGESIZE := 2048
 BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x00008000 --ramdisk_offset 0x01000000 --tags_offset 0x00000100
 BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
 TARGET_KERNEL_APPEND_DTB := true
-TARGET_KERNEL_CONFIG := lineageos_garlic_defconfig
+TARGET_KERNEL_CONFIG := lineage_garlic_defconfig
 TARGET_KERNEL_SOURCE := kernel/yu/msm8937
 
 # ANT
