@@ -400,14 +400,6 @@ on boot
     chown system system /dev/elan_fp
     chmod 0644 /dev/elan_fp
 
-on property:ro.boot.fpsensor=elan
-    setprop persist.sys.fp.goodix 0
-    setprop ro.hardware.fingerprint elan
-
-on property:ro.boot.fpsensor=gdx
-    setprop persist.sys.fp.goodix 1
-    setprop ro.hardware.fingerprint goodix
-
     write /sys/devices/soc.0/78b8000.i2c/i2c-4/4-0020/input/input0/fw_name PR1702898-s3528t_00260005_00380008.img
     write /sys/devices/soc.0/78b8000.i2c/i2c-4/4-0020/input/input0/update_fw 1
 
