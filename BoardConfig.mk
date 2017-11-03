@@ -168,6 +168,10 @@ USE_DEVICE_SPECIFIC_GPS := true
 # Filesystem
 TARGET_FS_CONFIG_GEN := $(LOCAL_PATH)/config.fs
 
+# HIDL
+DEVICE_MANIFEST_FILE := $(LOCAL_PATH)/manifest.xml
+DEVICE_MATRIX_FILE   := $(LOCAL_PATH)/compatibility_matrix.xml
+
 # Init
 TARGET_PLATFORM_DEVICE_BASE := /devices/soc/
 TARGET_INIT_VENDOR_LIB := libinit_garlic
