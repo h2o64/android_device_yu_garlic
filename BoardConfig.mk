@@ -192,7 +192,7 @@ BOARD_USES_QC_TIME_SERVICES := true
 TARGET_RIL_VARIANT := caf
 
 # Recovery
-TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/rootdir/fstab.qcom
+TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/rootdir/recovery/fstab.qcom
 
 # Sensor
 USE_SENSOR_MULTI_HAL := true
