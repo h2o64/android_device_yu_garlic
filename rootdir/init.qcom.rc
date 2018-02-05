@@ -514,7 +514,7 @@ service cnd /system/vendor/bin/cnd
 service dpmQmiMgr /system/vendor/bin/dpmQmiMgr
     class main
     user system
-    group system
+    group radio system
     writepid /dev/cpuset/system-background/tasks
  
 # FM enable/disable triggers
