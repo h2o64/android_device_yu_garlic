@@ -308,8 +308,13 @@ PRODUCT_PACKAGES += \
 # RIL
 PRODUCT_PACKAGES += \
     librmnetctl \
-    libcnefeatureconfig \
-    libxml2
+    libprotobuf-cpp-full \
+    libxml2 \
+    telephony-ext \
+    libqdMetaData.system
+
+PRODUCT_BOOT_JARS += \
+    telephony-ext
 
 # Sensors
 PRODUCT_PACKAGES += \
