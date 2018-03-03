@@ -144,7 +144,7 @@ vendor/lib/libvendorconn.so
 vendor/lib/libwqe.so
 vendor/lib/libxml.so
 
-# Camera
+# Camera (N BETA)
 bin/mm-qcamera-daemon
 lib/libarcsoft_beautyshot.so
 lib/libmpbase.so
@@ -185,11 +185,9 @@ vendor/lib/libmmcamera_faceproc2.so
 vendor/lib/libmmcamera_faceproc.so
 vendor/lib/libmmcamera_hdr_gb_lib.so
 vendor/lib/libmmcamera_imglib.so
-vendor/lib/libmmcamera_imx258_guangbao_p7201.so
-vendor/lib/libmmcamera_imx258_sunny_p7201.so
+vendor/lib/libmmcamera_imx258.so
 vendor/lib/libmmcamera_llvd.so
 vendor/lib/libmmcamera_optizoom_lib.so
-vendor/lib/libmmcamera_p7201_guangbao_imx258_gt24c16_eeprom.so
 vendor/lib/libmmcamera_p7201_sunny_imx258_otp_eeprom.so
 vendor/lib/libmmcamera_p7201_sunwin_ov8856_otp_eeprom.so
 vendor/lib/libmmcamera_paaf_lib.so
@@ -198,7 +196,7 @@ vendor/lib/libmmcamera_pdafcamif.so
 vendor/lib/libmmcamera_ppbase_module.so
 vendor/lib/libmmcamera_ppeiscore.so
 vendor/lib/libmmcamera_quadracfa.so
-vendor/lib/libmmcamera_s5k4h8_p7201.so
+vendor/lib/libmmcamera_s5k4h8.so
 vendor/lib/libmmcamera_s5k4h8_p7201_eeprom.so
 vendor/lib/libmmcamera_stillmore_lib.so
 vendor/lib/libmmcamera_sw2d_lib.so
@@ -231,12 +229,12 @@ vendor/lib/libtrueportrait.so
 -vendor/lib/libts_face_beautify_hal.so
 vendor/lib/libubifocus.so
 
-# Camera actuators
+# Camera actuators (N BETA)
 vendor/lib/libactuator_dw9800_imx258_p7201guangbao.so
 vendor/lib/libactuator_dw9800_imx258_p7201sunny.so
 vendor/lib/libactuator_bu64244gwz.so
 
-# Camera chromatix
+# Camera chromatix (N BETA)
 vendor/lib/libchromatix_csidtg_common.so
 vendor/lib/libchromatix_csidtg_cpp_preview.so
 vendor/lib/libchromatix_csidtg_postproc.so
@@ -331,7 +329,7 @@ etc/firmware/cpp_firmware_v1_5_2.fw
 etc/firmware/cpp_firmware_v1_6_0.fw
 etc/firmware/cpp_firmware_v1_8_0.fw
 
-# Camera sensors
+# Camera sensors (N BETA)
 vendor/lib/libmmcamera_isp_abf40.so
 vendor/lib/libmmcamera_isp_bcc40.so
 vendor/lib/libmmcamera_isp_be_stats44.so
@@ -366,6 +364,7 @@ vendor/lib/libmmcamera_isp_sce40.so
 vendor/lib/libmmcamera_isp_sub_module.so
 vendor/lib/libmmcamera_isp_template.so
 vendor/lib/libmmcamera_isp_wb40.so
+
 # Charger
 bin/hvdcp_opti
 
