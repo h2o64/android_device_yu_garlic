@@ -427,6 +427,7 @@ vendor/lib/libFIDOKeyProvisioning.so
 vendor/lib/libFidoSuiJNI.so
 
 # Fingerprint
+bin/fingerprintd
 bin/gx_fpd
 lib64/hw/fingerprint.elan.default.so
 lib64/hw/fingerprint.goodix.default.so
