@@ -416,16 +416,6 @@ vendor/lib64/libtzdrmgenprov.so
 vendor/lib/libQSEEComAPI.so
 vendor/lib/libcppf.so
 
-# FIDO
-vendor/lib64/libFidoCrypto.so
-vendor/lib64/libFidoCryptoJNI.so
-vendor/lib64/libFIDOKeyProvisioning.so
-vendor/lib64/libFidoSuiJNI.so
-vendor/lib/libFidoCrypto.so
-vendor/lib/libFidoCryptoJNI.so
-vendor/lib/libFIDOKeyProvisioning.so
-vendor/lib/libFidoSuiJNI.so
-
 # Fingerprint
 bin/fingerprintd
 bin/gx_fpd
@@ -704,59 +694,6 @@ vendor/lib/libvqzip.so
 # Misc firmware
 etc/firmware/leia_pfp_470.fw
 etc/firmware/leia_pm4_470.fw
-
-# MMI
-vendor/lib64/libmmi.so
-vendor/lib64/libmmiipstreammmihttp.so
-vendor/lib64/libmmipstreamaal.so
-vendor/lib64/libmmipstreamnetwork.so
-vendor/lib64/libmmipstreamsourcehttp.so
-vendor/lib64/libmmipstreamutils.so
-vendor/lib64/mmi_battery.so
-vendor/lib64/mmi_bluetooth.so
-vendor/lib64/mmi_cpu.so
-vendor/lib64/mmi_flashlight.so
-vendor/lib64/mmi_fm.so
-vendor/lib64/mmi_gps.so
-vendor/lib64/mmi_headset.so
-vendor/lib64/mmi_key.so
-vendor/lib64/mmi_lcd.so
-vendor/lib64/mmi_light.so
-vendor/lib64/mmi_memory.so
-vendor/lib64/mmi_nfc.so
-vendor/lib64/mmi_sensor.so
-vendor/lib64/mmi_sim.so
-vendor/lib64/mmi_storage.so
-vendor/lib64/mmi_sysinfo.so
-vendor/lib64/mmi_touch.so
-vendor/lib64/mmi_vibrator.so
-vendor/lib64/mmi_wifi.so
-vendor/lib/libmmi.so
-vendor/lib/libmmiipstreammmihttp.so
-vendor/lib/libmmipstreamaal.so
-vendor/lib/libmmipstreamnetwork.so
-vendor/lib/libmmipstreamsourcehttp.so
-vendor/lib/libmmipstreamutils.so
-vendor/lib/mmi_battery.so
-vendor/lib/mmi_bluetooth.so
-vendor/lib/mmi_camera.so
-vendor/lib/mmi_cpu.so
-vendor/lib/mmi_flashlight.so
-vendor/lib/mmi_fm.so
-vendor/lib/mmi_gps.so
-vendor/lib/mmi_headset.so
-vendor/lib/mmi_key.so
-vendor/lib/mmi_lcd.so
-vendor/lib/mmi_light.so
-vendor/lib/mmi_memory.so
-vendor/lib/mmi_nfc.so
-vendor/lib/mmi_sensor.so
-vendor/lib/mmi_sim.so
-vendor/lib/mmi_storage.so
-vendor/lib/mmi_sysinfo.so
-vendor/lib/mmi_touch.so
-vendor/lib/mmi_vibrator.so
-vendor/lib/mmi_wifi.so
 
 # Modem
 vendor/lib64/libwms.so
