@@ -23,12 +23,19 @@
 #define _REALLY_INCLUDE_SYS__SYSTEM_PROPERTIES_H_
 #include <sys/_system_properties.h>
 
-#include "log.h"
+#include <android-base/properties.h>
+#include <android-base/logging.h>
+
 #include "property_service.h"
 #include "util.h"
 #include "vendor_init.h"
 
 #define DRV_INFO "/sys/devices/platform/fp_drv/fp_drv_info"
+
+using android::init::property_set;
+
+namespace android {
+namespace init {
 
 static void fp_prop()
 {
@@ -58,3 +65,5 @@ void vendor_load_properties()
     fp_prop();
 }
 
+}
+}
