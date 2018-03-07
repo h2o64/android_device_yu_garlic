@@ -17,10 +17,10 @@
 
 $(call inherit-product, device/yu/garlic/full_garlic.mk)
 
-# Inherit some common LineageOS stuff.
-$(call inherit-product, vendor/cm/config/common_full_phone.mk)
+# Inherit some common Cosmic-OS stuff.
+$(call inherit-product, vendor/cos/common.mk)
 
-PRODUCT_NAME := lineage_garlic
+PRODUCT_NAME := cos_garlic
 BOARD_VENDOR := yu
 
 PRODUCT_GMS_CLIENTID_BASE := android-micromax
