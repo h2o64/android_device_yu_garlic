@@ -1,22 +1,27 @@
-# ADSP
-bin/adsprpcd
-vendor/lib64/libadsp_default_listener.so
-vendor/lib64/libadsprpc.so
-vendor/lib64/libfastcvadsp_stub.so
-vendor/lib64/libfastcvopt.so
-vendor/lib64/libsdsprpc.so
+# ADSP - from tissot - OPR1.170623.026 8.2.8
+vendor/bin/adsprpcd
 vendor/lib/libadsp_default_listener.so
 vendor/lib/libadsprpc.so
+-vendor/lib/libaudio_log_utils.so
 vendor/lib/libfastcvadsp_stub.so
 vendor/lib/libfastcvopt.so
-vendor/lib/libsdsprpc.so
+vendor/lib/libqtigef.so
+vendor/lib64/libadsp_default_listener.so
+vendor/lib64/libadsprpc.so
+-vendor/lib64/libaudio_log_utils.so
+vendor/lib64/libfastcvadsp_stub.so
+vendor/lib64/libqtigef.so
 
-# ADSP modules
+# ADSP modules - from tissot - OPR1.170623.026 8.2.8
 vendor/lib/rfsa/adsp/libapps_mem_heap.so
 vendor/lib/rfsa/adsp/libdspCV_skel.so
-vendor/lib/rfsa/adsp/libfastcvadsp.so
+vendor/lib/rfsa/adsp/libexternal_dog_skel.so
 vendor/lib/rfsa/adsp/libfastcvadsp_skel.so
-vendor/lib/rfsa/adsp/libobjectMattingApp_skel.so
+vendor/lib/rfsa/adsp/libfastcvadsp.so
+vendor/lib/rfsa/adsp/libFastRPC_AUE_Forward_skel.so
+vendor/lib/rfsa/adsp/libFastRPC_UTF_Forward_Qtc2_skel.so
+vendor/lib/rfsa/adsp/libscveBlobDescriptor_skel.so
+vendor/lib/rfsa/adsp/libscveT2T_skel.so
 
 # Audio
 etc/aanc_tuning_mixer.txt
@@ -96,53 +101,73 @@ etc/acdbdata/QRD/QRD_Hdmi_cal.acdb
 etc/acdbdata/QRD/QRD_Headset_cal.acdb
 etc/acdbdata/QRD/QRD_Speaker_cal.acdb
 
-# Bluetooth
-bin/btnvtool
-bin/hci_qcomm_init
-etc/permissions/btmultisim.xml
-vendor/lib64/libbt-vendor.so
-vendor/lib64/libbtnv.so
-vendor/lib/libbt-vendor.so
+# Bluetooth - from tissot - OPR1.170623.026 8.2.8
+-lib/com.qualcomm.qti.bluetooth_audio@1.0.so
+-lib64/com.qualcomm.qti.bluetooth_audio@1.0.so
+vendor/bin/hci_qcomm_init
+vendor/bin/wcnss_filter
+vendor/lib/com.qualcomm.qti.bluetooth_audio@1.0_vendor.so
 vendor/lib/libbtnv.so
+vendor/lib64/com.qualcomm.qti.bluetooth_audio@1.0_vendor.so
+vendor/lib64/libbtnv.so
 
-# CNE
--framework/cneapiclient.jar
--framework/com.quicinc.cne.jar
--framework/ConnectivityExt.jar
--priv-app/CNEService/CNEService.apk
-bin/cnd
+# Bluetooth (aptX) - from oneplus3
+vendor/lib64/libaptX_encoder.so
+vendor/lib64/libaptXHD_encoder.so
+
+# CNE - from tissot - OPR1.170623.026 8.2.8
 etc/cne/andsfCne.xml
 etc/cne/SwimConfig.xml
-etc/cne/wqeclient/ATT/ATT_profile1.xml
-etc/cne/wqeclient/ATT/ATT_profile2.xml
-etc/cne/wqeclient/ATT/ATT_profile3.xml
-etc/cne/wqeclient/ATT/ATT_profile4.xml
-etc/cne/wqeclient/ROW/ROW_profile1.xml
-etc/cne/wqeclient/ROW/ROW_profile2.xml
-etc/cne/wqeclient/ROW/ROW_profile3.xml
-etc/cne/wqeclient/ROW/ROW_profile4.xml
-etc/cne/wqeclient/ROW/ROW_profile5.xml
-etc/cne/wqeclient/VZW/VZW_profile1.xml
-etc/cne/wqeclient/VZW/VZW_profile2.xml
-etc/cne/wqeclient/VZW/VZW_profile3.xml
-etc/cne/wqeclient/VZW/VZW_profile4.xml
-etc/cne/wqeclient/VZW/VZW_profile5.xml
-etc/cne/wqeclient/VZW/VZW_profile6.xml
 etc/permissions/cneapiclient.xml
 etc/permissions/com.quicinc.cne.xml
-etc/permissions/ConnectivityExt.xml
-vendor/lib64/libcne.so
-vendor/lib64/libcneapiclient.so
-vendor/lib64/libcneqmiutils.so
-vendor/lib64/libvendorconn.so
-vendor/lib64/libwqe.so
-vendor/lib64/libxml.so
+framework/cneapiclient.jar
+framework/com.quicinc.cne.api-V1.0-java.jar
+framework/com.quicinc.cne.jar
+lib/libvendorconn.so
+lib64/libvendorconn.so
+-priv-app/CNEService/CNEService.apk
+vendor/bin/cnd
+vendor/etc/cne/wqeclient/ATT/ATT_profile1.xml
+vendor/etc/cne/wqeclient/ATT/ATT_profile2.xml
+vendor/etc/cne/wqeclient/ATT/ATT_profile3.xml
+vendor/etc/cne/wqeclient/ATT/ATT_profile4.xml
+vendor/etc/cne/wqeclient/ATT/ATT_profile5.xml
+vendor/etc/cne/wqeclient/ATT/ATT_profile6.xml
+vendor/etc/cne/wqeclient/ROW/ROW_profile1.xml
+vendor/etc/cne/wqeclient/ROW/ROW_profile2.xml
+vendor/etc/cne/wqeclient/ROW/ROW_profile3.xml
+vendor/etc/cne/wqeclient/ROW/ROW_profile4.xml
+vendor/etc/cne/wqeclient/ROW/ROW_profile5.xml
+vendor/etc/cne/wqeclient/ROW/ROW_profile6.xml
+vendor/etc/cne/wqeclient/ROW/ROW_profile7.xml
+vendor/etc/cne/wqeclient/VZW/VZW_profile1.xml
+vendor/etc/cne/wqeclient/VZW/VZW_profile2.xml
+vendor/etc/cne/wqeclient/VZW/VZW_profile3.xml
+vendor/etc/cne/wqeclient/VZW/VZW_profile4.xml
+vendor/etc/cne/wqeclient/VZW/VZW_profile5.xml
+vendor/etc/cne/wqeclient/VZW/VZW_profile6.xml
+vendor/lib/com.quicinc.cne.api@1.0.so
+vendor/lib/com.quicinc.cne.constants@1.0.so
+vendor/lib/com.quicinc.cne.constants@2.0.so
+vendor/lib/com.quicinc.cne.server@1.0.so
+vendor/lib/com.quicinc.cne.server@2.0.so
 vendor/lib/libcne.so
 vendor/lib/libcneapiclient.so
+vendor/lib/libcneoplookup.so
 vendor/lib/libcneqmiutils.so
-vendor/lib/libvendorconn.so
 vendor/lib/libwqe.so
 vendor/lib/libxml.so
+vendor/lib64/com.quicinc.cne.api@1.0.so
+vendor/lib64/com.quicinc.cne.constants@1.0.so
+vendor/lib64/com.quicinc.cne.constants@2.0.so
+vendor/lib64/com.quicinc.cne.server@1.0.so
+vendor/lib64/com.quicinc.cne.server@2.0.so
+vendor/lib64/libcne.so
+vendor/lib64/libcneapiclient.so
+vendor/lib64/libcneoplookup.so
+vendor/lib64/libcneqmiutils.so
+vendor/lib64/libwqe.so
+vendor/lib64/libxml.so
 
 # Camera (N BETA)
 bin/mm-qcamera-daemon
@@ -365,56 +390,66 @@ vendor/lib/libmmcamera_isp_sub_module.so
 vendor/lib/libmmcamera_isp_template.so
 vendor/lib/libmmcamera_isp_wb40.so
 
-# Charger
-bin/hvdcp_opti
+# Charger - from tissot - OPR1.170623.026 8.2.8
+vendor/bin/hvdcp_opti
 
-# DPM
--framework/com.qti.dpmframework.jar
--framework/dpmapi.jar
--framework/tcmclient.jar
--priv-app/dpmserviceapp/dpmserviceapp.apk
+# DPM - from tissot - OPR1.170623.026 8.2.8
 bin/dpmd
 etc/dpm/dpm.conf
 etc/dpm/nsrm/NsrmConfiguration.xml
+etc/init/dpmd.rc
 etc/permissions/com.qti.dpmframework.xml
 etc/permissions/dpmapi.xml
-vendor/lib64/libdpmctmgr.so
-vendor/lib64/libdpmfdmgr.so
-vendor/lib64/libdpmframework.so
-vendor/lib64/libdpmnsrm.so
-vendor/lib64/libdpmtcm.so
-vendor/lib/libdpmctmgr.so
-vendor/lib/libdpmfdmgr.so
-vendor/lib/libdpmframework.so
-vendor/lib/libdpmnsrm.so
-vendor/lib/libdpmtcm.so
+framework/com.qti.dpmframework.jar
+framework/dpmapi.jar
+framework/tcmclient.jar
+-priv-app/dpmserviceapp/dpmserviceapp.apk
+lib/com.qualcomm.qti.dpm.api@1.0.so
+lib/libdpmctmgr.so
+lib/libdpmfdmgr.so
+lib/libdpmframework.so
+lib/libdpmnsrm.so
+lib/libdpmtcm.so
+lib64/com.qualcomm.qti.dpm.api@1.0.so
+lib64/libdpmctmgr.so
+lib64/libdpmfdmgr.so
+lib64/libdpmframework.so
+lib64/libdpmnsrm.so
+lib64/libdpmtcm.so
+vendor/bin/dpmQmiMgr
+vendor/lib/com.qualcomm.qti.dpm.api@1.0_vendor.so
+vendor/lib/libdpmqmihal.so
+vendor/lib64/com.qualcomm.qti.dpm.api@1.0_vendor.so
+vendor/lib64/libdpmqmihal.so
 
-# DRM
-bin/qseecomd
-vendor/bin/qseeproxydaemon
-vendor/lib64/lib-sec-disp.so
-vendor/lib64/libavenhancements.so
+# DRM - from tissot - OPR1.170623.026 8.2.8
+vendor/bin/qseecomd
+vendor/lib/libcppf.so
+vendor/lib/libQSEEComAPI.so
+vendor/lib/libtzdrmgenprov.so
 vendor/lib64/libdrmfs.so
 vendor/lib64/libdrmtime.so
-vendor/lib64/libGPreqcancel.so
 vendor/lib64/libGPreqcancel_svc.so
-vendor/lib64/libGPTEE.so
-vendor/lib64/libmdtp.so
-vendor/lib64/libmdtp_crypto.so
+vendor/lib64/libGPreqcancel.so
 vendor/lib64/libqisl.so
 vendor/lib64/libQSEEComAPI.so
 vendor/lib64/librpmb.so
-vendor/lib64/libSecureExtAuthJNI.so
-vendor/lib64/libSecureSampleAuthJNI.so
-vendor/lib64/libsecureui.so
 vendor/lib64/libsecureui_svcsock.so
+vendor/lib64/libsecureui.so
 vendor/lib64/libSecureUILib.so
-vendor/lib64/libsecureuisvc_jni.so
 vendor/lib64/libssd.so
 vendor/lib64/libStDrvInt.so
 vendor/lib64/libtzdrmgenprov.so
-vendor/lib/libQSEEComAPI.so
-vendor/lib/libcppf.so
+
+# DRM - Qualcomm Trusted Execution Enviornment - from tissot - OPR1.170623.026 8.2.8
+lib/vendor.qti.hardware.qteeconnector@1.0.so
+lib64/vendor.qti.hardware.qteeconnector@1.0.so
+vendor/bin/hw/vendor.qti.hardware.qteeconnector@1.0-service
+vendor/etc/init/vendor.qti.hardware.qteeconnector@1.0-service.rc
+vendor/lib/hw/vendor.qti.hardware.qteeconnector@1.0-impl.so
+vendor/lib/vendor.qti.hardware.qteeconnector@1.0_vendor.so
+vendor/lib64/hw/vendor.qti.hardware.qteeconnector@1.0-impl.so
+vendor/lib64/vendor.qti.hardware.qteeconnector@1.0_vendor.so
 
 # Fingerprint
 bin/fingerprintd
@@ -426,39 +461,44 @@ lib64/libfp_client.so
 lib64/libfpnav.so
 lib64/libfpservice.so
 
-# FM
-bin/fm_qsoc_patches
+# FM - from tissot - OPR1.170623.026 8.2.8
+-lib/vendor.qti.hardware.fm@1.0.so
+-lib64/vendor.qti.hardware.fm@1.0.so
+vendor/lib/hw/vendor.qti.hardware.fm@1.0-impl.so
+vendor/lib/vendor.qti.hardware.fm@1.0_vendor.so
+vendor/lib64/hw/vendor.qti.hardware.fm@1.0-impl.so
+vendor/lib64/vendor.qti.hardware.fm@1.0_vendor.so
 
-# Gatekeeper
-vendor/lib/hw/gatekeeper.msm8937.so
-vendor/lib64/hw/gatekeeper.msm8937.so
+# Gatekeeper - from tissot - OPR1.170623.026 8.2.8
+vendor/lib/hw/gatekeeper.msm8953.so:vendor/lib/hw/gatekeeper.msm8937.so
+vendor/lib64/hw/gatekeeper.msm8953.so:vendor/lib64/hw/gatekeeper.msm8937.so
 
-# GPS
--framework/com.qti.location.sdk.jar
--framework/com.qualcomm.location.vzw_library.jar
--framework/izat.xt.srv.jar
--lib64/libloc_api_v02.so
--lib64/libloc_ds_api.so
--priv-app/com.qualcomm.location/com.qualcomm.location.apk
-bin/loc_launcher
-bin/lowi-server
-bin/xtwifi-client
-bin/xtwifi-inet-agent
+# GPS - from tissot - OPR1.170623.026 8.2.8
 etc/permissions/com.qti.location.sdk.xml
-etc/permissions/com.qualcomm.location.vzw_library.xml
 etc/permissions/com.qualcomm.location.xml
 etc/permissions/izat.xt.srv.xml
-etc/xtra_root_cert.pem
-lib64/libgnsspps.so
+framework/com.qti.location.sdk.jar
+framework/izat.xt.srv.jar
+lib64/liblocationservice_jni.so
+lib64/libxt_native.so
+lib64/vendor.qti.gnss@1.0.so
+-priv-app/com.qualcomm.location/com.qualcomm.location.apk
+vendor/bin/hw/vendor.qti.gnss@1.0-service
+vendor/bin/loc_launcher
+vendor/bin/lowi-server
 vendor/bin/slim_daemon
-vendor/lib64/hw/flp.default.so
+vendor/bin/xtra-daemon
+vendor/etc/cacert_location.pem
+vendor/etc/init/vendor.qti.gnss@1.0-service.rc
+vendor/etc/xtra_root_cert.pem
+vendor/lib/hw/vendor.qti.gnss@1.0-impl.so
+vendor/lib/vendor.qti.gnss@1.0_vendor.so
+vendor/lib64/hw/vendor.qti.gnss@1.0-impl.so
 vendor/lib64/libalarmservice_jni.so
-vendor/lib64/libasn1cper.so
-vendor/lib64/libasn1crt.so
-vendor/lib64/libasn1crtx.so
 vendor/lib64/libdataitems.so
-vendor/lib64/libDRPlugin.so
 vendor/lib64/libdrplugin_client.so
+vendor/lib64/libDRPlugin.so
+vendor/lib64/lib_drplugin_server.so
 vendor/lib64/libevent_observer.so
 vendor/lib64/libflp.so
 vendor/lib64/libgdtap.so
@@ -466,115 +506,99 @@ vendor/lib64/libgeofence.so
 vendor/lib64/libizat_client_api.so
 vendor/lib64/libizat_core.so
 vendor/lib64/liblbs_core.so
-vendor/lib64/liblistenjni.so
-vendor/lib64/liblistensoundmodel2.so
-vendor/lib64/libloc_ext.so
+-vendor/lib64/libloc_api_v02.so
+vendor/lib64/libloc_ds_api.so
 vendor/lib64/libloc_externalDr.so
-vendor/lib64/liblocationservice.so
 vendor/lib64/liblocationservice_glue.so
+vendor/lib64/liblocationservice.so
 vendor/lib64/liblowi_client.so
 vendor/lib64/liblowi_wifihal.so
-vendor/lib64/liblowi_wifihal_nl.so
-vendor/lib64/libslimclient.so
-vendor/lib64/libsubsystem_control.so
+vendor/lib64/libquipc_os_api.so
 vendor/lib64/libulp2.so
-vendor/lib64/libxt_native.so
 vendor/lib64/libxtadapter.so
 vendor/lib64/libxtwifi_ulp_adaptor.so
+vendor/lib64/vendor.qti.gnss@1.0_vendor.so
 
-# Graphics
-vendor/lib64/hw/vulkan.msm8937.so
-vendor/lib64/egl/eglsubAndroid.so
+# Graphics - from mata - OPM1.170911.213
+vendor/lib/egl/eglSubDriverAndroid.so
+vendor/lib/egl/libEGL_adreno.so
+vendor/lib/egl/libGLESv1_CM_adreno.so
+vendor/lib/egl/libGLESv2_adreno.so
+vendor/lib/egl/libq3dtools_adreno.so
+vendor/lib/egl/libQTapGLES.so
+vendor/lib/libadreno_utils.so
+vendor/lib/libbccQTI.so
+vendor/lib/libC2D2.so
+vendor/lib/libc2d30_bltlib.so
+vendor/lib/libc2d30-a5xx.so
+vendor/lib/libCB.so
+vendor/lib/libgsl.so
+vendor/lib/libllvm-glnext.so
+vendor/lib/libllvm-qcom.so
+vendor/lib/libllvm-qgl.so
+vendor/lib/libmm-disp-apis.so
+vendor/lib/libmm-qdcm.so
+vendor/lib/libOpenCL.so
+vendor/lib/libqseed3.so
+vendor/lib/librs_adreno_sha1.so
+vendor/lib/librs_adreno.so
+vendor/lib/libRSDriver_adreno.so
 vendor/lib64/egl/eglSubDriverAndroid.so
 vendor/lib64/egl/libEGL_adreno.so
-vendor/lib64/egl/libESXEGL_adreno.so
-vendor/lib64/egl/libESXGLESv1_CM_adreno.so
-vendor/lib64/egl/libESXGLESv2_adreno.so
 vendor/lib64/egl/libGLESv1_CM_adreno.so
 vendor/lib64/egl/libGLESv2_adreno.so
 vendor/lib64/egl/libq3dtools_adreno.so
-vendor/lib64/egl/libq3dtools_esx.so
 vendor/lib64/egl/libQTapGLES.so
-vendor/lib64/egl/libRBEGL_adreno.so
-vendor/lib64/egl/libRBGLESv1_CM_adreno.so
-vendor/lib64/egl/libRBGLESv2_adreno.so
 vendor/lib64/libadreno_utils.so
 vendor/lib64/libbccQTI.so
 vendor/lib64/libC2D2.so
-vendor/lib64/libc2d30-a3xx.so
-vendor/lib64/libc2d30-a4xx.so
-vendor/lib64/libc2d30-a5xx.so
 vendor/lib64/libc2d30_bltlib.so
+vendor/lib64/libc2d30-a5xx.so
 vendor/lib64/libCB.so
-vendor/lib64/libEGL_adreno.so
 vendor/lib64/libgsl.so
 vendor/lib64/libllvm-glnext.so
 vendor/lib64/libllvm-qcom.so
 vendor/lib64/libllvm-qgl.so
 vendor/lib64/libmm-disp-apis.so
-vendor/lib64/libmm-hdcpmgr.so
 vendor/lib64/libmm-qdcm.so
-vendor/lib64/libmmQSM.so
 vendor/lib64/libOpenCL.so
-vendor/lib64/librs_adreno.so
+vendor/lib64/libqseed3.so
 vendor/lib64/librs_adreno_sha1.so
+vendor/lib64/librs_adreno.so
 vendor/lib64/libRSDriver_adreno.so
-vendor/lib64/libsc-a2xx.so
-vendor/lib64/libsc-a3xx.so
-vendor/lib64/libscalar.so
-vendor/lib64/libscale.so
 vendor/lib64/libsd_sdk_display.so
-vendor/lib64/libsdm-color.so
-vendor/lib64/libsdm-diag.so
-vendor/lib64/libsdm-disp-apis.so
-vendor/lib64/libsdmextension.so
-vendor/lib/hw/vulkan.msm8937.so
-vendor/lib/egl/eglsubAndroid.so
-vendor/lib/egl/eglSubDriverAndroid.so
-vendor/lib/egl/libEGL_adreno.so
-vendor/lib/egl/libESXEGL_adreno.so
-vendor/lib/egl/libESXGLESv1_CM_adreno.so
-vendor/lib/egl/libESXGLESv2_adreno.so
-vendor/lib/egl/libGLESv1_CM_adreno.so
-vendor/lib/egl/libGLESv2_adreno.so
-vendor/lib/egl/libq3dtools_adreno.so
-vendor/lib/egl/libq3dtools_esx.so
-vendor/lib/egl/libQTapGLES.so
-vendor/lib/egl/libRBEGL_adreno.so
-vendor/lib/egl/libRBGLESv1_CM_adreno.so
-vendor/lib/egl/libRBGLESv2_adreno.so
-vendor/lib/libadreno_utils.so
-vendor/lib/libbccQTI.so
-vendor/lib/libC2D2.so
-vendor/lib/libc2d30-a3xx.so
-vendor/lib/libc2d30-a4xx.so
-vendor/lib/libc2d30-a5xx.so
-vendor/lib/libc2d30_bltlib.so
-vendor/lib/libCB.so
-vendor/lib/libEGL_adreno.so
-vendor/lib/libgsl.so
-vendor/lib/libllvd_smore.so
-vendor/lib/libllvm-glnext.so
-vendor/lib/libllvm-qcom.so
-vendor/lib/libllvm-qgl.so
-vendor/lib/libmm-color-convertor.so
-vendor/lib/libmm-disp-apis.so
-vendor/lib/libmm-hdcpmgr.so
-vendor/lib/libmm-qdcm.so
-vendor/lib/libmmQSM.so
-vendor/lib/libOpenCL.so
-vendor/lib/librs_adreno.so
-vendor/lib/librs_adreno_sha1.so
-vendor/lib/libRSDriver_adreno.so
-vendor/lib/libsc-a2xx.so
-vendor/lib/libsc-a3xx.so
+
+# Graphics (HDR) - from mata - OPM1.170911.213
+vendor/lib/libhdr_tm.so
+vendor/lib64/libhdr_tm.so
+
+# Graphics (SDM) - from cheeseburger - OPR6.170623.013
+lib/libsdm-disp-apis.so:vendor/lib/libsdm-disp-apis.so
+lib64/libsdm-disp-apis.so:vendor/lib64/libsdm-disp-apis.so
 vendor/lib/libscalar.so
-vendor/lib/libscale.so
-vendor/lib/libsd_sdk_display.so
 vendor/lib/libsdm-color.so
 vendor/lib/libsdm-diag.so
-vendor/lib/libsdm-disp-apis.so
+vendor/lib/libsdm-disp-vndapis.so
 vendor/lib/libsdmextension.so
+vendor/lib/libtinyxml2_1.so
+vendor/lib64/libscalar.so
+vendor/lib64/libsdm-color.so
+vendor/lib64/libsdm-diag.so
+vendor/lib64/libsdm-disp-vndapis.so
+vendor/lib64/libsdmextension.so
+vendor/lib64/libtinyxml2_1.so
+
+# Graphics (qdutils HAL) - from cheeseburger - OPR6.170623.013
+lib/vendor.qti.hardware.qdutils_disp@1.0.so
+lib64/vendor.qti.hardware.qdutils_disp@1.0.so
+vendor/bin/hw/vendor.qti.hardware.qdutils_disp@1.0-service-qti
+vendor/etc/init/vendor.qti.hardware.qdutils_disp@1.0-service-qti.rc
+vendor/lib/vendor.qti.hardware.qdutils_disp@1.0_vendor.so
+vendor/lib64/vendor.qti.hardware.qdutils_disp@1.0_vendor.so
+
+# Graphics (Vulkan) - from oneplus3
+vendor/lib64/hw/vulkan.msm8996.so:vendor/lib64/hw/vulkan.msm8937.so
+vendor/lib/hw/vulkan.msm8996.so:vendor/lib/hw/vulkan.msm8937.so
 
 # Graphics firmware
 etc/firmware/a225_pfp.fw
@@ -595,109 +619,110 @@ etc/firmware/a530v2_seq.fw2
 etc/firmware/a530v3_gpmu.fw2
 etc/firmware/a530v3_seq.fw2
 
-# IMS
--framework/imscmlibrary.jar
--framework/rcsimssettings.jar
--vendor/app/ims/ims.apk
--vendor/app/imssettings/imssettings.apk
--vendor/framework/qti-vzw-ims-internal.jar
-bin/ims_rtp_daemon
-bin/imscmservice
-bin/imsdatadaemon
-bin/imsqmidaemon
-etc/permissions/imscm.xml
+# IMS - from tissot - OPR1.170623.026 8.2.8
+# ims.apk - from oneplus3
+-app/ims/ims.apk|d255b5dfe08b0287b338edde796b9a533b28fd81
+-app/imssettings/imssettings.apk
 etc/permissions/qti-vzw-ims-internal.xml
+lib/com.qualcomm.qti.imscmservice@1.0.so
+lib/lib-imscamera.so
+lib/lib-imsvideocodec.so
+lib/lib-imsvtextutils.so
+lib/lib-imsvtutils.so
+lib/libdiag_system.so
+lib/libimscamera_jni.so
+lib/libimsmedia_jni.so
+lib/librcc.so
+lib/vendor.qti.imsrtpservice@1.0.so
+lib64/com.qualcomm.qti.imscmservice@1.0.so
+lib64/lib-imscamera.so
+lib64/lib-imsvideocodec.so
+lib64/lib-imsvt.so
+lib64/lib-imsvtextutils.so
+lib64/lib-imsvtutils.so
+lib64/libdiag_system.so
+lib64/libimscamera_jni.so
+lib64/libimsmedia_jni.so
+lib64/librcc.so
+lib64/vendor.qti.imsrtpservice@1.0.so
+vendor/bin/ims_rtp_daemon
+vendor/bin/imsdatadaemon
+vendor/bin/imsqmidaemon
+vendor/bin/imsrcsd
+vendor/framework/qti-vzw-ims-internal.jar
+vendor/lib/com.qualcomm.qti.imscmservice@1.0_vendor.so
+vendor/lib/lib-imscmservice.so
+vendor/lib/lib-uceservice.so
+vendor/lib/vendor.qti.imsrtpservice@1.0-service-Impl.so
+vendor/lib/vendor.qti.imsrtpservice@1.0_vendor.so
+vendor/lib64/com.qualcomm.qti.imscmservice@1.0_vendor.so
 vendor/lib64/lib-dplmedia.so
-vendor/lib64/lib-ims-rcscmjni.so
-vendor/lib64/lib-imscamera.so
+vendor/lib64/lib-imsSDP.so
+vendor/lib64/lib-imscmservice.so
 vendor/lib64/lib-imsdpl.so
 vendor/lib64/lib-imsqimf.so
-vendor/lib64/lib-imsrcs.so
-vendor/lib64/lib-imsrcscm.so
-vendor/lib64/lib-imsrcscmclient.so
-vendor/lib64/lib-imsrcscmservice.so
-vendor/lib64/lib-imss.so
-vendor/lib64/lib-imsSDP.so
-vendor/lib64/lib-imsvt.so
 vendor/lib64/lib-imsxml.so
-vendor/lib64/lib-rcsimssjni.so
-vendor/lib64/lib-rcsjni.so
 vendor/lib64/lib-rtpcommon.so
 vendor/lib64/lib-rtpcore.so
 vendor/lib64/lib-rtpdaemoninterface.so
 vendor/lib64/lib-rtpsl.so
-vendor/lib64/libimscamera_jni.so
-vendor/lib64/libimsmedia_jni.so
-vendor/lib64/librcc.so
-vendor/lib64/libvoice-svc.so
+vendor/lib64/lib-uceservice.so
+vendor/lib64/vendor.qti.imsrtpservice@1.0-service-Impl.so
+vendor/lib64/vendor.qti.imsrtpservice@1.0_vendor.so
 
-# Keystore
-vendor/lib/hw/keystore.msm8937.so
-vendor/lib64/hw/keystore.msm8937.so
+# Keystore - from tissot - OPR1.170623.026 8.2.8
+vendor/lib/hw/keystore.msm8953.so:vendor/lib/hw/keystore.msm8937.so
+vendor/lib64/hw/keystore.msm8953.so:vendor/lib64/hw/keystore.msm8937.so
 
 # Lights
 lib/hw/lights.msm8937.so
 lib64/hw/lights.msm8937.so
 
-# Listen
-vendor/lib/hw/sound_trigger.primary.msm8937.so
+# Listen - from tissot - OPR1.170623.026 8.2.8
+vendor/lib/hw/sound_trigger.primary.msm8953.so:vendor/lib/hw/sound_trigger.primary.msm8937.so
 vendor/lib/libadpcmdec.so
 vendor/lib/libsmwrapper.so
+vendor/lib/vendor.qti.voiceprint@1.0.so
+vendor/lib64/hw/sound_trigger.primary.msm8953.so:vendor/lib64/hw/sound_trigger.primary.msm8937.so
+vendor/lib64/vendor.qti.voiceprint@1.0.so
 
-# Media
-etc/firmware/DE.o.msm8937
-lib64/libOmxSwVdec.so
-lib64/libOmxSwVencMpeg4.so
-lib64/libOmxVpp.so
-lib64/libvpplibrary.so
-lib/libOmxSwVdec.so
-lib/libOmxSwVencMpeg4.so
-lib/libOmxVpp.so
-lib/libvpplibrary.so
-vendor/lib64/libAlacSwDec.so
-vendor/lib64/libApeSwDec.so
-vendor/lib64/libFlacSwDec.so
-vendor/lib64/libI420colorconvert.so
-vendor/lib64/libmm-color-convertor.so
-vendor/lib64/libmmosal.so
-vendor/lib64/libMpeg4SwEncoder.so
-vendor/lib64/libOmxAacDec.so
-vendor/lib64/libOmxAlacDec.so
-vendor/lib64/libOmxAlacDecSw.so
-vendor/lib64/libOmxAmrwbplusDec.so
-vendor/lib64/libOmxApeDec.so
-vendor/lib64/libOmxApeDecSw.so
-vendor/lib64/libOmxEvrcDec.so
-vendor/lib64/libOmxMux.so
-vendor/lib64/libOmxQcelp13Dec.so
-vendor/lib64/libOmxWmaDec.so
-vendor/lib/libAlacSwDec.so
-vendor/lib/libApeSwDec.so
-vendor/lib/libFlacSwDec.so
+# Media - from tissot - OPR1.170623.026 8.2.8
 vendor/lib/libI420colorconvert.so
-vendor/lib/libmmosal.so
-vendor/lib/libMpeg4SwEncoder.so
-vendor/lib/libomx-dts.so
 vendor/lib/libOmxAacDec.so
 vendor/lib/libOmxAlacDec.so
 vendor/lib/libOmxAlacDecSw.so
+vendor/lib/libOmxAmrDec.so
 vendor/lib/libOmxAmrwbplusDec.so
 vendor/lib/libOmxApeDec.so
 vendor/lib/libOmxApeDecSw.so
 vendor/lib/libOmxEvrcDec.so
-vendor/lib/libOmxMux.so
 vendor/lib/libOmxQcelp13Dec.so
 vendor/lib/libOmxVideoDSMode.so
+vendor/lib/libOmxVpp.so
 vendor/lib/libOmxWmaDec.so
+-vendor/lib/libgpustats.so
+vendor/lib/libmm-color-convertor.so
+vendor/lib/libvpplibrary.so
 vendor/lib/libvqzip.so
+vendor/lib64/libI420colorconvert.so
+vendor/lib64/libOmxAacDec.so
+vendor/lib64/libOmxAlacDec.so
+vendor/lib64/libOmxAlacDecSw.so
+vendor/lib64/libOmxAmrDec.so
+vendor/lib64/libOmxAmrwbplusDec.so
+vendor/lib64/libOmxApeDec.so
+vendor/lib64/libOmxApeDecSw.so
+vendor/lib64/libOmxEvrcDec.so
+vendor/lib64/libOmxQcelp13Dec.so
+vendor/lib64/libOmxVpp.so
+vendor/lib64/libOmxWmaDec.so
+-vendor/lib64/libgpustats.so
+vendor/lib64/libmm-color-convertor.so
+vendor/lib64/libvpplibrary.so
 
 # Misc firmware
 etc/firmware/leia_pfp_470.fw
 etc/firmware/leia_pm4_470.fw
-
-# Modem
-vendor/lib64/libwms.so
-vendor/lib/libwms.so
 
 # Network
 -priv-app/QtiTetherService/QtiTetherService.apk
@@ -706,109 +731,131 @@ vendor/lib64/libQtiTether.so
 vendor/lib/libconnctrl.so
 vendor/lib/libQtiTether.so
 
-# Perf
-bin/iop
-bin/msm_irqbalance
-vendor/bin/perfd
-vendor/etc/perf-profile0.conf
-vendor/etc/perf-profile1.conf
-vendor/lib64/libqti_performance.so
-vendor/lib64/libqti-at.so
-vendor/lib64/libqti-iop-client.so
-vendor/lib64/libqti-iop.so
-vendor/lib64/libqti-perfd-client.so
-vendor/lib/libqti_performance.so
-vendor/lib/libqti-at.so
-vendor/lib/libqti-iop-client.so
-vendor/lib/libqti-iop.so
+# Modem - from tissot - OPR1.170623.026 8.2.8
+vendor/lib/libwms.so
+vendor/lib64/libwms.so
+
+# Perf - from tissot - OPR1.170623.026 8.2.8
+lib/vendor.qti.hardware.iop@1.0.so
+lib/vendor.qti.hardware.perf@1.0.so
+lib64/vendor.qti.hardware.iop@1.0.so
+lib64/vendor.qti.hardware.perf@1.0.so
+vendor/bin/hw/vendor.qti.hardware.iop@1.0-service
+vendor/bin/hw/vendor.qti.hardware.perf@1.0-service
+vendor/bin/msm_irqbalance
+vendor/etc/init/vendor.qti.hardware.iop@1.0-service.rc
+vendor/etc/init/vendor.qti.hardware.perf@1.0-service.rc
+vendor/lib/hw/vendor.qti.hardware.iop@1.0-impl.so
+vendor/lib/libfeedbackhandler.so
+vendor/lib/libperfgluelayer.so
+vendor/lib/libqti-iopd-client.so
+vendor/lib/libqti-iopd.so
 vendor/lib/libqti-perfd-client.so
-vendor/lib/libqti-wl.so
+vendor/lib/vendor.qti.hardware.iop@1.0_vendor.so
+vendor/lib/vendor.qti.hardware.perf@1.0_vendor.so
+vendor/lib64/hw/vendor.qti.hardware.iop@1.0-impl.so
+vendor/lib64/libfeedbackhandler.so
+vendor/lib64/libperfgluelayer.so
+vendor/lib64/libqti-iopd-client.so
+vendor/lib64/libqti-iopd.so
+vendor/lib64/libqti-perfd-client.so
+vendor/lib64/vendor.qti.hardware.iop@1.0_vendor.so
+vendor/lib64/vendor.qti.hardware.perf@1.0_vendor.so
 
-# Peripheral manager
-bin/pm-proxy
-bin/pm-service
-vendor/lib64/libperipheral_client.so
+# Peripheral manager - from tissot - OPR1.170623.026 8.2.8
+vendor/bin/pm-proxy
+vendor/bin/pm-service
 vendor/lib/libperipheral_client.so
+vendor/lib64/libperipheral_client.so
 
-# Postprocessing
--framework/com.qti.snapdragon.sdk.display.jar
--vendor/app/colorservice/colorservice.apk
+# Postprocessing - from oneplus3
 etc/permissions/com.qti.snapdragon.sdk.display.xml
+framework/com.qti.snapdragon.sdk.display.jar
+lib/vendor.display.color@1.0.so
+lib/vendor.display.postproc@1.0.so
+lib64/vendor.display.color@1.0.so
+lib64/vendor.display.postproc@1.0.so
+-vendor/app/colorservice/colorservice.apk
+vendor/bin/hw/vendor.display.color@1.0-service
 vendor/bin/mm-pp-dpps
+vendor/etc/init/vendor.display.color@1.0-service.rc
+vendor/lib/libsd_sdk_display.so
+vendor/lib/vendor.display.color@1.0_vendor.so
+vendor/lib/vendor.display.postproc@1.0_vendor.so
 vendor/lib64/libdisp-aba.so
+vendor/lib64/vendor.display.color@1.0_vendor.so
+vendor/lib64/vendor.display.postproc@1.0_vendor.so
 
-# QMI
-bin/ATFWD-daemon
-bin/irsc_util
+# QMI - from tissot - OPR1.170623.026 8.2.8
+etc/permissions/qti_libpermissions.xml|ef3c88495f2f61a2d16e1445113a9d80f8db0e0a
 etc/permissions/qti_permissions.xml
-vendor/lib64/lib_rsu.so
-vendor/lib64/libdiag.so
-vendor/lib64/libdsi_netctrl.so
-vendor/lib64/libdsutils.so
-vendor/lib64/libidl.so
-vendor/lib64/libqcci_legacy.so
-vendor/lib64/libqcmaputils.so
-vendor/lib64/libqdi.so
-vendor/lib64/libqdp.so
-vendor/lib64/libqmi.so
-vendor/lib64/libqmi_cci.so
-vendor/lib64/libqmi_client_helper.so
-vendor/lib64/libqmi_client_qmux.so
-vendor/lib64/libqmi_common_so.so
-vendor/lib64/libqmi_csi.so
-vendor/lib64/libqmi_encdec.so
-vendor/lib64/libqmiservices.so
-vendor/lib64/libqti-wl.so
-vendor/lib64/libquipc_os_api.so
-vendor/lib64/libsmemlog.so
-vendor/lib/lib_rsu.so
+lib/libdiag_system.so
+lib/libqmi_cci_system.so
+lib64/libdiag_system.so
+lib64/libqmi_cci_system.so
+vendor/bin/irsc_util
 vendor/lib/libdiag.so
 vendor/lib/libdsi_netctrl.so
 vendor/lib/libdsutils.so
 vendor/lib/libidl.so
 vendor/lib/libqcci_legacy.so
-vendor/lib/libqcmaputils.so
 vendor/lib/libqdi.so
 vendor/lib/libqdp.so
-vendor/lib/libqmi.so
 vendor/lib/libqmi_cci.so
 vendor/lib/libqmi_client_helper.so
 vendor/lib/libqmi_client_qmux.so
 vendor/lib/libqmi_common_so.so
 vendor/lib/libqmi_csi.so
 vendor/lib/libqmi_encdec.so
+vendor/lib/libqmi.so
 vendor/lib/libqmiservices.so
-vendor/lib/libquipc_os_api.so
 vendor/lib/libsmemlog.so
+vendor/lib64/libdiag.so
+vendor/lib64/libdsi_netctrl.so
+vendor/lib64/libdsutils.so
+vendor/lib64/libidl.so
+vendor/lib64/libqcci_legacy.so
+vendor/lib64/libqdi.so
+vendor/lib64/libqdp.so
+vendor/lib64/libqmi_cci.so
+vendor/lib64/libqmi_client_helper.so
+vendor/lib64/libqmi_client_qmux.so
+vendor/lib64/libqmi_common_so.so
+vendor/lib64/libqmi_csi.so
+vendor/lib64/libqmi_encdec.so
+vendor/lib64/libqmi.so
+vendor/lib64/libqmiservices.so
+vendor/lib64/libsmemlog.so
 
-# Radio
--app/datastatusnotification/datastatusnotification.apk
--app/embms/embms.apk
--app/fastdormancy/fastdormancy.apk
+# Radio - from tissot - OPR1.170623.026 8.2.8
 -app/QtiTelephonyService/QtiTelephonyService.apk
--app/shutdownlistener/shutdownlistener.apk
--framework/embmslibrary.jar
--framework/qcrilhook.jar
--framework/qcnvitems.jar
--framework/qti-telephony-common.jar
--framework/QtiTelephonyServicelibrary.jar
--priv-app/qcrilmsgtunnel/qcrilmsgtunnel.apk
-bin/netmgrd
-bin/radish
-bin/rmt_storage
-bin/tftp_server
-etc/data/dsi_config.xml
-etc/data/netmgr_config.xml
-etc/permissions/embms.xml
 etc/permissions/qcrilhook.xml
-etc/permissions/qcnvitems.xml
 etc/permissions/telephonyservice.xml
+-framework/QtiTelephonyServicelibrary.jar
+-framework/qcrilhook.jar
+-framework/qti-telephony-common.jar
+-priv-app/qcrilmsgtunnel/qcrilmsgtunnel.apk
+vendor/bin/netmgrd
 vendor/bin/qti
+vendor/bin/rmt_storage
+vendor/bin/tftp_server
+vendor/etc/data/dsi_config.xml
+vendor/etc/data/netmgr_config.xml
+vendor/lib/libmdmdetect.so
+vendor/lib/libqcmaputils.so
+vendor/lib/vendor.qti.hardware.radio.am@1.0_vendor.so
+vendor/lib/vendor.qti.hardware.radio.ims@1.0_vendor.so
+vendor/lib/vendor.qti.hardware.radio.lpa@1.0_vendor.so
+vendor/lib/vendor.qti.hardware.radio.qcrilhook@1.0_vendor.so
+vendor/lib/vendor.qti.hardware.radio.qtiradio@1.0_vendor.so
+vendor/lib/vendor.qti.hardware.radio.uim@1.0_vendor.so
+vendor/lib/vendor.qti.hardware.radio.uim_remote_client@1.0_vendor.so
+vendor/lib/vendor.qti.hardware.radio.uim_remote_server@1.0_vendor.so
 vendor/lib64/libconfigdb.so
-vendor/lib64/libdatactrl.so
 vendor/lib64/liblqe.so
 vendor/lib64/libmdmdetect.so
 vendor/lib64/libnetmgr.so
+vendor/lib64/libqcmaputils.so
 vendor/lib64/libril-qc-ltedirectdisc.so
 vendor/lib64/libril-qc-qmi-1.so
 vendor/lib64/libril-qc-radioconfig.so
@@ -816,23 +863,29 @@ vendor/lib64/libril-qcril-hook-oem.so
 vendor/lib64/librilqmiservices.so
 vendor/lib64/libsettings.so
 vendor/lib64/libsystem_health_mon.so
-vendor/lib/libmdmdetect.so
-vendor/qcril.db
+vendor/lib64/vendor.qti.hardware.radio.am@1.0_vendor.so
+vendor/lib64/vendor.qti.hardware.radio.atcmdfwd@1.0_vendor.so
+vendor/lib64/vendor.qti.hardware.radio.ims@1.0_vendor.so
+vendor/lib64/vendor.qti.hardware.radio.lpa@1.0_vendor.so
+vendor/lib64/vendor.qti.hardware.radio.qcrilhook@1.0_vendor.so
+vendor/lib64/vendor.qti.hardware.radio.qtiradio@1.0_vendor.so
+vendor/lib64/vendor.qti.hardware.radio.uim@1.0_vendor.so
+vendor/lib64/vendor.qti.hardware.radio.uim_remote_client@1.0_vendor.so
+vendor/lib64/vendor.qti.hardware.radio.uim_remote_server@1.0_vendor.so
+vendor/radio/qcril_database/qcril.db
 
-# Sensors
-bin/sensors.qcom
-lib64/hw/sensors.msm8937.so
-lib/hw/sensors.msm8937.so
-vendor/lib64/hw/activity_recognition.msm8937.so
-vendor/lib64/libsensor1.so
-vendor/lib64/libsensor_reg.so
-vendor/lib64/sensor_calibrate.so
-vendor/lib64/sensors.ssc.so
-vendor/lib/hw/activity_recognition.msm8937.so
+# Sensors - from tissot - OPR1.170623.026 8.2.8
+vendor/bin/sensors.qcom
+vendor/lib/hw/activity_recognition.msm8953.so:vendor/lib/hw/activity_recognition.msm8937.so
 vendor/lib/libsensor1.so
 vendor/lib/libsensor_reg.so
-vendor/lib/sensor_calibrate.so
+vendor/lib/libsensor_user_cal.so
 vendor/lib/sensors.ssc.so
+vendor/lib64/hw/activity_recognition.msm8953.so:vendor/lib64/hw/activity_recognition.msm8937.so
+vendor/lib64/libsensor1.so
+vendor/lib64/libsensor_reg.so
+vendor/lib64/libsensor_user_cal.so
+vendor/lib64/sensors.ssc.so
 
 # Subsystem restart
 bin/ssr_diag
@@ -888,21 +941,18 @@ vendor/lib/rfsa/adsp/libscveObjectSegmentation_skel.so
 vendor/lib/rfsa/adsp/libscveT2T_skel.so
 vendor/lib/rfsa/adsp/libscveTextReco_skel.so
 
-# Thermal
-etc/thermal-engine.conf
+# Thermal - from tissot - OPR1.170623.026 8.2.8
+vendor/etc/thermal-engine.conf
 vendor/bin/thermal-engine
-vendor/lib64/libthermalclient.so
-vendor/lib/libthermalclient.so
+-vendor/lib/libthermalclient.so
+-vendor/lib64/libthermalclient.so
 vendor/lib64/libthermalioctl.so
 
-# Time services
--app/TimeService/TimeService.apk
-bin/time_daemon
--vendor/lib64/libtime_genoff.so
+# Time services - from tissot - OPR1.170623.026 8.2.8
+-vendor/app/TimeService/TimeService.apk
+vendor/bin/time_daemon
 -vendor/lib/libtime_genoff.so
-vendor/lib64/libTimeService.so
-vendor/lib/libTimeService.so
-etc/firmware/ice40.bin
+-vendor/lib64/libtime_genoff.so
 
 # WFD
 bin/wfdservice
@@ -937,19 +987,15 @@ vendor/lib/libwfduibcsinkinterface.so
 vendor/lib/libwfduibcsrc.so
 vendor/lib/libwfduibcsrcinterface.so
 
-# Widevine
-vendor/lib64/mediadrm/libdrmclearkeyplugin.so
-vendor/lib/mediadrm/libdrmclearkeyplugin.so
-vendor/lib/mediadrm/libwvdrmengine.so
-vendor/lib/qcdrm/playready/lib/drm/libdrmprplugin_customer.so
-vendor/lib/qcdrm/playready/lib/libprdrmdecrypt_customer.so
-vendor/lib/qcdrm/playready/lib/libtzplayready_customer.so
-vendor/lib/qcdrm/playready/lib/mediadrm/libprmediadrmdecrypt_customer.so
-vendor/lib/qcdrm/playready/lib/mediadrm/libprmediadrmplugin_customer.so
+# Widevine DRM - from tissot - OPR1.170623.026 8.2.8
+vendor/bin/hw/android.hardware.drm@1.0-service.widevine
+vendor/etc/init/android.hardware.drm@1.0-service.widevine.rc
+vendor/lib/libwvhidl.so
 
-# Wi-Fi
-bin/cnss-daemon
-bin/fstman
+# Wi-Fi - from tissot - OPR1.170623.026 8.2.8
+vendor/bin/cnss-daemon
+vendor/bin/cnss_diag
+vendor/lib64/vendor.qti.hardware.wifi.supplicant@1.0_vendor.so
 
 # TODO :
 bin/ATFWD-daemon
