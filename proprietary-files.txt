@@ -994,7 +994,6 @@ vendor/lib/libwvhidl.so
 
 # Wi-Fi - from tissot - OPR1.170623.026 8.2.8
 vendor/bin/cnss-daemon
-vendor/bin/cnss_diag
 vendor/lib64/vendor.qti.hardware.wifi.supplicant@1.0_vendor.so
 
 # TODO :
