@@ -1,27 +1,34 @@
-# ADSP - from tissot - OPR1.170623.026 8.2.8
+# ADSP
+lib/libadsprpc.so
+lib64/libadsprpc.so
 vendor/bin/adsprpcd
 vendor/lib/libadsp_default_listener.so
+vendor/lib/libadsp_hvx_callback_skel.so
+vendor/lib/libadsp_hvx_stub.so
 vendor/lib/libadsprpc.so
--vendor/lib/libaudio_log_utils.so
 vendor/lib/libfastcvadsp_stub.so
 vendor/lib/libfastcvopt.so
-vendor/lib/libqtigef.so
 vendor/lib64/libadsp_default_listener.so
 vendor/lib64/libadsprpc.so
--vendor/lib64/libaudio_log_utils.so
 vendor/lib64/libfastcvadsp_stub.so
-vendor/lib64/libqtigef.so
+vendor/lib64/libfastcvopt.so
 
-# ADSP modules - from tissot - OPR1.170623.026 8.2.8
+# ADSP modules
+vendor/lib/rfsa/adsp/libadsp_fd_skel.so
+vendor/lib/rfsa/adsp/libadsp_hvx_add_constant.so
+vendor/lib/rfsa/adsp/libadsp_hvx_skel.so
+vendor/lib/rfsa/adsp/libadsp_hvx_stats.so
+vendor/lib/rfsa/adsp/libadsp_hvx_zzhdr_BGGR.so
+vendor/lib/rfsa/adsp/libadsp_hvx_zzhdr_RGGB.so
 vendor/lib/rfsa/adsp/libapps_mem_heap.so
 vendor/lib/rfsa/adsp/libdspCV_skel.so
-vendor/lib/rfsa/adsp/libexternal_dog_skel.so
 vendor/lib/rfsa/adsp/libfastcvadsp_skel.so
 vendor/lib/rfsa/adsp/libfastcvadsp.so
-vendor/lib/rfsa/adsp/libFastRPC_AUE_Forward_skel.so
-vendor/lib/rfsa/adsp/libFastRPC_UTF_Forward_Qtc2_skel.so
 vendor/lib/rfsa/adsp/libscveBlobDescriptor_skel.so
 vendor/lib/rfsa/adsp/libscveT2T_skel.so
+vendor/lib/rfsa/adsp/libvpp_frc.so
+vendor/lib/rfsa/adsp/libvpp_svc_skel.so
+vendor/lib/rfsa/adsp/us-syncproximity.so
 
 # Audio
 etc/aanc_tuning_mixer.txt
