@@ -313,8 +313,6 @@ PRODUCT_PACKAGES += \
     init.qcom.usb.sh \
     init.recovery.qcom.rc \
     init.qcom.post_boot.sh \
-    init.qcom.bt.sh \
-    init.qti.ims.sh \
     ueventd.qcom.rc \
     fstab.qcom
 
