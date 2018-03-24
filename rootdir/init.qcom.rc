@@ -742,6 +742,8 @@ service qseecomd /vendor/bin/qseecomd
     class core
     user root
     group root
+    shutdown critical
+    writepid /dev/cpuset/system-background/tasks
 
 on property:hw.fm.init=*
     write /sys/module/radio_iris_transport/parameters/fmsmd_set ${hw.fm.init}
@@ -844,6 +846,7 @@ service per_mgr /vendor/bin/pm-service
     user system
     group system net_raw
     ioprio rt 4
+    shutdown critical
     writepid /dev/cpuset/system-background/tasks
 
 service per_proxy /vendor/bin/pm-proxy
