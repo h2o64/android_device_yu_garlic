@@ -958,8 +958,7 @@ vendor/lib64/libthermalioctl.so
 # Time services - from tissot - OPR1.170623.026 8.2.8
 -vendor/app/TimeService/TimeService.apk
 vendor/bin/time_daemon
--vendor/lib/libtime_genoff.so
--vendor/lib64/libtime_genoff.so
+vendor/lib64/libtime_genoff.so
 
 # WFD
 bin/wfdservice
