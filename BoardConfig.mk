@@ -121,9 +121,9 @@ TARGET_TS_MAKEUP := true
 BOARD_CHARGER_ENABLE_SUSPEND := false
 BOARD_CHARGER_DISABLE_INIT_BLANK := true
 
-# CMHW
+# LineageHW
 BOARD_USES_CYANOGEN_HARDWARE := true
-BOARD_HARDWARE_CLASS += hardware/cyanogen/cmhw
+BOARD_HARDWARE_CLASS += hardware/lineage/lineagehw
 
 # CNE / DPM
 BOARD_USES_QCNE := true
