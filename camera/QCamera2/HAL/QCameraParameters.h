@@ -83,6 +83,11 @@ private:
         cam_dimension_t *getTotalSizeTbl();
         int32_t getPicSizeFromAPK(int &width, int &height);
         int32_t getPicSizeSetted(int &width, int &height);
+        bool mScaleEnabled;
+        bool mIsUnderScaling;  //if in scale status
+        bool isBokehEnabled;
+        int32_t bokehSnapshotWidth;
+        int32_t bokehSnapshotHeight;
 
     private:
         bool isScalePicSize(int width, int height);
@@ -90,10 +95,6 @@ private:
         int32_t setSensorSupportedPicSize();
         size_t checkScaleSizeTable(size_t scale_cnt, cam_dimension_t *scale_tbl,
                 size_t org_cnt, cam_dimension_t *org_tbl);
-
-        bool mScaleEnabled;
-        bool mIsUnderScaling;   //if in scale status
-
         // picture size cnt that need scale operation
         size_t mNeedScaleCnt;
         cam_dimension_t mNeedScaledSizeTbl[MAX_SCALE_SIZES_CNT];
@@ -336,6 +337,11 @@ private:
 
     //Longshot
     static const char KEY_QC_LONGSHOT_SUPPORTED[];
+
+    // Dual camera mode
+    static const char KEY_QC_DUAL_CAMERA_MODE[];
+    static const char KEY_QC_DUAL_CAMERA_ID[];
+    static const char KEY_QC_DUAL_CAMERA_MAIN_CAMERA[];
 
     //ZSL+HDR
     static const char KEY_QC_ZSL_HDR_SUPPORTED[];
@@ -639,6 +645,7 @@ public:
     int32_t commitParameters();
 
     char* getParameters();
+    bool getDualCameraMode();
     void getPreviewFpsRange(int *min_fps, int *max_fps) const {
             CameraParameters::getPreviewFpsRange(min_fps, max_fps);
     }
@@ -760,7 +767,8 @@ public:
     const char *getASDStateString(cam_auto_scene_t scene);
     bool isHDRThumbnailProcessNeeded() { return m_bHDRThumbnailProcessNeeded; };
     void setMinPpMask(cam_feature_mask_t min_pp_mask) { m_nMinRequiredPpMask = min_pp_mask; };
-    bool setStreamConfigure(bool isCapture, bool previewAsPostview, bool resetConfig);
+    bool setStreamConfigure(bool isCapture, bool previewAsPostview, bool resetConfig,
+            uint32_t* sessionId);
     int32_t addOnlineRotation(uint32_t rotation, uint32_t streamId, int32_t device_rotation);
     uint8_t getNumOfExtraBuffersForImageProc();
     uint8_t getNumOfExtraBuffersForVideo();
@@ -891,6 +899,8 @@ public:
     bool sendStreamConfigForPickRes(cam_stream_size_info_t &stream_config_info);
     int32_t updateDtVc(int32_t *dt, int32_t *vc);
     bool isLinkPreviewForLiveShot();
+    bool m_bDualCameraMode;
+    cam_dimension_t originalSnapshotDim;
 
 private:
     int32_t setPreviewSize(const QCameraParameters& );
@@ -978,6 +988,7 @@ private:
     int32_t setSecureMode(const QCameraParameters& );
     int32_t setCacheVideoBuffers(const QCameraParameters& params);
     int32_t setCustomParams(const QCameraParameters& params);
+    int32_t setDualCameraMode(const QCameraParameters& params);
     int32_t setAutoExposure(const char *autoExp);
     int32_t setPreviewFpsRange(int min_fps,int max_fps,
             int vid_min_fps,int vid_max_fps);
@@ -1255,6 +1266,8 @@ private:
     uint8_t mAecSkipDisplayFrameBound;
     bool m_bQuadraCfa;
     bool m_bSmallJpegSize;
+    int32_t mDualCamId;
+    bool m_bMainCamera;
 };
 
 }; // namespace qcamera

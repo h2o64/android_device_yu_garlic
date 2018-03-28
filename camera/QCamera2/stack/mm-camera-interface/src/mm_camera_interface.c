@@ -42,8 +42,6 @@
 #define IOCTL_H <SYSTEM_HEADER_PREFIX/ioctl.h>
 #include IOCTL_H
 
-#define EXTRA_ENTRY 6
-
 // Camera dependencies
 #include "mm_camera_dbg.h"
 #include "mm_camera_interface.h"
@@ -1682,7 +1680,7 @@ void sort_camera_info(int num_cam)
 
     // Signifies whether YUV AUX camera has to be exposed as physical camera
     memset(prop, 0, sizeof(prop));
-    property_get("persist.camera.aux.yuv", prop, "0");
+    property_get("persist.vendor.camera.aux.yuv", prop, "0");
     is_yuv_aux_cam_exposed = atoi(prop);
     LOGI("YUV Aux camera exposed %d",is_yuv_aux_cam_exposed);
 
@@ -1719,7 +1717,7 @@ void sort_camera_info(int num_cam)
         }
     }
 
-    /* Expose YUV AUX camera if persist.camera.aux.yuv is set to 1.
+    /* Expose YUV AUX camera if persist.vendor.camera.aux.yuv is set to 1.
     Otherwsie expose AUX camera if it is not YUV. */
     for (i = 0; i < num_cam; i++) {
         if ((g_cam_ctrl.info[i].facing == CAMERA_FACING_BACK) &&
@@ -1735,7 +1733,7 @@ void sort_camera_info(int num_cam)
         }
     }
 
-    /* Expose YUV AUX camera if persist.camera.aux.yuv is set to 1.
+    /* Expose YUV AUX camera if persist.vendor.camera.aux.yuv is set to 1.
     Otherwsie expose AUX camera if it is not YUV. */
     for (i = 0; i < num_cam; i++) {
         if ((g_cam_ctrl.info[i].facing == CAMERA_FACING_FRONT) &&
@@ -1866,7 +1864,7 @@ uint8_t get_num_of_cameras()
     cfg.cfg.setting = NULL;
     if (ioctl(sd_fd, VIDIOC_MSM_SENSOR_INIT_CFG, &cfg) < 0) {
         LOGI("failed...Camera Daemon may not up so try again");
-        for(i = 0; i < (MM_CAMERA_EVT_ENTRY_MAX + EXTRA_ENTRY); i++) {
+        for(i = 0; i < MM_CAMERA_EVT_ENTRY_MAX; i++) {
             if (ioctl(sd_fd, VIDIOC_MSM_SENSOR_INIT_CFG, &cfg) < 0) {
                 LOGI("failed...Camera Daemon may not up so try again");
                 continue;
@@ -1920,7 +1918,7 @@ uint8_t get_num_of_cameras()
             if(entity.type == MEDIA_ENT_T_DEVNODE_V4L && entity.group_id == QCAMERA_VNODE_GROUP_ID) {
                 strlcpy(g_cam_ctrl.video_dev_name[num_cameras],
                      entity.name, sizeof(entity.name));
-                LOGE("dev_info[id=%d,name='%s']\n",
+                LOGI("dev_info[id=%d,name='%s']\n",
                     (int)num_cameras, g_cam_ctrl.video_dev_name[num_cameras]);
                 num_cameras++;
                 break;
@@ -1939,7 +1937,7 @@ uint8_t get_num_of_cameras()
     sort_camera_info(g_cam_ctrl.num_cam);
     /* unlock the mutex */
     pthread_mutex_unlock(&g_intf_lock);
-    LOGE("num_cameras=%d\n", (int)g_cam_ctrl.num_cam);
+    LOGI("num_cameras=%d\n", (int)g_cam_ctrl.num_cam);
     return(uint8_t)g_cam_ctrl.num_cam;
 }
 
