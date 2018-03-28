@@ -22,4 +22,10 @@
 <resources>
     <!-- HDR needs 1x frame -->
     <string name="pref_camera_hdr_need_1x_default" translatable="false">false</string>
+    
+    <!-- Opens back camera using openLegacy() and forces api v1 -->
+    <bool name="back_camera_open_legacy">true</bool>
+    
+    <!-- Opens front camera using openLegacy() and forces api v1 -->
+    <bool name="front_camera_open_legacy">true</bool>
 </resources>
