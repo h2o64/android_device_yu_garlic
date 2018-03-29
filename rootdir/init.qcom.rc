@@ -699,9 +699,9 @@ service gx_fpd /system/bin/gx_fpd
     group root system
     disabled
     on property:persist.sys.fp.goodix=1
-    start fps_hal
+    start gx_fpd
     on property:persist.sys.fp.goodix=0
-    stop fps_hal
+    stop gx_fpd
 
 # Start camera server as daemon
 service qcamerasvr /system/bin/mm-qcamera-daemon

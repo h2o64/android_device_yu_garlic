@@ -178,7 +178,7 @@ int64_t FingerprintDaemonProxy::openHal() {
     int err;
     const hw_module_t *hw_module = NULL;
 
-    if (0 != (err = hw_get_module(FINGERPRINT_HARDWARE_MODULE_ID, &hw_module))) {
+    if (0 != (err = hw_get_module("fingerprint.goodix", &hw_module))) {
         ALOGE("Can't open fingerprint HW Module, error: %d", err);
         return 0;
     }

@@ -44,18 +44,17 @@ BiometricsFingerprint *BiometricsFingerprint::sInstance = nullptr;
 
 BiometricsFingerprint::BiometricsFingerprint() : mClientCallback(nullptr), mDevice(nullptr) {
     sInstance = this; // keep track of the most recent instance
-    char vend [PROPERTY_VALUE_MAX];
-    property_get("ro.hardware.fingerprint", vend, NULL);
-
-    if (!strcmp(vend, "searchf")) {
-        is_goodix = false;
-        mDevice = openHal();
-    } else if (!strcmp(vend, "goodix")) {
-        is_goodix = true;
-        mDevice = getWrapperService(BiometricsFingerprint::notify);
-    }
-
+    mDevice = openHal();
     if (!mDevice) {
+        is_goodix = true;
+        property_set("persist.sys.fp.goodix", "1");
+        ALOGE("Can't open ELAN HAL module");
+        mDevice = getWrapperService(BiometricsFingerprint::notify);
+    } else if (!mDevice) {
+        is_goodix = false;
+        property_set("persist.sys.fp.goodix", "0");
+        ALOGE("Can't open GOODIX HAL module");
+    } else {
         ALOGE("Can't open HAL module");
     }
 }
@@ -255,7 +254,7 @@ fingerprint_device_t* BiometricsFingerprint::openHal() {
     int err;
     const hw_module_t *hw_mdl = nullptr;
     ALOGD("Opening fingerprint hal library...");
-    if (0 != (err = hw_get_module(FINGERPRINT_HARDWARE_MODULE_ID, &hw_mdl))) {
+    if (0 != (err = hw_get_module("fingerprint.elan", &hw_mdl))) {
         ALOGE("Can't open fingerprint HW Module, error: %d", err);
         return nullptr;
     }
@@ -275,7 +274,11 @@ fingerprint_device_t* BiometricsFingerprint::openHal() {
     hw_device_t *device = nullptr;
 
     if (0 != (err = module->common.methods->open(hw_mdl, nullptr, &device))) {
-        ALOGE("Can't open fingerprint methods, error: %d", err);
+        if (err == 253) {
+            ALOGE("Can't Find Elan FP Sensor");
+        } else {
+            ALOGE("Can't open fingerprint methods, error: %d", err);
+        }
         return nullptr;
     }
 
