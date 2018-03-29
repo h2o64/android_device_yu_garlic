@@ -1,0 +1,8 @@
+add_service(hal_fingerprint_default, fingerprintd_custom_service);
+binder_call(hal_fingerprint_default, goodix);
+allow hal_fingerprint_default goodix_service:service_manager find;
+allow hal_fingerprint_default servicemanager:binder { call transfer };
+allow hal_fingerprint_default firmware_file:file r_file_perms;
+allow hal_fingerprint_default keystore:keystore_key add_auth;
+allow hal_fingerprint_default keystore_service:service_manager find;
+allow hal_fingerprint_default tee_device:chr_file rw_file_perms;

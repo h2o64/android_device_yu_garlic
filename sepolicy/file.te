@@ -1,5 +1,1 @@
-type debugfs_rmts, debugfs_type, fs_type;
-type fingerprint_socket, file_type;
-type gx_fpd_data_file, file_type, data_file_type;
-type netmgrd_data_file, file_type;
-type sysfs_fp, sysfs_type, fs_type;
+type goodix_data_file, file_type, data_file_type;

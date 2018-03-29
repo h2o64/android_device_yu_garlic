@@ -1,0 +1,44 @@
+type goodix, domain;
+type goodix_exec, exec_type, file_type;
+
+# goodix
+init_daemon_domain(goodix)
+binder_use(goodix)
+
+# need to find KeyStore and add self
+add_service(goodix, goodix_service)
+
+# allow HAL module to read dir contents
+allow goodix goodix_data_file:file create_file_perms;
+
+# allow HAL module to read/write/unlink contents of this dir
+allow goodix goodix_data_file:dir create_dir_perms;
+
+# Need to add auth tokens to KeyStore
+use_keystore(goodix)
+allow goodix keystore:keystore_key { add_auth };
+
+# For permissions checking
+binder_call(goodix, system_server);
+allow goodix permission_service:service_manager find;
+
+#Allow access to goodix device
+allow goodix goodix_device:chr_file rw_file_perms;
+
+#Allow access to tee device
+allow goodix tee_device:chr_file rw_file_perms;
+
+# Allow access to ion device
+allow goodix ion_device:chr_file rw_file_perms;
+
+# Allow binder transfer with hal_fingerprint_default
+binder_call(goodix, hal_fingerprint_default)
+
+# Allow socket creation
+allow goodix self:netlink_socket create;
+allow goodix self:capability dac_override;
+
+#allow read/write property
+set_prop(goodix, system_prop)
+
+allow goodix goodix_service:service_manager { add find };

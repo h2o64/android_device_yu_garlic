@@ -1,34 +1,8 @@
-# Goodix
-/data/system/fingerprint/(/.*)?					u:object_r:gx_fpd_data_file:s0
-/data/system/fingerprint/calibration/calirawdata_rawdata.csv	u:object_r:gx_fpd_data_file:s0
-/data/system/fingerprint/calibration/calirawdata_before.csv	u:object_r:gx_fpd_data_file:s0
-/data/system/fingerprint/localCailibration.dat			u:object_r:gx_fpd_data_file:s0
-/data/system/fingerprint/featrue_0_0_1.dat			u:object_r:gx_fpd_data_file:s0
-/data/system/fingerprint/featrue_0_0_2.dat			u:object_r:gx_fpd_data_file:s0
-/data/system/fingerprint/featrue_0_0_3.dat			u:object_r:gx_fpd_data_file:s0
-/persist/data/gxfp(/.*)?					u:object_r:gx_fpd_data_file:s0
-/dev/gf66xx-spi							u:object_r:gx_fpd_device:s0
-/dev/goodix_fp(/.*)?						u:object_r:gx_fpd_device:s0
-/dev/goodix_fp*							u:object_r:gx_fpd_device:s0
-/dev/ttyACM[0-9]*						u:object_r:gx_fpd_device:s0
-/system/bin/gx_fpd						u:object_r:gx_fpd_exec:s0
-
-# Elan
-/dev/elan_fp							u:object_r:elanfp_device:s0
-
-# LTR553
-/dev/ltr553_ls							u:object_r:sensors_device:s0
-/dev/ltr553_ps							u:object_r:sensors_device:s0
-
 # Fingerprint
-/dev/socket/fpce(/.*)?            				u:object_r:fingerprint_socket:s0
-/sys/devices/platform/fp_drv/fp_drv_info			u:object_r:sysfs_fp:s0
+/system/bin/gx_fpd                                              u:object_r:goodix_exec:s0
+/dev/goodix_fp                                                  u:object_r:goodix_device:s0
+/data/goodix(/.*)?                                              u:object_r:goodix_data_file:s0
 
-# Block devices
-/dev/block/bootdevice/by-name/persist				u:object_r:persist_block_device:s0
+/persist/data/fingerprint/(/.*)?                                u:object_r:goodix_data_file:s0
 
-# Data files
-/data/misc/netmgr/log\.txt					u:object_r:netmgrd_data_file:s0
-
-# RMT Storage
-/sys/kernel/debug/rmt_storage/rmts                              u:object_r:debugfs_rmts:s0
+/system/vendor/bin/hw/android\.hardware\.biometrics\.fingerprint@2\.0-service-custom u:object_r:hal_fingerprint_default_exec:s0
