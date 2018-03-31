@@ -120,7 +120,6 @@ vendor.vidc.disable.split.mode=1
 vendor.vidc.enc.disable.pq=true
 vendor.vidc.debug.perf.mode=2
 vidc.enc.dcvs.extra-buff-count=2
-persist.media.treble_omx=false
 
 # Perf
 ro.vendor.gt_library=libqti-gt.so
