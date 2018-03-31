@@ -693,7 +693,7 @@ service vendor.msm_irqbalance /vendor/bin/msm_irqbalance -f /vendor/etc/msm_irqb
 #    group system
 #    writepid /dev/cpuset/system-background/tasks
 
-service gx_fpd /system/bin/gx_fpd
+service gx_fpd /vendor/bin/gx_fpd
     class late_start
     user root
     group root system
