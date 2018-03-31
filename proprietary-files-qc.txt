@@ -146,8 +146,8 @@ vendor/lib64/libsecureui_svcsock.so
 vendor/lib64/libssd.so
 
 # Gatekeeper
-vendor/lib/hw/gatekeeper.msm8953.so
-vendor/lib64/hw/gatekeeper.msm8953.so
+vendor/lib/hw/gatekeeper.msm8937.so
+vendor/lib64/hw/gatekeeper.msm8937.so
 
 # GPS
 etc/permissions/com.qti.location.sdk.xml
@@ -203,7 +203,7 @@ vendor/lib/egl/libGLESv1_CM_adreno.so
 vendor/lib/egl/libGLESv2_adreno.so
 vendor/lib/egl/libQTapGLES.so
 vendor/lib/egl/libq3dtools_adreno.so
-vendor/lib/hw/vulkan.msm8953.so
+vendor/lib/hw/vulkan.msm8937.so
 vendor/lib/libC2D2.so
 vendor/lib/libCB.so
 vendor/lib/libOpenCL.so
@@ -234,7 +234,7 @@ vendor/lib64/egl/libGLESv1_CM_adreno.so
 vendor/lib64/egl/libGLESv2_adreno.so
 vendor/lib64/egl/libQTapGLES.so
 vendor/lib64/egl/libq3dtools_adreno.so
-vendor/lib64/hw/vulkan.msm8953.so
+vendor/lib64/hw/vulkan.msm8937.so
 vendor/lib64/libC2D2.so
 vendor/lib64/libCB.so
 vendor/lib64/libOpenCL.so
@@ -272,13 +272,13 @@ vendor/firmware/a530_pm4.fw
 vendor/bin/ipacm-diag
 
 # Keystore
-vendor/lib/hw/keystore.msm8953.so
-vendor/lib64/hw/keystore.msm8953.so
+vendor/lib/hw/keystore.msm8937.so
+vendor/lib64/hw/keystore.msm8937.so
 
 # Listen
-vendor/lib64/hw/sound_trigger.primary.msm8953.so
+vendor/lib64/hw/sound_trigger.primary.msm8937.so
 vendor/lib64/vendor.qti.voiceprint@1.0.so
-vendor/lib/hw/sound_trigger.primary.msm8953.so
+vendor/lib/hw/sound_trigger.primary.msm8937.so
 vendor/lib/libadpcmdec.so
 vendor/lib/libsmwrapper.so
 vendor/lib/vendor.qti.voiceprint@1.0.so
@@ -529,12 +529,12 @@ vendor/lib64/vendor.qti.imsrtpservice@1.0_vendor.so
 
 # Sensors
 vendor/bin/sensors.qcom
-vendor/lib/hw/activity_recognition.msm8953.so
+vendor/lib/hw/activity_recognition.msm8937.so
 vendor/lib/libsensor1.so
 vendor/lib/libsensor_reg.so
 vendor/lib/libsensor_user_cal.so
 vendor/lib/sensors.ssc.so
-vendor/lib64/hw/activity_recognition.msm8953.so
+vendor/lib64/hw/activity_recognition.msm8937.so
 vendor/lib64/libsensor1.so
 vendor/lib64/libsensor_reg.so
 vendor/lib64/libsensor_user_cal.so
