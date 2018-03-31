@@ -24,6 +24,7 @@ PRODUCT_NAME := cos_garlic
 BOARD_VENDOR := yu
 
 PRODUCT_GMS_CLIENTID_BASE := android-micromax
+TARGET_VENDOR_PRODUCT_NAME := garlic
 
 ## Use the latest approved GMS identifiers unless running a signed build
 ifneq ($(SIGN_BUILD),true)
