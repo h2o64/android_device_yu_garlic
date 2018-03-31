@@ -1,3 +1,0 @@
-# Allow system server access to goodix daemon
-binder_call(system_server, goodix);
-allow system_server goodix_service:service_manager find;

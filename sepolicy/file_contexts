@@ -1,8 +1,4 @@
 # Fingerprint
-/system/bin/gx_fpd                                              u:object_r:goodix_exec:s0
 /dev/goodix_fp                                                  u:object_r:goodix_device:s0
-/data/goodix(/.*)?                                              u:object_r:goodix_data_file:s0
-
-/persist/data/fingerprint/(/.*)?                                u:object_r:goodix_data_file:s0
 
 /system/vendor/bin/hw/android\.hardware\.biometrics\.fingerprint@2\.0-service-custom u:object_r:hal_fingerprint_default_exec:s0
