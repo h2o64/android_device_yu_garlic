@@ -39,7 +39,6 @@
 #include <stdlib.h>
 #include "hardware/gralloc.h"
 #include <utils/Timers.h>
-#include <sys/stat.h>
 
 // Camera dependencies
 #include "QCamera3Channel.h"
@@ -502,7 +501,7 @@ void QCamera3Channel::dumpYUV(mm_camera_buf_def_t *frame, cam_dimension_t dim,
     memset(buf, 0, sizeof(buf));
     static int counter = 0;
     char prop[PROPERTY_VALUE_MAX];
-    property_get("persist.vendor.camera.dumpimg", prop, "0");
+    property_get("persist.camera.dumpimg", prop, "0");
     mYUVDump = (uint32_t)atoi(prop);
     if (mYUVDump & dump_type) {
         mFrmNum = ((mYUVDump & 0xffff0000) >> 16);
@@ -606,7 +605,7 @@ bool QCamera3Channel::isUBWCEnabled()
     //Disable UBWC if Eztune is enabled
     //EzTune process CPP output frame and cannot understand UBWC.
     memset(value, 0, sizeof(value));
-    property_get("persist.vendor.camera.eztune.enable", value, "0");
+    property_get("persist.camera.eztune.enable", value, "0");
     prop_value = atoi(value);
     if (prop_value) {
         return FALSE;
@@ -637,7 +636,7 @@ cam_format_t QCamera3Channel::getStreamDefaultFormat(cam_stream_type_t type)
             char prop[PROPERTY_VALUE_MAX];
             int pFormat;
             memset(prop, 0, sizeof(prop));
-            property_get("persist.vendor.camera.preview.ubwc", prop, "1");
+            property_get("persist.camera.preview.ubwc", prop, "1");
             pFormat = atoi(prop);
             if (pFormat == 1) {
                 streamFormat = CAM_FORMAT_YUV_420_NV12_UBWC;
@@ -657,7 +656,7 @@ cam_format_t QCamera3Channel::getStreamDefaultFormat(cam_stream_type_t type)
             char prop[PROPERTY_VALUE_MAX];
             int pFormat;
             memset(prop, 0, sizeof(prop));
-            property_get("persist.vendor.camera.video.ubwc", prop, "1");
+            property_get("persist.camera.video.ubwc", prop, "1");
             pFormat = atoi(prop);
             if (pFormat == 1) {
                 streamFormat = CAM_FORMAT_YUV_420_NV12_UBWC;
@@ -2150,7 +2149,7 @@ QCamera3RawChannel::QCamera3RawChannel(uint32_t cam_handle,
                         mIsRaw16(raw_16)
 {
     char prop[PROPERTY_VALUE_MAX];
-    property_get("persist.vendor.camera.raw.debug.dump", prop, "0");
+    property_get("persist.camera.raw.debug.dump", prop, "0");
     mRawDump = atoi(prop);
 }
 
@@ -2369,7 +2368,7 @@ QCamera3RawDumpChannel::QCamera3RawDumpChannel(uint32_t cam_handle,
                         mMemory(NULL)
 {
     char prop[PROPERTY_VALUE_MAX];
-    property_get("persist.vendor.camera.raw.dump", prop, "0");
+    property_get("persist.camera.raw.dump", prop, "0");
     mRawDump = atoi(prop);
 }
 
@@ -4259,35 +4258,31 @@ QCamera3Stream * QCamera3ReprocessChannel::getSrcStreamBySrcHandle(uint32_t srcH
 int32_t QCamera3ReprocessChannel::unmapOfflineBuffers(bool all)
 {
     int rc = NO_ERROR;
-    {
-        Mutex::Autolock lock(mOfflineBuffersLock);
-        if (!mOfflineBuffers.empty()) {
-            QCamera3Stream *stream = NULL;
-            List<OfflineBuffer>::iterator it = mOfflineBuffers.begin();
-           for (; it != mOfflineBuffers.end(); it++) {
-               stream = (*it).stream;
-               if (NULL != stream) {
-                   rc = stream->unmapBuf((*it).type,
-                                         (*it).index,
-                                            -1);
-                   if (NO_ERROR != rc) {
-                       LOGE("Error during offline buffer unmap %d",
-                              rc);
-                   }
-                   LOGD("Unmapped buffer with index %d", (*it).index);
+    if (!mOfflineBuffers.empty()) {
+        QCamera3Stream *stream = NULL;
+        List<OfflineBuffer>::iterator it = mOfflineBuffers.begin();
+        for (; it != mOfflineBuffers.end(); it++) {
+           stream = (*it).stream;
+           if (NULL != stream) {
+               rc = stream->unmapBuf((*it).type,
+                                     (*it).index,
+                                        -1);
+               if (NO_ERROR != rc) {
+                   LOGE("Error during offline buffer unmap %d",
+                          rc);
                }
-               if (!all) {
-                   mOfflineBuffers.erase(it);
-                   break;
-               }
-            }
-            if (all) {
-               mOfflineBuffers.clear();
-            }
+               LOGD("Unmapped buffer with index %d", (*it).index);
+           }
+           if (!all) {
+               mOfflineBuffers.erase(it);
+               break;
+           }
+        }
+        if (all) {
+           mOfflineBuffers.clear();
         }
     }
 
-    Mutex::Autolock lock(mOfflineMetaBuffersLock);
     if (!mOfflineMetaBuffers.empty()) {
         QCamera3Stream *stream = NULL;
         List<OfflineBuffer>::iterator it = mOfflineMetaBuffers.begin();
@@ -4686,7 +4681,6 @@ int32_t QCamera3ReprocessChannel::overrideFwkMetadata(
         mappedBuffer.index = buf_idx;
         mappedBuffer.stream = pStream;
         mappedBuffer.type = CAM_MAPPING_BUF_TYPE_OFFLINE_INPUT_BUF;
-        Mutex::Autolock lock(mOfflineBuffersLock);
         mOfflineBuffers.push_back(mappedBuffer);
         mOfflineBuffersIndex = (int32_t)buf_idx;
         LOGD("Mapped buffer with index %d", mOfflineBuffersIndex);
@@ -4707,7 +4701,6 @@ int32_t QCamera3ReprocessChannel::overrideFwkMetadata(
         mappedBuffer.index = meta_buf_idx;
         mappedBuffer.stream = pStream;
         mappedBuffer.type = CAM_MAPPING_BUF_TYPE_OFFLINE_META_BUF;
-        Mutex::Autolock lock(mOfflineMetaBuffersLock);
         mOfflineMetaBuffers.push_back(mappedBuffer);
         mOfflineMetaIndex = (int32_t)meta_buf_idx;
         LOGD("Mapped meta buffer with index %d", mOfflineMetaIndex);

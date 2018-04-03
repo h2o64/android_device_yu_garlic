@@ -1680,7 +1680,7 @@ void sort_camera_info(int num_cam)
 
     // Signifies whether YUV AUX camera has to be exposed as physical camera
     memset(prop, 0, sizeof(prop));
-    property_get("persist.vendor.camera.aux.yuv", prop, "0");
+    property_get("persist.camera.aux.yuv", prop, "0");
     is_yuv_aux_cam_exposed = atoi(prop);
     LOGI("YUV Aux camera exposed %d",is_yuv_aux_cam_exposed);
 
@@ -1717,7 +1717,7 @@ void sort_camera_info(int num_cam)
         }
     }
 
-    /* Expose YUV AUX camera if persist.vendor.camera.aux.yuv is set to 1.
+    /* Expose YUV AUX camera if persist.camera.aux.yuv is set to 1.
     Otherwsie expose AUX camera if it is not YUV. */
     for (i = 0; i < num_cam; i++) {
         if ((g_cam_ctrl.info[i].facing == CAMERA_FACING_BACK) &&
@@ -1733,7 +1733,7 @@ void sort_camera_info(int num_cam)
         }
     }
 
-    /* Expose YUV AUX camera if persist.vendor.camera.aux.yuv is set to 1.
+    /* Expose YUV AUX camera if persist.camera.aux.yuv is set to 1.
     Otherwsie expose AUX camera if it is not YUV. */
     for (i = 0; i < num_cam; i++) {
         if ((g_cam_ctrl.info[i].facing == CAMERA_FACING_FRONT) &&
@@ -1778,7 +1778,6 @@ void sort_camera_info(int num_cam)
 uint8_t get_num_of_cameras()
 {
     int rc = 0;
-    int i = 0;
     int dev_fd = -1;
     struct media_device_info mdev_info;
     int num_media_devices = 0;
@@ -1863,15 +1862,7 @@ uint8_t get_num_of_cameras()
     cfg.cfgtype = CFG_SINIT_PROBE_WAIT_DONE;
     cfg.cfg.setting = NULL;
     if (ioctl(sd_fd, VIDIOC_MSM_SENSOR_INIT_CFG, &cfg) < 0) {
-        LOGI("failed...Camera Daemon may not up so try again");
-        for(i = 0; i < MM_CAMERA_EVT_ENTRY_MAX; i++) {
-            if (ioctl(sd_fd, VIDIOC_MSM_SENSOR_INIT_CFG, &cfg) < 0) {
-                LOGI("failed...Camera Daemon may not up so try again");
-                continue;
-            }
-            else
-                break;
-        }
+        LOGE("failed");
     }
     close(sd_fd);
     dev_fd = -1;

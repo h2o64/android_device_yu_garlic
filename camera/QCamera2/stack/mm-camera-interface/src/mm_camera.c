@@ -2475,13 +2475,13 @@ typedef struct {
 
 static module_debug_t cam_loginfo[(int)CAM_LAST_MODULE] = {
   {CAM_GLBL_DBG_ERR, 1,
-      "",         "persist.vendor.camera.global.debug"     }, /* CAM_NO_MODULE     */
+      "",         "persist.camera.global.debug"     }, /* CAM_NO_MODULE     */
   {CAM_GLBL_DBG_ERR, 1,
-      "<HAL>", "persist.vendor.camera.hal.debug"        }, /* CAM_HAL_MODULE    */
+      "<HAL>", "persist.camera.hal.debug"        }, /* CAM_HAL_MODULE    */
   {CAM_GLBL_DBG_ERR, 1,
-      "<MCI>", "persist.vendor.camera.mci.debug"        }, /* CAM_MCI_MODULE    */
+      "<MCI>", "persist.camera.mci.debug"        }, /* CAM_MCI_MODULE    */
   {CAM_GLBL_DBG_ERR, 1,
-      "<JPEG>", "persist.vendor.camera.mmstill.logs"     }, /* CAM_JPEG_MODULE   */
+      "<JPEG>", "persist.camera.mmstill.logs"     }, /* CAM_JPEG_MODULE   */
 };
 
 /** cam_get_dbg_level
