@@ -1,0 +1,21 @@
+#============= goodix ==============
+type goodix, domain;
+typeattribute goodix domain, binder_in_vendor_violators;
+type goodix_exec, exec_type, vendor_file_type, file_type;
+init_daemon_domain(goodix)
+
+allow goodix binder_device:chr_file { read write ioctl open };
+allow goodix goodix_service:service_manager add;
+allow goodix firmware_file:file { read getattr open };
+allow goodix firmware_file:dir search;
+allow goodix firmware_file:lnk_file read;
+allow goodix goodix_device:chr_file { read write ioctl open };
+allow goodix hal_fingerprint_default:binder transfer;
+allow goodix init:unix_stream_socket connectto;
+allow goodix property_socket:sock_file write;
+allow goodix self:capability dac_override;
+allow goodix servicemanager:binder { transfer call };
+allow goodix tee_device:chr_file { read write ioctl open };
+allow goodix hal_fingerprint_default:binder call;
+allow goodix ion_device:chr_file { read ioctl open };
+allow goodix system_prop:property_service set;

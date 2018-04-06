@@ -1,0 +1,3 @@
+#============= system_app ==============
+typeattribute system_app binder_in_vendor_violators;
+allow system_app goodix:binder call;

@@ -1,0 +1,23 @@
+#============= hal_fingerprint_default ==============
+typeattribute hal_fingerprint_default binder_in_vendor_violators;
+
+allow hal_fingerprint_default servicemanager:binder { transfer call };
+allow hal_fingerprint_default fingerprintd_custom_service:service_manager { add find };
+allow hal_fingerprint_default elan_device:chr_file { read write ioctl open };
+allow hal_fingerprint_default firmware_file:dir r_dir_perms;
+allow hal_fingerprint_default firmware_file:file { read getattr open };
+allow hal_fingerprint_default firmware_file:lnk_file read;
+allow hal_fingerprint_default goodix:binder { transfer call };
+allow hal_fingerprint_default init:unix_stream_socket connectto;
+allow hal_fingerprint_default property_socket:sock_file write;
+allow hal_fingerprint_default system_data_file:dir write;
+allow hal_fingerprint_default tee_device:chr_file { read write ioctl open };
+allow hal_fingerprint_default fingerprint_service:service_manager find;
+allow hal_fingerprint_default keystore_service:service_manager find;
+allow hal_fingerprint_default goodix_service:service_manager find;
+allow hal_fingerprint_default system_prop:property_service set;
+allow hal_fingerprint_default keystore:binder call;
+allow hal_fingerprint_default keystore:keystore_key add_auth;
+add_service(hal_fingerprint_default, fingerprintd_custom_service)
+binder_call(hal_fingerprint_default, servicemanager)
+binder_use(hal_fingerprint_default)
