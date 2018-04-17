@@ -49,7 +49,6 @@ qcom.bluetooth.soc=smd
 # Camera
 camera.display.umax=1920x1080
 camera.display.lmax=1280x720
-media.camera.ts.monotonic=1
 persist.camera.gyro.disable=0
 
 # CNE
