@@ -8,7 +8,7 @@ etc/acdbdata/MTP/MTP_Headset_cal.acdb
 etc/acdbdata/MTP/MTP_Speaker_cal.acdb
 
 # Camera (N BETA)
-bin/mm-qcamera-daemon
+vendor/bin/mm-qcamera-daemon
 lib/libarcsoft_beautyshot.so
 lib/libmpbase.so
 vendor/lib/libchromaflash.so
@@ -16,6 +16,7 @@ vendor/lib/libflash_pmic.so
 vendor/lib/libjpegdhw.so
 vendor/lib/libjpegdmahw.so
 vendor/lib/libjpegehw.so
+vendor/lib/libllvd_smore.so
 vendor/lib/libmmcamera2_c2d_module.so
 vendor/lib/libmmcamera2_cpp_module.so
 vendor/lib/libmmcamera2_dcrf.so
@@ -58,6 +59,7 @@ vendor/lib/libmmcamera_pdaf.so
 vendor/lib/libmmcamera_pdafcamif.so
 vendor/lib/libmmcamera_ppbase_module.so
 vendor/lib/libmmcamera_ppeiscore.so
+vendor/lib/libmmcamera_sw_tnr.so
 vendor/lib/libmmcamera_quadracfa.so
 vendor/lib/libmmcamera_s5k4h8.so
 vendor/lib/libmmcamera_s5k4h8_p7201_eeprom.so
