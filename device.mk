@@ -116,11 +116,6 @@ PRODUCT_PACKAGES += \
     android.hardware.bluetooth@1.0-service
 
 # Camera
-PRODUCT_PACKAGES += \
-    camera.msm8937 \
-    libshim_libmmcamera \
-    Snap
-
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/camera/camera_config.xml:system/etc/camera/camera_config.xml \
     $(LOCAL_PATH)/configs/camera/csidtg_camera.xml:system/etc/camera/csidtg_camera.xml \
@@ -130,8 +125,11 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_PACKAGES += \
     android.hardware.camera.provider@2.4-impl \
+    android.hardware.camera.provider@2.4-service \
     camera.device@3.2-impl \
+    camera.msm8937 \
     libmm-qcamera \
+    libshim_libmmcamera \
     vendor.qti.hardware.camera.device@1.0 \
     vendor.qti.hardware.camera.device@1.0_vendor
 
@@ -343,6 +341,10 @@ PRODUCT_COPY_FILES += \
 
 TARGET_LD_SHIM_LIBS += \
     /system/vendor/lib/libmmcamera_ppeiscore.so|libshim_libmmcamera.so
+
+# Snap
+PRODUCT_COPY_FILES += \
+    Snap
 
 # Thermal HAL
 PRODUCT_PACKAGES += \
