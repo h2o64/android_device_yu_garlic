@@ -218,7 +218,7 @@ include device/qcom/sepolicy/sepolicy.mk
 BOARD_SEPOLICY_DIRS += $(LOCAL_PATH)/sepolicy/
 
 # Enable vendor partition
-ENABLE_VENDOR_IMAGE := true
+ENABLE_VENDOR_IMAGE := false
 ifeq ($(ENABLE_VENDOR_IMAGE), true)
 BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE := ext4
 BOARD_VENDORIMAGE_PARTITION_SIZE := 268435456
