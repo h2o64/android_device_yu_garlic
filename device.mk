@@ -232,6 +232,10 @@ PRODUCT_COPY_FILES += \
     frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml:system/etc/media_codecs_google_telephony.xml \
     frameworks/av/media/libstagefright/data/media_codecs_google_video.xml:system/etc/media_codecs_google_video.xml
 
+ifeq ($(ENABLE_VENDOR_IMAGE), true)
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += persist.media.treble_omx=false
+endif
+
 # Netutils
 PRODUCT_PACKAGES += \
     netutils-wrapper-1.0 \
