@@ -327,9 +327,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/seccomp_policy/mediacodec.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/mediacodec.policy
 
-TARGET_LD_SHIM_LIBS += \
-    /system/vendor/lib/libmmcamera_ppeiscore.so|libshim_libmmcamera.so
-
 # Snap
 PRODUCT_COPY_FILES += \
     Snap
