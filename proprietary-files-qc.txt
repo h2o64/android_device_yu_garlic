@@ -128,25 +128,11 @@ vendor/lib64/vendor.qti.hardware.data.latency@1.0_vendor.so|c698973caa1f9946193d
 vendor/bin/hvdcp_opti|4ebf2723ba401df534ca627e042c766e0d4eda73
 
 # DPM - from Wiko View 2
-bin/dpmd|9e0b18194fed8b4109a9be2e572b0419a68c2ce1
-etc/dpm/dpm.conf|5f19d3984b5291ac956552bda2a84c10c535df0a
-etc/dpm/nsrm/NsrmConfiguration.xml|83f562219e46c534786a4d0db46abf0f22753d4c
-etc/init/dpmd.rc|647c830f19f542f9f58c1b1641e44b857f30f912
-etc/permissions/com.qti.dpmframework.xml|36b94c9338069e434b83359a92cdc7ff62b822df
-etc/permissions/dpmapi.xml|ded29f9befaef20a7ccee0c75427fda1d1d04890
--framework/dpm.jar|1fc11bee995a743783a5c320d47824fbbe4bb59e
--framework/dpmapi.jar|57214492b831eab7210b6dad9131796bd07ac295
--framework/com.qti.dpmframework.jar|a6916c01a937ccb1ceb1e308362e0ca031b72675
--priv-app/dpmserviceapp/dpmserviceapp.apk|cd89894f044364c8ca51e7898111892e34a37ff3
-lib64/com.qualcomm.qti.dpm.api@1.0.so|83508971c5c6aa2255c58c02ce018aaa11562e1c
-lib64/libdpmctmgr.so|02d87cbed20aac9d85c7a9eb650b8f3964aeafb9
-lib64/libdpmfdmgr.so|25d38ff721c48e4f5b8b11408e6040719b8d4910
-lib64/libdpmframework.so|0d2cb764ffc1a303ec6301b85f1d8d72a72c6988
-lib64/libdpmnsrm.so|6c46d351f87825ae537a7de65d4e24e6ad156f0f
-lib64/libdpmtcm.so|348ba10c8878499e1022bf67273182bd22f5d282
 vendor/bin/dpmQmiMgr|da60d841e9ade1a876b1e9734607b41766f26473
 vendor/lib64/com.qualcomm.qti.dpm.api@1.0_vendor.so|0f23520fc925b8a5bb4cebc73c544cb2d012ce7e
 vendor/lib64/libdpmqmihal.so|25bcb5d6853ccbf30fbe38230f9442049688c49a
+vendor/lib/com.qualcomm.qti.dpm.api@1.0_vendor.so|83508971c5c6aa2255c58c02ce018aaa11562e1c
+vendor/lib/libdpmqmihal.so|81cd7b99f480466c37f8a1212e448afe1998b5d2
 
 # DRM - from Wiko View 2
 vendor/bin/qseecomd|7b335ae588520687b62558523d119b4203b08017
