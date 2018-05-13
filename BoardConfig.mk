@@ -215,7 +215,8 @@ TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/rootdir/recovery/fstab.qcom
 
 # SELinux
 include device/qcom/sepolicy/sepolicy.mk
-BOARD_SEPOLICY_DIRS += $(LOCAL_PATH)/sepolicy/
+BOARD_SEPOLICY_DIRS += $(LOCAL_PATH)/sepolicy
+BOARD_PLAT_PRIVATE_SEPOLICY_DIR += $(LOCAL_PATH)/sepolicy/private
 
 # Enable vendor partition
 ENABLE_VENDOR_IMAGE := true
