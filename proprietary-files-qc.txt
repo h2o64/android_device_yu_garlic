@@ -150,6 +150,17 @@ vendor/lib64/libsecureui.so|2fb2a534e915c081386f1b2408aaa977f2828e04
 vendor/lib64/libsecureui_svcsock.so|37d7e4690ea132a42fb02cdeb123cc7334a2fe63
 vendor/lib64/libssd.so|1715f974ab163d80ed08216275647579f15abc22
 
+# Face Unlock - from Wiko View 2
+lib64/android.hardware.faceunlock@1.0.so|071d7070c8e06b7e352bc9551c3abb55d940f12c
+lib/android.hardware.faceunlock@1.0.so|0378a8ecaa8af7720c5970548ef6eb632823c54e
+vendor/bin/hw/android.hardware.faceunlock@1.0-service|9bed98f399c4d27f9f0833276863d874a5c2bb5f
+vendor/etc/init/android.hardware.faceunlock@1.0-service.rc|98c337c319944f9d288fdf2d7f350e0da9d83b47
+vendor/lib64/hw/android.hardware.faceunlock@1.0-impl.so|705977dd8099646f0333e714a444c63ba636b955
+vendor/lib64/hw/faceunlock.default.so|e3633e2be13c35573af81a3b0c97ad2b5b9307c0
+vendor/lib/hw/android.hardware.faceunlock@1.0-impl.so|4a0095d0de6f0de4e7f03f1a39fefac6a0f0fd73
+vendor/lib/hw/faceunlock.default.so|46251544ffabe59f47237e8e802238cd16f40606
+
+
 # Gatekeeper - from Wiko View 2
 vendor/lib/hw/gatekeeper.msm8937.so|a4dc73fa93c3aa2032ff40c0da4fe7616da123e5
 vendor/lib64/hw/gatekeeper.msm8937.so|1afd8c664c2e8fa998d29545e5fb31965a975ada
