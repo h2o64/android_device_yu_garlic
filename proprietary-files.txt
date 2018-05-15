@@ -201,14 +201,11 @@ vendor/lib/libmmcamera_isp_sub_module.so|675d56795a25d2d009c78ab771f24c2b2b976c8
 vendor/lib/libmmcamera_isp_template.so|aeb226b0b61c045b723107eb581a557d46521306
 vendor/lib/libmmcamera_isp_wb40.so|1622dbb99da9ba3a7361b251476de0dfd5899079
 
-
-# Fingerprint - from Wiko View 2
+# Fingerprint
 vendor/bin/gx_fpd
--framework/vendor.qti.hardware.fingerprint-V1.0-java.jar|071094bf37a7a844df017f9f9665b3f7674a11d4
-vendor/lib64/hw/fingerprint.elan.default.so|8096189aaea702ead427b8ff80afb65c30bb0fc6
+vendor/lib64/hw/fingerprint.elan.default.so
 vendor/lib64/hw/fingerprint.goodix.default.so
 vendor/lib64/hw/gxfingerprint.default.so
-vendor/lib64/vendor.qti.hardware.fingerprint@1.0.so|b178828cfdb6c41e5d4746c16f5a0c2aef69f317
 vendor/lib64/libfp_client.so
 vendor/lib64/libfpnav.so
 vendor/lib64/libfpservice.so
