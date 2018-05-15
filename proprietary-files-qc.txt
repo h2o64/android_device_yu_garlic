@@ -542,6 +542,7 @@ vendor/lib64/lib-rtpcore.so|f1eb542b51294a607be637c436e4cf6ff77f4682
 vendor/lib64/lib-rtpdaemoninterface.so|d2a16eb5b737ece73be1675092616660b3bc42a4
 vendor/lib64/lib-rtpsl.so|c5c3ae73ac27f8af1f0abce031b330dd35504716
 vendor/lib64/lib-uceservice.so|a3b240fa271d8f4d4eb36404682babf0eafa859b
+vendor/lib64/com.qualcomm.qti.imscmservice@1.0_vendor.so|f2ae78dfa91ec9039ef4ab91c8075fa9d26a3465
 vendor/lib64/vendor.qti.imsrtpservice@1.0-service-Impl.so|878ddb236f1cbb0273b29a02de64e095ae321a48
 vendor/lib64/vendor.qti.imsrtpservice@1.0_vendor.so|cda7a4da8436db7a71496fbc6b75136d99af0658
 
