@@ -165,6 +165,12 @@ typedef struct {
     /* Reserved for future use */
     float      reserved[RELCAM_CALIB_RESERVED_MAX];
 } cam_related_system_calibration_data_t;
+
+typedef struct {
+    int meta_type;
+    int data_len;
+    cam_related_system_calibration_data_t otp_data;
+} cam_otp_data_t;
 #pragma pack()
 
 typedef struct {
@@ -503,6 +509,11 @@ typedef struct{
 
     /* Max size supported by ISP viewfinder path */
     cam_dimension_t max_viewfinder_size;
+
+    /* Max size supported by ISP encoder path */
+    cam_dimension_t max_encoder_size;
+
+    cam_dimension_t bokeh_snapshot_size;
 
     /* Analysis buffer requirements */
     cam_analysis_info_t analysis_info[CAM_ANALYSIS_INFO_MAX];

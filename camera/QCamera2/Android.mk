@@ -1,11 +1,3 @@
-# Enable SDLLVM compiler option for build flavour >= N flavour
-PLATFORM_SDK_NPDK = 24
-ENABLE_CAM_SDLLVM  := $(shell if [ $(PLATFORM_SDK_VERSION) -ge $(PLATFORM_SDK_NPDK) ] ; then echo true ; else echo false ; fi)
-ifeq ($(ENABLE_CAM_SDLLVM),true)
-SDCLANGSAVE := $(SDCLANG)
-SDCLANG := true
-endif
-
 ifneq (,$(filter $(TARGET_ARCH), arm arm64))
 
 LOCAL_PATH:= $(call my-dir)
@@ -28,6 +20,7 @@ LOCAL_SRC_FILES := \
         util/QCameraFlash.cpp \
         util/QCameraPerf.cpp \
         util/QCameraQueue.cpp \
+        util/QCameraDisplay.cpp \
         util/QCameraCommon.cpp \
         QCamera2Hal.cpp \
         QCamera2Factory.cpp
@@ -61,7 +54,7 @@ LOCAL_SRC_FILES += \
         HAL/QCameraPostProc.cpp \
         HAL/QCamera2HWICallbacks.cpp \
         HAL/QCameraParameters.cpp \
-        HAL/CameraParameters.cpp \
+	HAL/CameraParameters.cpp \
         HAL/QCameraParametersIntf.cpp \
         HAL/QCameraThermalAdapter.cpp
 endif
@@ -81,7 +74,16 @@ ifeq ($(TARGET_USES_MEDIA_EXTENSIONS), true)
 LOCAL_CFLAGS += -DUSE_MEDIA_EXTENSIONS
 endif
 
+#USE_DISPLAY_SERVICE from Android O onwards
+#to receive vsync event from display
+ifeq ($(filter OMR1 O 8.1.0, $(PLATFORM_VERSION)), )
+USE_DISPLAY_SERVICE := true
+LOCAL_CFLAGS += -DUSE_DISPLAY_SERVICE
+LOCAL_CFLAGS += -std=c++11 -std=gnu++1y
+else
 LOCAL_CFLAGS += -std=c++11 -std=gnu++0x
+endif
+
 #HAL 1.0 Flags
 LOCAL_CFLAGS += -DDEFAULT_DENOISE_MODE_ON -DHAL3 -DQCAMERA_REDEFINE_LOG
 
@@ -91,7 +93,6 @@ LOCAL_C_INCLUDES := \
         $(LOCAL_PATH)/include \
         $(LOCAL_PATH)/stack/common \
         $(LOCAL_PATH)/stack/mm-camera-interface/inc \
-        frameworks/native/include \
         $(LOCAL_PATH)/util \
         $(LOCAL_PATH)/HAL3 \
         hardware/libhardware/include/hardware \
@@ -129,14 +130,17 @@ LOCAL_C_INCLUDES += \
 LOCAL_SHARED_LIBRARIES := liblog libhardware libutils libcutils libdl libsync
 LOCAL_SHARED_LIBRARIES += libmmcamera_interface libmmjpeg_interface libui libcamera_metadata
 LOCAL_SHARED_LIBRARIES += libqdMetaData libqservice libbinder
-LOCAL_SHARED_LIBRARIES += libcutils libdl
-LOCAL_SHARED_LIBRARIES += libhidltransport libsensor android.hidl.token@1.0-utils android.hardware.graphics.bufferqueue@1.0
-LOCAL_STATIC_LIBRARIES := libarect
+ifeq ($(USE_DISPLAY_SERVICE),true)
+LOCAL_SHARED_LIBRARIES += android.frameworks.displayservice@1.0 android.hidl.base@1.0 libhidlbase
+else
+LOCAL_SHARED_LIBRARIES += libgui
+endif
 ifeq ($(TARGET_TS_MAKEUP),true)
 LOCAL_SHARED_LIBRARIES += libts_face_beautify_hal libts_detected_face_hal
 endif
 
 LOCAL_STATIC_LIBRARIES := android.hardware.camera.common@1.0-helper
+
 
 LOCAL_MODULE_RELATIVE_PATH := hw
 LOCAL_MODULE := camera.$(TARGET_BOARD_PLATFORM)
@@ -148,7 +152,3 @@ include $(BUILD_SHARED_LIBRARY)
 
 include $(call first-makefiles-under,$(LOCAL_PATH))
 endif
-ifeq ($(ENABLE_CAM_SDLLVM),true)
-SDCLANG := $(SDCLANGSAVE)
-endif
-
