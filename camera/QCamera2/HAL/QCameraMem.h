@@ -249,9 +249,8 @@ public:
     int getUsage(){return mUsage;};
     int getFormat(){return mFormat;};
     int convCamtoOMXFormat(cam_format_t format);
-    int closeNativeHandle(const void *data, bool metadata);
+    int closeNativeHandle(const void *data, bool metadata = true);
     native_handle_t *getNativeHandle(uint32_t index, bool metadata = true);
-    static int closeNativeHandle(const void *data);
 private:
     camera_memory_t *mMetadata[MM_CAMERA_MAX_NUM_FRAMES];
     uint8_t mMetaBufCount;
