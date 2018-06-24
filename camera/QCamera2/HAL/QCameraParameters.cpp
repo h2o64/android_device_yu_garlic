@@ -58,6 +58,7 @@ extern "C" {
 #define CAMERA_MIN_LONGSHOT_STAGES 2
 #define FOCUS_PERCISION 0.0000001
 
+
 namespace qcamera {
 // Parameter keys to communicate between camera application and driver.
 const char QCameraParameters::KEY_QC_SUPPORTED_HFR_SIZES[] = "hfr-size-values";
@@ -212,9 +213,6 @@ const char QCameraParameters::KEY_QC_INSTANT_AEC_SUPPORTED_MODES[] = "instant-ae
 const char QCameraParameters::KEY_QC_INSTANT_CAPTURE_SUPPORTED_MODES[] = "instant-capture-values";
 const char QCameraParameters::KEY_QC_LED_CALIBRATION_MODES[] = "led-calibration-mode";
 
-const char QCameraParameters::KEY_QC_DUAL_CAMERA_MODE[] = "dual-camera-mode";
-const char QCameraParameters::KEY_QC_DUAL_CAMERA_ID[] = "dual-camera-id";
-const char QCameraParameters::KEY_QC_DUAL_CAMERA_MAIN_CAMERA[] = "dual-camera-main-camera";
 // Values for effect settings.
 const char QCameraParameters::EFFECT_EMBOSS[] = "emboss";
 const char QCameraParameters::EFFECT_SKETCH[] = "sketch";
@@ -906,7 +904,6 @@ static inline bool isOEMFeat1PropEnabled()
  *==========================================================================*/
 QCameraParameters::QCameraParameters()
     : CameraParameters(),
-      m_bDualCameraMode(false),
       m_reprocScaleParam(),
       mCommon(),
       m_pCapability(NULL),
@@ -994,9 +991,7 @@ QCameraParameters::QCameraParameters()
       mAecFrameBound(0),
       mAecSkipDisplayFrameBound(0),
       m_bQuadraCfa(false),
-      m_bSmallJpegSize(false),
-      mDualCamId(0),
-      m_bMainCamera(false)
+      m_bSmallJpegSize(false)
 {
     char value[PROPERTY_VALUE_MAX];
     // TODO: may move to parameter instead of sysprop
@@ -1050,7 +1045,6 @@ QCameraParameters::QCameraParameters()
  *==========================================================================*/
 QCameraParameters::QCameraParameters(const String8 &params)
     : CameraParameters(params),
-    m_bDualCameraMode(false),
     m_reprocScaleParam(),
     m_pCapability(NULL),
     m_pCamOpsTbl(NULL),
@@ -1130,9 +1124,7 @@ QCameraParameters::QCameraParameters(const String8 &params)
     mAecFrameBound(0),
     mAecSkipDisplayFrameBound(0),
     m_bQuadraCfa(false),
-    m_bSmallJpegSize(false),
-    mDualCamId(0),
-    m_bMainCamera(false)
+    m_bSmallJpegSize(false)
 {
     memset(&m_LiveSnapshotSize, 0, sizeof(m_LiveSnapshotSize));
     memset(&m_default_fps_range, 0, sizeof(m_default_fps_range));
@@ -1560,8 +1552,6 @@ int32_t QCameraParameters::setPictureSize(const QCameraParameters& params)
 {
     int width, height;
     params.getPictureSize(&width, &height);
-    originalSnapshotDim.width = width;
-    originalSnapshotDim.height = height;
     int old_width, old_height;
     CameraParameters::getPictureSize(&old_width, &old_height);
 
@@ -1584,11 +1574,8 @@ int32_t QCameraParameters::setPictureSize(const QCameraParameters& params)
             }
         }
     }else{
-          m_reprocScaleParam.isBokehEnabled = m_bDualCameraMode;
-          m_reprocScaleParam.bokehSnapshotWidth = m_pCapability->bokeh_snapshot_size.width;
-          m_reprocScaleParam.bokehSnapshotHeight = m_pCapability->bokeh_snapshot_size.height;
-         //should use scaled picture size table to validate
-         if(m_reprocScaleParam.setValidatePicSize(width, height) == NO_ERROR){
+        //should use scaled picture size table to validate
+        if(m_reprocScaleParam.setValidatePicSize(width, height) == NO_ERROR){
             // check if need to restart preview in case of picture size change
             if ((m_bZslMode || m_bRecordingHint) &&
                 (width != old_width || height != old_height)) {
@@ -1603,7 +1590,6 @@ int32_t QCameraParameters::setPictureSize(const QCameraParameters& params)
             updateViewAngles();
             return NO_ERROR;
         }
-
     }
     if (m_relCamSyncInfo.mode == CAM_MODE_SECONDARY) {
         char prop[PROPERTY_VALUE_MAX];
@@ -5207,7 +5193,7 @@ int32_t QCameraParameters::updateParameters(const String8& p,
         rc = BAD_TYPE;
         goto UPDATE_PARAM_DONE;
     }
-    if ((rc = setDualCameraMode(params)))               final_rc = rc;
+
     if ((rc = setPreviewSize(params)))                  final_rc = rc;
     if ((rc = setVideoSize(params)))                    final_rc = rc;
     if ((rc = setPictureSize(params)))                  final_rc = rc;
@@ -6153,10 +6139,7 @@ int32_t QCameraParameters::initDefaultParameters()
     // Set default burst number
     set(KEY_QC_SNAPSHOT_BURST_NUM, 0);
     set(KEY_QC_NUM_RETRO_BURST_PER_SHUTTER, 0);
-    // Set default dual camera info
-    set(KEY_QC_DUAL_CAMERA_MODE,VALUE_OFF);
-    set(KEY_QC_DUAL_CAMERA_ID,0);
-    set(KEY_QC_DUAL_CAMERA_MAIN_CAMERA,VALUE_FALSE);
+
     //Get RAM size and disable features which are memory rich
     struct sysinfo info;
     sysinfo(&info);
@@ -6408,7 +6391,7 @@ void QCameraParameters::deinit()
                              m_pCamOpsTbl->camera_handle,
                              CAM_MAPPING_BUF_TYPE_PARM_BUF);
 
-        if (m_relCamSyncInfo.sync_control == CAM_SYNC_RELATED_SENSORS_ON || m_bDualCameraMode) {
+        if (m_relCamSyncInfo.sync_control == CAM_SYNC_RELATED_SENSORS_ON) {
             m_pCamOpsTbl->ops->unmap_buf(
                     m_pCamOpsTbl->camera_handle,
                     CAM_MAPPING_BUF_TYPE_SYNC_RELATED_SENSORS_BUF);
@@ -10389,9 +10372,6 @@ int32_t QCameraParameters::getStreamDimension(cam_stream_type_t streamType,
             } else {
                 getPictureSize(&dim.width, &dim.height);
             }
-        } else if (m_bDualCameraMode) {
-            dim.width = originalSnapshotDim.width;
-            dim.height = originalSnapshotDim.height;
         }
         break;
     case CAM_STREAM_TYPE_ANALYSIS:
@@ -12576,7 +12556,7 @@ bool QCameraParameters::QCameraReprocScaleParam::isScaleEnabled()
 bool QCameraParameters::QCameraReprocScaleParam::isScalePicSize(int width, int height)
 {
     //Check if the picture size is in scale table
-    if(mNeedScaleCnt <= 0 && !isBokehEnabled)
+    if(mNeedScaleCnt <= 0)
         return FALSE;
 
     for (size_t i = 0; i < mNeedScaleCnt; i++) {
@@ -12585,10 +12565,7 @@ bool QCameraParameters::QCameraReprocScaleParam::isScalePicSize(int width, int h
             return TRUE;
         }
     }
-    if (isBokehEnabled) {
-        LOGI("dualcamera mode set");
-        return TRUE;
-    }
+
     LOGE("Not in scale picture size table.");
     return FALSE;
 }
@@ -12644,18 +12621,12 @@ int32_t QCameraParameters::QCameraReprocScaleParam::setSensorSupportedPicSize()
     //will find a suitable picture size (here we leave a prossibility to add other scale requirement)
     //Currently we only focus on upscaling, and checkScaleSizeTable() has guaranteed the dimension ratio.
 
-    if((!mIsUnderScaling || mSensorSizeTblCnt <= 0) && !isBokehEnabled)
+    if(!mIsUnderScaling || mSensorSizeTblCnt <= 0)
         return BAD_VALUE;
-    if (isBokehEnabled) {
-        LOGI("dualcamera mode set");
-        //We just set the max sensor supported size here.
-        mPicSizeSetted.width = bokehSnapshotWidth;
-        mPicSizeSetted.height = bokehSnapshotHeight;
-    } else {
+
     //We just get the max sensor supported size here.
     mPicSizeSetted.width = mSensorSizeTbl[0].width;
     mPicSizeSetted.height = mSensorSizeTbl[0].height;
-    }
 
     return NO_ERROR;
 }
@@ -12680,6 +12651,7 @@ int32_t QCameraParameters::QCameraReprocScaleParam::setValidatePicSize(int &widt
         return BAD_VALUE;
 
     mIsUnderScaling = FALSE; //default: not under scale
+
     if(isScalePicSize(width, height)){
         // input picture size need scaling operation. Record size from APK and setted
         mIsUnderScaling = TRUE;
@@ -13117,6 +13089,7 @@ bool QCameraParameters::sendStreamConfigInfo(cam_stream_size_info_t &stream_conf
         LOGE("Failed to initialize group update table");
         return BAD_TYPE;
     }
+
     if (ADD_SET_PARAM_ENTRY_TO_BATCH(m_pParamBuf,
             CAM_INTF_META_STREAM_INFO, stream_config_info)) {
         LOGE("Failed to update table");
@@ -13146,14 +13119,13 @@ bool QCameraParameters::sendStreamConfigInfo(cam_stream_size_info_t &stream_conf
  *              none-zero failure code
  *==========================================================================*/
 bool QCameraParameters::setStreamConfigure(bool isCapture,
-        bool previewAsPostview, bool resetConfig, uint32_t* sessionId) {
+        bool previewAsPostview, bool resetConfig) {
 
     int32_t rc = NO_ERROR;
     cam_stream_size_info_t stream_config_info;
     char value[PROPERTY_VALUE_MAX];
     bool raw_yuv = false;
     bool raw_capture = false;
-    cam_dimension_t raw_dim;
 
     if ( m_pParamBuf == NULL ) {
         return NO_INIT;
@@ -13186,11 +13158,6 @@ bool QCameraParameters::setStreamConfigure(bool isCapture,
     raw_yuv = atoi(value) > 0 ? true : false;
 
     if (isZSLMode() && getRecordingHintValue() != true) {
-        if (m_bDualCameraMode) {
-            raw_dim.width = m_pCapability->max_encoder_size.width;
-            raw_dim.height = m_pCapability->max_encoder_size.height;
-            updateRAW(raw_dim);
-        }
         stream_config_info.type[stream_config_info.num_streams] =
             CAM_STREAM_TYPE_PREVIEW;
         getStreamDimension(CAM_STREAM_TYPE_PREVIEW,
@@ -13440,67 +13407,8 @@ bool QCameraParameters::setStreamConfigure(bool isCapture,
                 stream_config_info.sub_format_type[k],
                 stream_config_info.is_type[k]);
     }
-    if (m_bMainCamera && m_bDualCameraMode){
-        stream_config_info.sync_type = CAM_TYPE_MAIN;
-    } else if (m_bDualCameraMode){
-        stream_config_info.sync_type = CAM_TYPE_AUX;
-    }
-    rc = sendStreamConfigInfo(stream_config_info);
-    if (m_bDualCameraMode) {
-        if (m_pRelCamSyncHeap == NULL) {
-            m_pRelCamSyncHeap = new QCameraHeapMemory(QCAMERA_ION_USE_CACHE);
-            rc = m_pRelCamSyncHeap->allocate(1,
-                   sizeof(cam_sync_related_sensors_event_info_t), NON_SECURE);
-            if(rc != OK) {
-                rc = NO_MEMORY;
-                LOGE("Failed to allocate Related cam sync Heap memory");
-                delete m_pRelCamSyncHeap;
-                m_pRelCamSyncHeap = NULL;
-                return rc;
-            }
 
-            //Map memory for related cam sync buffer
-            rc = m_pCamOpsTbl->ops->map_buf(m_pCamOpsTbl->camera_handle,
-                    CAM_MAPPING_BUF_TYPE_SYNC_RELATED_SENSORS_BUF,
-                    m_pRelCamSyncHeap->getFd(0),
-                    sizeof(cam_sync_related_sensors_event_info_t),
-                    (cam_sync_related_sensors_event_info_t*)DATA_PTR(m_pRelCamSyncHeap,0));
-            if(rc < 0) {
-                LOGE("failed to map Related cam sync buffer");
-                rc = FAILED_TRANSACTION;
-                m_pRelCamSyncHeap->deallocate();
-                delete m_pRelCamSyncHeap;
-                m_pRelCamSyncHeap = NULL;
-                return rc;
-            }
-            m_pRelCamSyncBuf =
-                    (cam_sync_related_sensors_event_info_t*) DATA_PTR(m_pRelCamSyncHeap,0);
-        }
-        if (!resetConfig) {
-            m_pRelCamSyncBuf->sync_control = CAM_SYNC_RELATED_SENSORS_ON;
-        } else {
-            m_pRelCamSyncBuf->sync_control = CAM_SYNC_RELATED_SENSORS_OFF;
-        }
-        if (m_bMainCamera){
-             m_pRelCamSyncBuf->mode = CAM_MODE_PRIMARY;
-             m_pRelCamSyncBuf->type = CAM_TYPE_MAIN;
-             m_pRelCamSyncBuf->related_sensor_session_id = sessionId[mDualCamId];
-        } else {
-             m_pRelCamSyncBuf->mode = CAM_MODE_SECONDARY;
-             m_pRelCamSyncBuf->type = CAM_TYPE_AUX;
-             m_pRelCamSyncBuf->related_sensor_session_id = sessionId[mDualCamId];
-        }
-        rc = m_pCamOpsTbl->ops->sync_related_sensors(
-                m_pCamOpsTbl->camera_handle, m_pRelCamSyncBuf);
-        if(rc < 0) {
-            LOGE("failed to send sync command");
-            rc = FAILED_TRANSACTION;
-            m_pRelCamSyncHeap->deallocate();
-            delete m_pRelCamSyncHeap;
-            m_pRelCamSyncHeap = NULL;
-            return rc;
-        }
-    }
+    rc = sendStreamConfigInfo(stream_config_info);
     updateSnapshotPpMask(stream_config_info);
     return rc;
 }
@@ -14038,10 +13946,6 @@ int32_t QCameraParameters::updatePpFeatureMask(cam_stream_type_t stream_type) {
         feature_mask |= CAM_QTI_FEATURE_PPEISCORE;
     }
 
-    if ((m_bDualCameraMode) &&
-            (stream_type == CAM_STREAM_TYPE_SNAPSHOT)){
-        feature_mask |= CAM_QTI_FEATURE_RTB;
-    }
     // Store stream feature mask
     setStreamPpMask(stream_type, feature_mask);
     LOGH("stream type: %d, pp_mask: 0x%llx", stream_type, feature_mask);
@@ -14833,65 +14737,6 @@ int32_t QCameraParameters::setLedCalibration(
     return NO_ERROR;
 }
 
-/*===========================================================================
- * FUNCTION   : setDualCameraMode
- *
- * DESCRIPTION: set dual led calibration
- *
- * PARAMETERS :
- *   @params  : user setting parameters
- *
- * RETURN     : int32_t type of status
- *              NO_ERROR  -- success
- *              none-zero failure code
- *==========================================================================*/
-int32_t QCameraParameters::setDualCameraMode(const QCameraParameters& params)
-{
-    const char *str = params.get(KEY_QC_DUAL_CAMERA_MODE);
-    const char *prev_str = get(KEY_QC_DUAL_CAMERA_MODE);
-    int value;
-    int width, height;
-
-    if (str != NULL) {
-        if (prev_str == NULL || strcmp(str, prev_str) != 0) {
-            value = lookupAttr(ON_OFF_MODES_MAP, PARAM_MAP_SIZE(ON_OFF_MODES_MAP),
-                    str);
-            m_bDualCameraMode = value;
-        }
-    }
-    LOGI("Dual camera mode set %d",m_bDualCameraMode);
-    if (m_bDualCameraMode) {
-        mDualCamId  = params.getInt(KEY_QC_DUAL_CAMERA_ID);
-        str = params.get(KEY_QC_DUAL_CAMERA_MAIN_CAMERA);
-        prev_str = get(KEY_QC_DUAL_CAMERA_MAIN_CAMERA);
-        if (prev_str == NULL || strcmp(str, prev_str) != 0) {
-            value = lookupAttr(TRUE_FALSE_MODES_MAP, PARAM_MAP_SIZE(TRUE_FALSE_MODES_MAP),
-                    str);
-        m_bMainCamera = value;
-        }
-        params.getPictureSize(&width, &height);
-        if ( width > m_pCapability->bokeh_snapshot_size.width ||
-                height > m_pCapability->bokeh_snapshot_size.height) {
-             LOGI("Scale enabled in Bokeh mode");
-             m_reprocScaleParam.setScaleEnable(true);
-        }
-    }
-    return NO_ERROR;
-}
-
-/*===========================================================================
- * FUNCTION   : getDualCameraMode
- *
- * DESCRIPTION: get dual camera mode
- *
- * PARAMETERS :
- *
- * RETURN     : Dual camera mode status
- *==========================================================================*/
-bool QCameraParameters::getDualCameraMode()
-{
-    return m_bDualCameraMode;
-}
 
 /*===========================================================================
  * FUNCTION   : setLedCalibration

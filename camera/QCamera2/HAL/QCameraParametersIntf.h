@@ -76,7 +76,6 @@ public:
     int32_t commitParameters();
 
     char* getParameters();
-    bool getDualCameraMode();
     void getPreviewFpsRange(int *min_fps, int *max_fps) const;
 #ifdef TARGET_TS_MAKEUP
     bool getTsMakeupInfo(int &whiteLevel, int &cleanLevel) const;
@@ -195,7 +194,7 @@ public:
     bool isHDRThumbnailProcessNeeded();
     void setMinPpMask(cam_feature_mask_t min_pp_mask);
     bool setStreamConfigure(bool isCapture,
-            bool previewAsPostview, bool resetConfig, uint32_t* sessionId);
+            bool previewAsPostview, bool resetConfig);
     int32_t addOnlineRotation(uint32_t rotation, uint32_t streamId,
             int32_t device_rotation);
     uint8_t getNumOfExtraBuffersForImageProc();

@@ -652,7 +652,7 @@ int QCameraMemoryPool::findBufferLocked(
         size_t size, bool cached, cam_stream_type_t streamType)
 {
     int rc = NAME_NOT_FOUND;
-    size_t alignsize = (size + 4095U) & (~4095U);
+
     if (mPools[streamType].empty()) {
         return NAME_NOT_FOUND;
     }
@@ -660,7 +660,7 @@ int QCameraMemoryPool::findBufferLocked(
     List<struct QCameraMemory::QCameraMemInfo>::iterator it = mPools[streamType].begin();
     if (streamType == CAM_STREAM_TYPE_OFFLINE_PROC) {
         for( ; it != mPools[streamType].end() ; it++) {
-            if( ((*it).size == alignsize) &&
+            if( ((*it).size == size) &&
                     ((*it).heap_id == heap_id) &&
                     ((*it).cached == cached) ) {
                 memInfo = *it;
@@ -1771,9 +1771,11 @@ int QCameraVideoMemory::convCamtoOMXFormat(cam_format_t format)
         case CAM_FORMAT_YUV_420_NV12_VENUS:
             omxFormat = OMX_COLOR_FormatYUV420SemiPlanar;
             break;
+#ifndef VANILLA_HAL
         case CAM_FORMAT_YUV_420_NV12_UBWC:
             omxFormat = QOMX_COLOR_FORMATYUV420PackedSemiPlanar32mCompressed;
             break;
+#endif
         default:
             omxFormat = OMX_COLOR_FormatYUV420SemiPlanar;
     }
