@@ -42,13 +42,14 @@ vendor/lib/libmmcamera_eebinparse.so
 vendor/lib/libmmcamera_eeprom_util.so
 vendor/lib/libmmcamera_eztune_module.so
 vendor/lib/libmmcamera_facedetection_lib.so
-vendor/lib/libmmcamera_faceproc2.so
 vendor/lib/libmmcamera_faceproc.so
+vendor/lib/libmmcamera_faceproc2.so
 vendor/lib/libmmcamera_hdr_gb_lib.so
 vendor/lib/libmmcamera_imglib.so
 vendor/lib/libmmcamera_imx258.so
 vendor/lib/libmmcamera_llvd.so
 vendor/lib/libmmcamera_optizoom_lib.so
+vendor/lib/libmmcamera_ov8856.so # From N Stock
 vendor/lib/libmmcamera_p7201_sunny_imx258_otp_eeprom.so
 vendor/lib/libmmcamera_p7201_sunwin_ov8856_otp_eeprom.so
 vendor/lib/libmmcamera_paaf_lib.so
@@ -80,10 +81,11 @@ vendor/lib/libremosaic_daemon.so
 vendor/lib/libseemore.so
 vendor/lib/libubifocus.so
 
+
 # Camera actuators - from N Beta
 vendor/lib/libactuator_dw9800_imx258_p7201sunny.so
 
-# Camera chromatix - from N Beta
+# Camera chromatix - from N Beta (ov8856 from N Stock)
 vendor/lib/libchromatix_csidtg_common.so
 vendor/lib/libchromatix_csidtg_cpp_preview.so
 vendor/lib/libchromatix_csidtg_postproc.so
@@ -103,22 +105,22 @@ vendor/lib/libchromatix_imx258_sunny_p7201_cpp_preview.so
 vendor/lib/libchromatix_imx258_sunny_p7201_cpp_preview_third_party_app.so
 vendor/lib/libchromatix_imx258_sunny_p7201_cpp_snapshot.so
 vendor/lib/libchromatix_imx258_sunny_p7201_cpp_snapshot_third_party_app.so
+vendor/lib/libchromatix_imx258_sunny_p7201_cpp_video.so
 vendor/lib/libchromatix_imx258_sunny_p7201_cpp_video_4k.so
 vendor/lib/libchromatix_imx258_sunny_p7201_cpp_video_4k_third_party_app.so
-vendor/lib/libchromatix_imx258_sunny_p7201_cpp_video.so
 vendor/lib/libchromatix_imx258_sunny_p7201_cpp_video_third_party_app.so
 vendor/lib/libchromatix_imx258_sunny_p7201_default_preview_bu64244gwz.so
 vendor/lib/libchromatix_imx258_sunny_p7201_default_preview_bu64244gwz_third_party_app.so
+vendor/lib/libchromatix_imx258_sunny_p7201_default_video.so
 vendor/lib/libchromatix_imx258_sunny_p7201_default_video_bu64244gwz.so
 vendor/lib/libchromatix_imx258_sunny_p7201_default_video_bu64244gwz_third_party_app.so
-vendor/lib/libchromatix_imx258_sunny_p7201_default_video.so
 vendor/lib/libchromatix_imx258_sunny_p7201_default_video_third_party_app.so
-vendor/lib/libchromatix_imx258_sunny_p7201_hfr_120_bu64244gwz.so
 vendor/lib/libchromatix_imx258_sunny_p7201_hfr_120.so
-vendor/lib/libchromatix_imx258_sunny_p7201_hfr_60_bu64244gwz.so
+vendor/lib/libchromatix_imx258_sunny_p7201_hfr_120_bu64244gwz.so
 vendor/lib/libchromatix_imx258_sunny_p7201_hfr_60.so
-vendor/lib/libchromatix_imx258_sunny_p7201_hfr_90_bu64244gwz.so
+vendor/lib/libchromatix_imx258_sunny_p7201_hfr_60_bu64244gwz.so
 vendor/lib/libchromatix_imx258_sunny_p7201_hfr_90.so
+vendor/lib/libchromatix_imx258_sunny_p7201_hfr_90_bu64244gwz.so
 vendor/lib/libchromatix_imx258_sunny_p7201_postproc.so
 vendor/lib/libchromatix_imx258_sunny_p7201_preview.so
 vendor/lib/libchromatix_imx258_sunny_p7201_preview_third_party_app.so
@@ -130,6 +132,44 @@ vendor/lib/libchromatix_imx258_sunny_p7201_zsl_preview_bu64244gwz.so
 vendor/lib/libchromatix_imx258_sunny_p7201_zsl_preview_bu64244gwz_third_party_app.so
 vendor/lib/libchromatix_imx258_sunny_p7201_zsl_video_bu64244gwz.so
 vendor/lib/libchromatix_imx258_sunny_p7201_zsl_video_bu64244gwz_third_party_app.so
+vendor/lib/libchromatix_ov8856_a3_default_preview.so
+vendor/lib/libchromatix_ov8856_a3_default_preview_third_party_app.so
+vendor/lib/libchromatix_ov8856_a3_default_video.so
+vendor/lib/libchromatix_ov8856_a3_default_video_third_party_app.so
+vendor/lib/libchromatix_ov8856_a3_hfr_120.so
+vendor/lib/libchromatix_ov8856_a3_hfr_60.so
+vendor/lib/libchromatix_ov8856_a3_hfr_60_third_party_app.so
+vendor/lib/libchromatix_ov8856_a3_hfr_90.so
+vendor/lib/libchromatix_ov8856_common.so
+vendor/lib/libchromatix_ov8856_cpp_ds_chromatix.so
+vendor/lib/libchromatix_ov8856_cpp_hfr_120.so
+vendor/lib/libchromatix_ov8856_cpp_hfr_60.so
+vendor/lib/libchromatix_ov8856_cpp_hfr_90.so
+vendor/lib/libchromatix_ov8856_cpp_liveshot.so
+vendor/lib/libchromatix_ov8856_cpp_liveshot_third_party_app.so
+vendor/lib/libchromatix_ov8856_cpp_preview.so
+vendor/lib/libchromatix_ov8856_cpp_preview_third_party_app.so
+vendor/lib/libchromatix_ov8856_cpp_snapshot.so
+vendor/lib/libchromatix_ov8856_cpp_snapshot_third_party_app.so
+vendor/lib/libchromatix_ov8856_cpp_us_chromatix.so
+vendor/lib/libchromatix_ov8856_cpp_video.so
+vendor/lib/libchromatix_ov8856_cpp_video_third_party_app.so
+vendor/lib/libchromatix_ov8856_default_video.so
+vendor/lib/libchromatix_ov8856_default_video_third_party_app.so
+vendor/lib/libchromatix_ov8856_hfr_120.so
+vendor/lib/libchromatix_ov8856_hfr_60.so
+vendor/lib/libchromatix_ov8856_hfr_60_third_party_app.so
+vendor/lib/libchromatix_ov8856_hfr_90.so
+vendor/lib/libchromatix_ov8856_liveshot.so
+vendor/lib/libchromatix_ov8856_postproc.so
+vendor/lib/libchromatix_ov8856_preview.so
+vendor/lib/libchromatix_ov8856_preview_third_party_app.so
+vendor/lib/libchromatix_ov8856_snapshot.so
+vendor/lib/libchromatix_ov8856_snapshot_third_party_app.so
+vendor/lib/libchromatix_ov8856_zsl_preview.so
+vendor/lib/libchromatix_ov8856_zsl_preview_third_party_app.so
+vendor/lib/libchromatix_ov8856_zsl_video.so
+vendor/lib/libchromatix_ov8856_zsl_video_third_party_app.so
 vendor/lib/libchromatix_s5k4h8_p7201_a3_default_preview.so
 vendor/lib/libchromatix_s5k4h8_p7201_a3_default_preview_third_party_app.so
 vendor/lib/libchromatix_s5k4h8_p7201_a3_default_video.so
@@ -165,6 +205,7 @@ vendor/lib/libchromatix_s5k4h8_p7201_zsl_preview.so
 vendor/lib/libchromatix_s5k4h8_p7201_zsl_preview_third_party_app.so
 vendor/lib/libchromatix_s5k4h8_p7201_zsl_video.so
 vendor/lib/libchromatix_s5k4h8_p7201_zsl_video_third_party_app.so
+
 
 # Camera sensors - from N Beta
 vendor/lib/libmmcamera_isp_abf40.so
