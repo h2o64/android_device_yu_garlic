@@ -251,3 +251,7 @@ vendor/lib64/hw/gxfingerprint.default.so
 vendor/lib64/libfp_client.so
 vendor/lib64/libfpnav.so
 vendor/lib64/libfpservice.so
+
+# Lights - from Stock N Beta
+vendor/lib/hw/lights.msm8937.so
+vendor/lib64/hw/lights.msm8937.so
